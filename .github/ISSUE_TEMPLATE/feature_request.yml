@@ -1,5 +1,5 @@
 name: 🚀 Feature
-description: Request new models, changes to existing models or functionality.
+description: Request new features or changes to existing functionality.
 title: "[Feature] <title>"
 labels: ["enhancement"]
 body:
@@ -35,7 +35,7 @@ body:
       label: Code Snippets
       description: |
         This is a good place to include any relevant code snippets.
-      render: sql
+    render: javascript
     validations:
       required: false
 
