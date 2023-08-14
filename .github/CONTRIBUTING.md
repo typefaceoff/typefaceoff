@@ -20,34 +20,34 @@ Welcome to the **Typefaceoff** open-source community! We greatly appreciate your
 If you encounter a bug or issue while using **Typefaceoff**, we encourage you to report it to us. Please follow these steps when filing a bug report:
 
 1. Go to the project’s [issue tracker](https://github.com/jaskfla/typefaceoff/issues).
-2. Click on “New Issue” and select the “Bug Report” template.
-3. Provide a clear and concise title for the issue.
-4. Describe the problem you encountered and the steps to reproduce it.
-5. Include relevant information like your operating system, browser version, and any error messages received.
-6. To provide this detail, stack traces, test cases, screenshots, code examples, and/or error reports may be added.
-7. Tag the issue appropriately for better tracking.
+1. Click on “New Issue” and select the “Bug Report” template.
+1. Provide a clear and concise title for the issue.
+1. Describe the problem you encountered and the steps to reproduce it.
+1. Include relevant information like your operating system, browser version, and any error messages received.
+1. To provide this detail, stack traces, test cases, screenshots, code examples, and/or error reports may be added.
+1. Tag the issue appropriately for better tracking.
 
 ## How to Suggest a New Feature
 
 We value your ideas and suggestions for improving **Typefaceoff**. To suggest a new feature, follow these steps:
 
 1. Go to the project’s [issue tracker](https://github.com/jaskfla/typefaceoff/issues).
-2. Click on “New Issue” and select the “Feature Request” template.
-3. Give your feature request a descriptive title.
-4. Clearly explain the feature’s purpose and how it would benefit the project.
-5. Consider including any relevant use cases or examples to support your request.
+1. Click on “New Issue” and select the “Feature Request” template.
+1. Give your feature request a descriptive title.
+1. Clearly explain the feature’s purpose and how it would benefit the project.
+1. Consider including any relevant use cases or examples to support your request.
 
 ## How to Submit a Pull Request
 
 Contributions through pull requests are crucial to the success of **Typefaceoff**. To submit a pull request, follow these guidelines:
 
 1. Fork the repository on GitHub.
-2. Create a new branch for your changes.
-3. Make your changes and commit them with descriptive messages.
-4. Ensure your code adheres to our coding standards and style guidelines.
-5. Write tests to cover your changes whenever applicable.
-6. Open a pull request and provide a detailed description of your changes.
-7. Be prepared for constructive feedback during the code review process.
+1. Create a new branch for your changes.
+1. Make your changes and commit them with descriptive messages.
+1. Ensure your code adheres to our coding standards and style guidelines.
+1. Write tests to cover your changes whenever applicable.
+1. Open a pull request and provide a detailed description of your changes.
+1. Be prepared for constructive feedback during the code review process.
 
 ## Setting Up Your Environment and Running Tests
 
