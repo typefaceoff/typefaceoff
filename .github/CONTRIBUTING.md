@@ -90,6 +90,6 @@ We expect all contributors to follow our project's code of conduct. You can find
 If you have any questions, suggestions, or need further assistance, you can get in touch with us through the following channels:
 
 - Opening an issue in the [issue tracker](https://github.com/your-organization/project-name/issues).
-- Sending an email to typefaceoff@gmail.com.
+- Sending an email to [typefaceoff@gmail.com](mailto:typefaceoff@gmail.com).
 
 Remember to keep communication respectful and constructive. We are excited to collaborate with you!
