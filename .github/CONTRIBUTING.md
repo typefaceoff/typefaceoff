@@ -5,16 +5,15 @@ Welcome to the **Typefaceoff** open-source community! We greatly appreciate your
 ## Table of Contents
 
 1. [How to File a Bug Report](#how-to-file-a-bug-report)
-2. [How to Suggest a New Feature](#how-to-suggest-a-new-feature)
-3. [How to Submit a Pull Request](#how-to-submit-a-pull-request)
-4. [Setting Up Your Environment and Running Tests](#setting-up-your-environment-and-running-tests)
-5. [Types of Contributions](#types-of-contributions)
-6. [Getting Started for Newcomers](#getting-started-for-newcomers)
-7. [Technical Requirements for Contributions](#technical-requirements-for-contributions)
-8. [Project Roadmap and Vision](#project-roadmap-and-vision)
-9. [High-Level Design / Architecture Information](#high-level-design-architecture-information)
-10. [Project Ground Rules and Expected Behavior](#project-ground-rules-and-expected-behavior)
-11. [How to Get in Touch](#how-to-get-in-touch)
+1. [How to Suggest a New Feature](#how-to-suggest-a-new-feature)
+1. [How to Submit a Pull Request](#how-to-submit-a-pull-request)
+1. [Setting Up Your Environment and Running Tests](#setting-up-your-environment-and-running-tests)
+1. [Types of Contributions](#types-of-contributions)
+1. [Getting Started for Newcomers](#getting-started-for-newcomers)
+1. [Technical Requirements for Contributions](#technical-requirements-for-contributions)
+1. [Project Roadmap and Vision](#project-roadmap-and-vision)
+1. [Project Ground Rules and Expected Behavior](#project-ground-rules-and-expected-behavior)
+1. [How to Get in Touch](#how-to-get-in-touch)
 
 ## How to File a Bug Report
 
@@ -81,10 +80,6 @@ When making contributions, please adhere to the following technical requirements
 ## Project Roadmap and Vision
 
 For an overview of our project's roadmap and vision, refer to [ROADMAP.md](ROADMAP.md) in the repository.
-
-## High-Level Design / Architecture Information
-
-Detailed high-level design and architecture information can be found in [ARCHITECTURE.md](ARCHITECTURE.md) in the repository.
 
 ## Project Ground Rules and Expected Behavior
 
