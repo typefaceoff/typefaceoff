@@ -19,8 +19,8 @@ Welcome to the **Typefaceoff** open-source community! We greatly appreciate your
 
 If you encounter a bug or issue while using **Typefaceoff**, we encourage you to report it to us. Please follow these steps when filing a bug report:
 
-1. Go to the project's [issue tracker](https://github.com/jaskfla/typefaceoff/issues).
-2. Click on "New Issue" and select the "Bug Report" template.
+1. Go to the project’s [issue tracker](https://github.com/jaskfla/typefaceoff/issues).
+2. Click on “New Issue” and select the “Bug Report” template.
 3. Provide a clear and concise title for the issue.
 4. Describe the problem you encountered and the steps to reproduce it.
 5. Include relevant information like your operating system, browser version, and any error messages received.
@@ -31,10 +31,10 @@ If you encounter a bug or issue while using **Typefaceoff**, we encourage you to
 
 We value your ideas and suggestions for improving **Typefaceoff**. To suggest a new feature, follow these steps:
 
-1. Go to the project's [issue tracker](https://github.com/jaskfla/typefaceoff/issues).
-2. Click on "New Issue" and select the "Feature Request" template.
+1. Go to the project’s [issue tracker](https://github.com/jaskfla/typefaceoff/issues).
+2. Click on “New Issue” and select the “Feature Request” template.
 3. Give your feature request a descriptive title.
-4. Clearly explain the feature's purpose and how it would benefit the project.
+4. Clearly explain the feature’s purpose and how it would benefit the project.
 5. Consider including any relevant use cases or examples to support your request.
 
 ## How to Submit a Pull Request
@@ -63,27 +63,27 @@ To set up your development environment and run tests for **Typefaceoff**, refer 
 - Performance optimizations
 - Translation improvements
 
-We appreciate and value all contributions that align with the project's goals.
+We appreciate and value all contributions that align with the project’s goals.
 
 ## Getting Started for Newcomers
 
-We encourage newcomers to start their journey by contributing to beginner-friendly issues. Look for issues labeled "Good First Issue" in the [issue tracker](https://github.com/your-organization/project-name/issues) to get started easily.
+We encourage newcomers to start their journey by contributing to beginner-friendly issues. Look for issues labeled “Good First Issue” in the [issue tracker](https://github.com/your-organization/project-name/issues) to get started easily.
 
 ## Technical Requirements for Contributions
 
 When making contributions, please adhere to the following technical requirements:
 
 - Include relevant tests with each code change.
-- Follow the project's coding conventions and style guidelines.
+- Follow the project’s coding conventions and style guidelines.
 - Ensure your code is compatible with the supported environments and dependencies.
 
 ## Project Roadmap and Vision
 
-For an overview of our project's roadmap and vision, refer to [ROADMAP.md](ROADMAP.md) in the repository.
+For an overview of our project’s roadmap and vision, refer to [ROADMAP.md](ROADMAP.md) in the repository.
 
 ## Project Ground Rules and Expected Behavior
 
-We expect all contributors to follow our project's code of conduct. You can find the code of conduct in [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+We expect all contributors to follow our project’s code of conduct. You can find the code of conduct in [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## How to Get in Touch
 
