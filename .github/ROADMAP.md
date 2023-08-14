@@ -31,3 +31,39 @@ The user should be able to adjust the line spacing (within a small but reasonabl
 
 > [!NOTE]
 > **Leading** (pronounced *ledding*) is the traditional term for **line spacing**, because printers used to put strips of lead between lines to adjust line spacing.
+
+#### Comparison of OpenType feature support
+
+For typesetting in English, OpenType features are used to access alternate glyphs in a font, enabling features such as ligatures, proportional/tabular figures, lining/old-style figures, ordinals, true superscript & subscript figures, among others. OpenType features are a domain in which typeface designers can flex their muscles, and support for and execution of OpenType features can be a major deciding factor for some typesetters.
+
+> [!NOTE]
+> OpenType was primarily developed for improved support for various international writing systems. OpenType features are somewhat of a luxury when typesetting in Latin script, but are table-stakes for some languages such as Arabic or Urdu.
+
+Typefaceoff should reveal what OpenType features a font supports, let the user enable/disable individual features used in the proofing template, and/or select the stylistic set(s) used.
+
+### Planned for v0.2 (September 29, 2023)
+
+- Allow the user to customise the text used in the proofing template(s).
+- Configurable colours.
+- Export type specimen to PDF.
+
+### Planned for v0.3 (October 20, 2023)
+
+- Support testing of Google Fonts.
+- Multiple proofing templates, to compare fonts in different contexts.
+	- e.g., Article, web page, research paper.
+
+### Under review
+
+#### Comparison of more than two fonts at a time
+
+#### Configurable tracking
+
+At small point sizes, fonts need more generous letterspacing to maintain legibility. This is especially the case if a particular font does not support [optical sizing](https://justanotherfoundry.com/size-specific-adjustments-to-type-designs).
+
+Given that we cannot know what point sizes at which the user would like to use the fonts they’re testing, we may want to consider letting the user configure the letterspacing used in the proofing template. This lets them optimise for the particular point sizes they are most interested in.
+
+It may also be pertinent to testing all caps or small caps fonts, where increased letterspacing often improves legibility.
+
+> [!NOTE]
+> **Tracking**, **letterspacing**, and **character spacing** are interchangeable times
