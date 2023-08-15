@@ -11,9 +11,6 @@ dist-docs/
 .prettiercache
 .eslintcache
 
-# Sonarcloud
-sonar-project.properties
-
 
 ################################################################################
 #                                     Git                                      #
