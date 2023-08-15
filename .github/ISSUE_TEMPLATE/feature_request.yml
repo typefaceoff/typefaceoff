@@ -35,7 +35,7 @@ body:
       label: Code Snippets
       description: |
         This is a good place to include any relevant code snippets.
-    render: javascript
+      render: javascript
     validations:
       required: false
 
