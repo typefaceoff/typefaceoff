@@ -33,6 +33,6 @@
     "vite": "^4.4.5"
   },
   "lint-staged": {
-    "*.{css,ts,tsx}": "prettier --write"
+    "*.{css,ts,tsx}": "prettier --write --cache"
   }
 }
