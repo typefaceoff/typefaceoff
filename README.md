@@ -6,20 +6,21 @@ The tool works locally; font files are not uploaded to any server.
 
 ## Development
 
-This project uses React for Front-end, Vanilla CSS for styling, and Vite for server tooling.
+This project uses React for front-end, vanilla CSS for styling, and Vite for server tooling.
 
-[Node.js](https://nodejs.org/en) 16+ is recommended for development as anything less has yet to be tested.
-The package manager of choice is pnpm instead of npm or yarn. Installation instructions [here](https://pnpm.io/installation).
+[Node.js](https://nodejs.org) 16+ is recommended for development; Typefaceoff is not tested with older versions.
+The package manager of choice is pnpm—installation instructions [here](https://pnpm.io/installation).
 The following commands should enable you to set up a development server running of the website.
 
 ```sh
-# clone your fork of the git repository and open it
+# Clone your fork of the Git repository and open it
 cd typefaceoff
-# install dependencies with pnpm (see docs if not installed https://pnpm.io/installation)
+# Install dependencies with pnpm
+# (Consult https://pnpm.io/installation if you don’t have pnpm installed)
 pnpm install
-# set up pre-commit hooks for formatting
+# Set up pre-commit hooks for code formatting
 pnpm run husky
-# start the dev server
+# Start the development server
 pnpm run dev
 ```
 
