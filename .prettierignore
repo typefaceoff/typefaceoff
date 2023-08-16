@@ -12,3 +12,7 @@ pnpm-lock.yaml
 # ignore the ignore files
 .gitignore
 .prettierignore
+
+# ignore other filetypes
+*.md
+*.cjs
