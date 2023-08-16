@@ -44,11 +44,16 @@ jobs:
         env:
           CI: true
 
-      - name: 🔊 Upload code coverage to GitHub Artifacts (for SonarCloud)
-        uses: actions/upload-artifact@v3
-        with:
-          name: typefaceoff-lcov-file
-          path: coverage/lcov.info
+      # - name: 🧪 Test
+      #   run: |
+      #     npm run test:ci
+      #     cat ./coverage/lcov.info
+      #
+      # - name: 🔊 Upload code coverage to GitHub Artifacts (for SonarCloud)
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: typefaceoff-lcov-file
+      #     path: coverage/lcov.info
 
       - name: 🔧 Build
         run: |
