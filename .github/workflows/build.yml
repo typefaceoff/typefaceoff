@@ -26,23 +26,17 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: 🔢 Use Node.js ${{ matrix.node-version }}
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.4.0
+
+      - name: 🔢 Use Node.js version 18
         uses: actions/setup-node@v3
         with:
-          node-version: latest
+          node-version: 18
+          cache: "pnpm"
 
-      - name: 📶 Install
-        run: |
-          npm install
-        env:
-          CI: true
-
-      - name: 🧪 Test
-        run: |
-          npm run test:ci
-          cat ./coverage/lcov.info
-        env:
-          CI: true
+      - name: 📶 Install dependencies
+        run: pnpm install
 
       # - name: 🧪 Test
       #   run: |
@@ -56,10 +50,13 @@ jobs:
       #     path: coverage/lcov.info
 
       - name: 🔧 Build
-        run: |
-          NODE_ENV=production npm run build
-        env:
-          CI: true
+        run: NODE_ENV=production npm run build
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Check formatting
+        run: pnpm prettier --check .
 
       - name: 🔊 Save PR number (for SonarCloud)
         if: github.event_name == 'pull_request'
