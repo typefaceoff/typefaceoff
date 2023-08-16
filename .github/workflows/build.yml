@@ -1,3 +1,12 @@
+# As of August 2023, SonarCloud does not support analysis of code from external pull request
+# (e.g. from forks). This convoluted GitHub Action, and its companion `sonarcloud.yml`, is a
+# workaround. The ‘SonarCloud’ GitHub Action defined in `sonarcloud.yml` runs upon the
+# completion of this one.
+#
+# Adapted from:
+# - https://github.com/se310-Team4/KKDZ/blob/release-2.0/.github/workflows/build.yml; and
+# - https://community.sonarsource.com/t/how-to-use-sonarcloud-with-a-forked-repository-on-github/7363
+
 name: Build
 on:
   push:
@@ -5,16 +14,55 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  build:
+    name: Build
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+          persist-credentials: false
+
+      - name: 🔢 Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+
+      - name: 📶 Install
+        run: |
+          npm install
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          CI: true
+
+      - name: 🧪 Test
+        run: |
+          npm run test:ci
+          cat ./coverage/lcov.info
+        env:
+          CI: true
+
+      - name: 🔊 Upload code coverage to GitHub Artifacts (for SonarCloud)
+        uses: actions/upload-artifact@v3
+        with:
+          name: typefaceoff-lcov-file
+          path: coverage/lcov.info
+
+      - name: 🔧 Build
+        run: |
+          NODE_ENV=production npm run build
+        env:
+          CI: true
+
+      - name: 🔊 Save PR number (for SonarCloud)
+        if: github.event_name == 'pull_request'
+        run: echo ${{ github.event.number }} > PR_NUMBER.txt
+
+      - name: 🔊 Upload PR number to GitHub Artifacts (for SonarCloud)
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v3
+        with:
+          name: PR_NUMBER
+          path: PR_NUMBER.txt
