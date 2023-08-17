@@ -1,0 +1,102 @@
+# As of August 2023, SonarCloud does not support analysis of code from external pull request
+# (e.g. from forks). This convoluted GitHub Action, and its companion `build.yml`, is a workaround.
+#
+# Adapted from:
+# - https://github.com/se310-Team4/KKDZ/blob/release-2.0/.github/workflows/sonarcloud.yml; and
+# - https://community.sonarsource.com/t/how-to-use-sonarcloud-with-a-forked-repository-on-github/7363
+
+name: SonarCloud
+
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+
+jobs:
+  sonarcloud:
+    name: Sonarcloud
+    runs-on: ubuntu-latest
+
+    # Run SonarCloud analysis only on the original repo (not forks)
+    if: github.event.workflow_run.conclusion == 'success' && github.repository == 'typefaceoff/typefaceoff'
+
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.workflow_run.head_repository.full_name }}
+          ref: ${{ github.event.workflow_run.head_branch }}
+          fetch-depth: 0
+
+      - name: 📶 Download code coverage
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: context.payload.workflow_run.id,
+            });
+            const matchArtifact = allArtifacts.data.artifacts
+              .find(artifact => artifact.name == "typefaceoff-lcov-file");
+            const download = await github.rest.actions.downloadArtifact({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               artifact_id: matchArtifact.id,
+               archive_format: 'zip',
+            });
+            const fs = require('fs');
+            fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/code-coverage.zip`, Buffer.from(download.data));
+
+      - name: 📂 Unzip code coverage
+        run: unzip code-coverage.zip -d coverage
+
+      - name: 📶 Download PR number
+        if: github.event.workflow_run.event == 'pull_request'
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: ${{ github.event.workflow_run.name }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: PR_NUMBER
+
+      - name: 📶 Read PR number
+        if: github.event.workflow_run.event == 'pull_request'
+        id: pr_number
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./PR_NUMBER.txt
+
+      - name: 📶 Download PR info
+        if: github.event.workflow_run.event == 'pull_request'
+        uses: octokit/request-action@v2.x
+        id: get_pr_data
+        with:
+          route: GET /repos/{full_name}/pulls/{number}
+          number: ${{ steps.pr_number.outputs.content }}
+          full_name: ${{ github.event.repository.full_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔊 SonarCloud Scan (for PRs)
+        if: github.event.workflow_run.event == 'pull_request'
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.scm.revision=${{ github.event.workflow_run.head_sha }}
+            -Dsonar.pullrequest.key=${{ fromJson(steps.get_pr_data.outputs.data).number }}
+            -Dsonar.pullrequest.branch=${{ fromJson(steps.get_pr_data.outputs.data).head.ref }}
+            -Dsonar.pullrequest.base=${{ fromJson(steps.get_pr_data.outputs.data).base.ref }}
+
+      - name: 🔊 SonarCloud Scan (for branches)
+        if: github.event.workflow_run.event != 'pull_request'
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.scm.revision=${{ github.event.workflow_run.head_sha }}
+            -Dsonar.pullrequest.branch.name=${{ github.event.workflow_run.head_branch }}
