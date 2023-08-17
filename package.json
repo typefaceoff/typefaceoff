@@ -34,5 +34,6 @@
   },
   "lint-staged": {
     "*.{css,ts,tsx}": "prettier --write --cache"
-  }
+  },
+  "packageManager": "pnpm@8.6.12"
 }
