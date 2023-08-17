@@ -10,6 +10,7 @@ This project uses React for front-end, vanilla CSS for styling, and Vite for ser
 
 [Node.js](https://nodejs.org) 16+ is recommended for development; Typefaceoff is not tested with older versions.
 The package manager of choice is pnpm—installation instructions [here](https://pnpm.io/installation).
+It is recommended to configure your preferred code editor to use both the Prettier and ESLint extensions. Additionally, enabling the "format on save" option is also advised.
 The following commands should enable you to set up a development server running of the website.
 
 ```sh
