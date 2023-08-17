@@ -1,0 +1,18 @@
+public
+node_modules
+.github
+*/assets
+
+# ignore dependency locks
+pnpm-lock.yaml
+
+# ignore properties files
+*.properties
+
+# ignore the ignore files
+.gitignore
+.prettierignore
+
+# ignore other filetypes
+*.md
+*.cjs
