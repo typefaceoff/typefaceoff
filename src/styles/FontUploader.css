@@ -1,0 +1,17 @@
+.font-uploader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.drop-area {
+    border: 2px dashed #ddd;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.selected-fonts {
+    margin-top: 10px;
+}
