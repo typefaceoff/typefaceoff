@@ -6,6 +6,9 @@
 }
 
 .drop-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 2px dashed #ddd;
     padding: 20px;
     text-align: center;
@@ -14,4 +17,9 @@
 
 .selected-fonts {
     margin-top: 10px;
+}
+
+.input-button{
+    margin-top: 10px;
+    padding-left: 40px;
 }

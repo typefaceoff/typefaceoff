@@ -40,3 +40,24 @@
 .read-the-docs {
   color: #888;
 }
+
+.home-screen-sentence {
+  font-family: 'Your-Selected-Font', sans-serif;
+  /* Replace 'Your-Selected-Font' with the actual font name or font-family value */
+}
+
+.battle-ground{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.vs{
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 60px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
