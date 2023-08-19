@@ -9,19 +9,19 @@
   "jsxBracketSameLine": false,
   "overrides": [
     {
-      "files": ["*.css", "*.scss", "*.less"], 
+      "files": ["*.css", "*.scss", "*.less"],
       "options": {
-        "parser": "css",                     
-        "singleQuote": false,                
-        "tabWidth": 4                       
+        "parser": "css",
+        "singleQuote": false,
+        "tabWidth": 4
       }
     },
     {
-      "files": ["*.tsx", "*.jsx"],          
+      "files": ["*.tsx", "*.jsx"],
       "options": {
-        "parser": "babel-ts",            
-        "trailingComma": "es5",               
-        "jsxBracketSameLine": true            
+        "parser": "babel-ts",
+        "trailingComma": "es5",
+        "jsxBracketSameLine": true
       }
     }
   ]

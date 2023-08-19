@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "../styles/FontUploader.css";
+import React, { useState } from 'react';
+import '../styles/FontUploader.css';
 
 const FontUploader: React.FC<{ onFontSelected: (selectedFonts: File[]) => void }> = ({
   onFontSelected,
@@ -19,7 +19,7 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFonts: File[]) => void }
     const files = Array.from(e.dataTransfer.files);
 
     // Filter out files that do not have the .otf extension
-    const otfFiles = files.filter((file) => file.name.endsWith(".otf"));
+    const otfFiles = files.filter((file) => file.name.endsWith('.otf'));
 
     setSelectedFonts([...selectedFonts, ...otfFiles]);
     onFontSelected([...selectedFonts, ...otfFiles]);

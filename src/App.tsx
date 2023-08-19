@@ -1,8 +1,8 @@
-import { useState } from "react";
-import "./App.css";
-import FontUploader from "./components/FontUploader";
-import FontPreviewLeft from "./components/FontPreviewLeft";
-import FontPreviewRight from "./components/FontPreviewRight";
+import { useState } from 'react';
+import './App.css';
+import FontUploader from './components/FontUploader';
+import FontPreviewLeft from './components/FontPreviewLeft';
+import FontPreviewRight from './components/FontPreviewRight';
 
 function App() {
   // State for the selected font on the left
@@ -13,7 +13,7 @@ function App() {
 
   // Handler for when a font is selected on the left side
   const handleFontSelectedLeft = (selectedFonts: File[]) => {
-    console.log("Selected Fonts (Left):", selectedFonts);
+    console.log('Selected Fonts (Left):', selectedFonts);
 
     // Set the selected font on the left to the last font in the selectedFonts array
     setSelectedFontLeft(selectedFonts[selectedFonts.length - 1]);
@@ -21,7 +21,7 @@ function App() {
 
   // Handler for when a font is selected on the right side
   const handleFontSelectedRight = (selectedFonts: File[]) => {
-    console.log("Selected Fonts (Right):", selectedFonts);
+    console.log('Selected Fonts (Right):', selectedFonts);
 
     // Set the selected font on the right to the last font in the selectedFonts array
     setSelectedFontRight(selectedFonts[selectedFonts.length - 1]);
