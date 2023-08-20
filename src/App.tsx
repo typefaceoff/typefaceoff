@@ -40,21 +40,21 @@ function App() {
         {/* Left side */}
         <div className="side-container">
           <div>
-          <FontUploader onFontSelected={handleFontSelectedLeft} />
-          <div className="line-height-adjustment">
-            <label htmlFor="lineHeightInputLeft">Adjust Line Height:</label>
-            <input
-              type="number"
-              id="lineHeightInputLeft"
-              value={lineHeightLeft}
-              step={0.1}
-              onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
-            />
+            <FontUploader onFontSelected={handleFontSelectedLeft} />
+            <div className="line-height-adjustment">
+              <label htmlFor="lineHeightInputLeft">Adjust Line Height:</label>
+              <input
+                type="number"
+                id="lineHeightInputLeft"
+                value={lineHeightLeft}
+                step={0.1}
+                onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
+              />
+            </div>
+            {selectedFontLeft && (
+              <FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />
+            )}
           </div>
-          {selectedFontLeft && <FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
-          </div>
-
-          
         </div>
 
         {/* Middle divider */}
@@ -65,20 +65,22 @@ function App() {
         {/* Right side */}
         <div className="side-container">
           <div>
-          <FontUploader onFontSelected={handleFontSelectedRight} />
-          <div className="line-height-adjustment">
-            <label htmlFor="lineHeightInputRight">Adjust Line Height:</label>
-            <input
-              type="number"
-              id="lineHeightInputRight"
-              value={lineHeightRight}
-              step={0.1}
-              onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
-            />
-          </div>
+            <FontUploader onFontSelected={handleFontSelectedRight} />
+            <div className="line-height-adjustment">
+              <label htmlFor="lineHeightInputRight">Adjust Line Height:</label>
+              <input
+                type="number"
+                id="lineHeightInputRight"
+                value={lineHeightRight}
+                step={0.1}
+                onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
+              />
+            </div>
 
-          {selectedFontRight && <FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
-          </div>          
+            {selectedFontRight && (
+              <FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />
+            )}
+          </div>
         </div>
       </div>
     </>
