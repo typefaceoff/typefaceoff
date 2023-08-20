@@ -1,0 +1,25 @@
+.font-uploader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.drop-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px dashed #ddd;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.selected-fonts {
+    margin-top: 10px;
+}
+
+.input-button {
+    margin-block-start: 10px;
+    padding-inline-start: 40px;
+}
