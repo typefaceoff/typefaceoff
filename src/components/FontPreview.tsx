@@ -4,13 +4,15 @@ import FontTextPlaceholders from './FontTextPlaceholders';
 interface FontPreviewProps {
   fontFile: File;
   side: 'left' | 'right';
+  lineHeight: number;
 }
 
-const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side }) => {
+const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight }) => {
   const fontUrl = URL.createObjectURL(fontFile);
 
   const fontStyles: React.CSSProperties = {
     fontFamily: side === 'left' ? "'CustomFontLeft', sans-serif" : "'CustomFontRight', sans-serif",
+    lineHeight: lineHeight,
   };
 
   const fontFace = `
