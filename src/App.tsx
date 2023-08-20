@@ -35,7 +35,6 @@ function App() {
         <div>
           <FontUploader onFontSelected={handleFontSelectedLeft} />
           {selectedFontLeft && <FontPreview fontFile={selectedFontLeft} side="left" />}
-          {!selectedFontLeft && <p>Sample text for the font on the left!</p>}
         </div>
 
         {/* Middle divider */}
@@ -47,7 +46,6 @@ function App() {
         <div>
           <FontUploader onFontSelected={handleFontSelectedRight} />
           {selectedFontRight && <FontPreview fontFile={selectedFontRight} side="right" />}
-          {!selectedFontRight && <p>Sample text for the font on the right!</p>}
         </div>
       </div>
     </>
