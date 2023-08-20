@@ -16,6 +16,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, text }) => {
     @font-face {
       font-family: 'CustomFontLeft';
       src: url(${fontUrl}) format('opentype');
+      font-display: swap;
     }
   `;
 

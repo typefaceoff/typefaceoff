@@ -20,6 +20,6 @@
 }
 
 .input-button {
-    margin-top: 10px;
-    padding-left: 40px;
+    margin-block-start: 10px;
+    padding-inline-start: 40px;
 }
