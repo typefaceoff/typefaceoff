@@ -1,4 +1,4 @@
-import '../styles/FontTextPlaceholders.css';
+import '../App.css';
 
 export default function FontTextPlaceholders() {
   return (
