@@ -43,6 +43,12 @@ pnpm run husky
 pnpm run dev
 ```
 
+It should look something like this:
+
+![setup](https://github.com/jaskfla/typefaceoff/assets/33956381/1bf0d3b8-3a18-430e-ac86-d647b77501ef)
+
+In the example above, you could then load `http://localhost:5173` in your web browser to see Typefaceoff in action. Press `q` in this window to terminate the server.
+
 The following commands may also be useful:
 
 ```sh
