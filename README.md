@@ -47,7 +47,7 @@ pnpm run dev
 
 It should look something like this:
 
-![setup](https://github.com/jaskfla/typefaceoff/assets/33956381/1bf0d3b8-3a18-430e-ac86-d647b77501ef)
+![setup](https://github.com/jaskfla/typefaceoff/assets/33956381/3624dbe7-6119-49fb-9e7e-89a2cf2de31b)
 
 In the example above, you could then load `http://localhost:5173` in your web browser to see Typefaceoff in action. Press `q` in this window to terminate the server.
 
