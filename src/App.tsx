@@ -47,7 +47,7 @@ function App() {
                 type="number"
                 id="lineHeightInputLeft"
                 value={lineHeightLeft}
-                step={0.1}
+                step={0.05}
                 onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
               />
             </div>
@@ -72,7 +72,7 @@ function App() {
                 type="number"
                 id="lineHeightInputRight"
                 value={lineHeightRight}
-                step={0.1}
+                step={0.05}
                 onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
               />
             </div>
