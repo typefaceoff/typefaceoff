@@ -18,11 +18,15 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFonts: File[]) => void }
     e.preventDefault();
     const files = Array.from(e.dataTransfer.files);
 
-    // Filter out files that do not have the .otf extension
-    const otfFiles = files.filter((file) => file.name.endsWith('.otf'));
+    // Filter out files that have the allowed extensions
+    const allowedExtensions = ['.otf', '.ttf', '.woff', '.woff2'];
+    const fontFiles = files.filter((file) => {
+      const extension = file.name.split('.').pop()?.toLowerCase();
+      return allowedExtensions.includes(`.${extension}`);
+    });
 
-    setSelectedFonts([...selectedFonts, ...otfFiles]);
-    onFontSelected([...selectedFonts, ...otfFiles]);
+    setSelectedFonts([...selectedFonts, ...fontFiles]);
+    onFontSelected([...selectedFonts, ...fontFiles]);
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -36,7 +40,7 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFonts: File[]) => void }
         <input
           className="input-button"
           type="file"
-          accept=".otf"
+          accept=".otf, .ttf, .woff, .woff2"
           multiple
           onChange={handleFileChange}
         />
