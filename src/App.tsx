@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import FontUploader from './components/FontUploader';
-import FontPreviewLeft from './components/FontPreviewLeft';
-import FontPreviewRight from './components/FontPreviewRight';
+import FontPreview from './components/FontPreview';
 
 function App() {
   // State for the selected font on the left
@@ -35,13 +34,7 @@ function App() {
         {/* Left side */}
         <div>
           <FontUploader onFontSelected={handleFontSelectedLeft} />
-          {selectedFontLeft && (
-            <FontPreviewLeft
-              fontFile={selectedFontLeft}
-              text="Sample text for the font on the left!"
-            />
-          )}
-          {!selectedFontLeft && <p>Sample text for the font on the left!</p>}
+          {selectedFontLeft && <FontPreview fontFile={selectedFontLeft} side="left" />}
         </div>
 
         {/* Middle divider */}
@@ -52,13 +45,7 @@ function App() {
         {/* Right side */}
         <div>
           <FontUploader onFontSelected={handleFontSelectedRight} />
-          {selectedFontRight && (
-            <FontPreviewRight
-              fontFile={selectedFontRight}
-              text="Sample text for the font on the right!"
-            />
-          )}
-          {!selectedFontRight && <p>Sample text for the font on the right!</p>}
+          {selectedFontRight && <FontPreview fontFile={selectedFontRight} side="right" />}
         </div>
       </div>
     </>
