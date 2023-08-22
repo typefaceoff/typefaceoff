@@ -4,8 +4,8 @@ import '../styles/FontUploader.css';
 const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => void }> = ({
   onFontSelected,
 }) => {
-  const [selectedFont, setSelectedFont] = useState<File | null>(null);
-  const [fontPreview, setFontPreview] = useState<string | null>(null);
+  const [, setSelectedFont] = useState<File | null>(null);
+  const [, setFontPreview] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
