@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import FontUploader from './components/FontUploader';
 import FontPreview from './components/FontPreview';
@@ -17,23 +17,17 @@ function App() {
   const [lineHeightLeft, setLineHeightLeft] = useState<number>(1.5);
 
   // Handler for when a font is selected on the left side
-  const handleFontSelectedLeft = (selectedFonts: File[]) => {
-    console.log('Selected Fonts (Left):', selectedFonts);
-
-    // Set the selected font on the left to the last font in the selectedFonts array
-    setSelectedFontLeft(selectedFonts[selectedFonts.length - 1]);
+  const handleFontSelectedLeft = (selectedFont: File | null) => {
+    setSelectedFontLeft(selectedFont);
   };
 
   // Handler for when a font is selected on the right side
-  const handleFontSelectedRight = (selectedFonts: File[]) => {
-    console.log('Selected Fonts (Right):', selectedFonts);
-
-    // Set the selected font on the right to the last font in the selectedFonts array
-    setSelectedFontRight(selectedFonts[selectedFonts.length - 1]);
+  const handleFontSelectedRight = (selectedFont: File | null) => {
+    setSelectedFontRight(selectedFont);
   };
 
   return (
-    <>
+    <div>
       <h1>Welcome to TypeFaceOff!</h1>
       <p className="read-the-docs">Get started by uploading two fonts</p>
       <div className="battle-ground">
@@ -76,14 +70,13 @@ function App() {
                 onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
               />
             </div>
-
             {selectedFontRight && (
               <FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />
             )}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
