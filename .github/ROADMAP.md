@@ -66,4 +66,4 @@ Given that we cannot know what point sizes at which the user would like to use t
 It may also be pertinent to testing all caps or small caps fonts, where increased letterspacing often improves legibility.
 
 > [!NOTE]
-> **Tracking**, **letterspacing**, and **character spacing** are interchangeable times
+> **Tracking**, **letterspacing**, and **character spacing** are interchangeable terms
