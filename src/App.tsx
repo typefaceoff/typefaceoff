@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './App.css';
 import FontUploader from './components/FontUploader';
 import FontPreview from './components/FontPreview';
-import FontTextPlaceholders from './components/FontTextPlaceholders';
 
 function App() {
   // State for the selected font on the left
