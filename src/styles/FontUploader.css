@@ -9,10 +9,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px dashed #ddd;
-    padding: 20px;
+    border: 2px dashed #808080;
+    background-color: white;
+    border-radius: 10px;
     text-align: center;
     cursor: pointer;
+    max-height: 25vh;
+    width: 60vh;
 }
 
 .selected-fonts {
@@ -22,4 +25,6 @@
 .input-button {
     margin-block-start: 10px;
     padding-inline-start: 40px;
+    margin-bottom: 15px;
 }
+

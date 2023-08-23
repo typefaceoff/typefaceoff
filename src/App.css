@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
+    user-select: none;
 }
 
 @keyframes logo-spin {
@@ -20,6 +21,12 @@
     }
 }
 
+.logo{
+    position:absolute;
+    top:0;
+    left:0;
+
+}
 .card {
     padding: 2em;
 }
@@ -45,6 +52,7 @@
     margin-block-end: 60px;
     margin-left: 20px;
     margin-right: 20px;
+    margin-top: 50px;
 }
 
 .placeholder {
@@ -61,4 +69,47 @@
 
 .underline {
     text-decoration: underline;
+}
+
+.line-height-adjustment{
+    text-align: left;
+    margin-left: 15px;
+    margin-top: 33px;
+
+    #lineHeightInputLeft {
+        padding: 5px;
+        margin-left: 5px;
+        width: 45px;
+        border-width: 1px;
+        border-radius: 4px;
+        border-color: #808080;
+        text-align: left;
+
+    }
+
+    #lineHeightInputRight {
+        padding: 5px;
+        margin-left: 5px;
+        width: 45px;
+        border-width: 1px;
+        border-radius: 4px;
+        border-color: #808080;
+        text-align: left;
+    }
+
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1; 
+}
+
+.tool-bar {
+    margin: 20px;
+    margin-top: -48px;
+    display: flex;
+    background-color: #D9D9D9;
+    height: 8.6vh;
+    width: 60.4vh;  
+    border-radius: 10px
 }

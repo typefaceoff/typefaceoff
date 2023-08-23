@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import FontUploader from './components/FontUploader';
 import FontPreview from './components/FontPreview';
+import FontTextPlaceholders from './components/FontTextPlaceholders';
 
 function App() {
   // State for the selected font on the left
@@ -34,22 +35,25 @@ function App() {
 
   return (
     <>
-      <h1>Welcome to TypeFaceOff!</h1>
+
+      <h1>Welcome to TypefaceOff!</h1>
       <p className="read-the-docs">Get started by uploading two fonts</p>
       <div className="battle-ground">
         {/* Left side */}
-        <div className="side-container">
+        <div className="left-container">
           <div>
             <FontUploader onFontSelected={handleFontSelectedLeft} />
-            <div className="line-height-adjustment">
-              <label htmlFor="lineHeightInputLeft">Adjust Line Height:</label>
-              <input
-                type="number"
-                id="lineHeightInputLeft"
-                value={lineHeightLeft}
-                step={0.05}
-                onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
-              />
+            <div className="tool-bar">
+              <div className="line-height-adjustment">
+                <label htmlFor="lineHeightInputLeft">Line Height</label>
+                <input
+                  type="number"
+                  id="lineHeightInputLeft"
+                  value={lineHeightLeft}
+                  step={0.05}
+                  onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
+                />
+              </div>
             </div>
             {selectedFontLeft && (
               <FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />
@@ -63,20 +67,21 @@ function App() {
         </div>
 
         {/* Right side */}
-        <div className="side-container">
+        <div className="right-container">
           <div>
             <FontUploader onFontSelected={handleFontSelectedRight} />
-            <div className="line-height-adjustment">
-              <label htmlFor="lineHeightInputRight">Adjust Line Height:</label>
-              <input
-                type="number"
-                id="lineHeightInputRight"
-                value={lineHeightRight}
-                step={0.05}
-                onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
-              />
+            <div className="tool-bar">
+              <div className="line-height-adjustment">
+                <label htmlFor="lineHeightInputRight">Line Height</label>
+                <input
+                  type="number"
+                  id="lineHeightInputRight"
+                  value={lineHeightRight}
+                  step={0.05}
+                  onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
+                />
+              </div>
             </div>
-
             {selectedFontRight && (
               <FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />
             )}
