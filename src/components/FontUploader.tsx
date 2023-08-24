@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 import '../styles/FontUploader.css';
 
-const FontUploader: React.FC<{ onFontSelected: (selectedFonts: File[]) => void }> = ({
-  onFontSelected,
-}) => {
+const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selectedFonts: File[]) => void })> = ({ side, onFontSelected }) => {
   const [selectedFonts, setSelectedFonts] = useState<File[]>([]);
-  let initialTxt= "Drag and drop font files here";
+  let initialTxt = "Drag and drop font files here";
   const [text, setText] = React.useState(initialTxt);
+  var fontUrl;
+  var currentText;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const files = Array.from(e.target.files);
       setSelectedFonts([...selectedFonts, ...files]);
       onFontSelected([...selectedFonts, ...files]);
-      
-      var fileName = e.target.files[0].name
-      setText(fileName.split('.').slice(0, -1).join('.'));
-      
+
+      // Set text as font name uploaded
+      const fileName = e.target.files[0].name
+      const name = fileName.split('.').slice(0, -1).join('.')
+      setText(name);
+      fontUrl = URL.createObjectURL(e.target.files[0]);
+      currentText = text;
     }
   };
-
-
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -41,10 +42,26 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFonts: File[]) => void }
     e.preventDefault();
   };
 
+  const fontStyles: React.CSSProperties = {
+    fontFamily: side === 'left' ? "'CustomFontLeft', sans-serif" : "'CustomFontRight', sans-serif",
+  };
+
+  const fontFace = `
+  @font-face {
+    font-family: '${side === 'left' ? 'CustomFontLeft' : 'CustomFontRight'}';
+    src: url(${fontUrl}) format('opentype');
+    font-display: swap;
+  }
+`;
+
+
   return (
     <div className="font-uploader">
       <div className="drop-area" onDrop={handleDrop} onDragOver={handleDragOver}>
-        <p id="descriptor">{text}</p>
+        <div>
+          <style>{fontFace}</style>
+          <div className="descriptor" style={fontStyles}>{text}</div>
+        </div>
         <input
           className="input-button"
           type="file"

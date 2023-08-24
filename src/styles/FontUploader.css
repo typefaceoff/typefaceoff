@@ -14,17 +14,17 @@
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
-    max-height: 25vh;
+    height: 14vh;
     width: 60vh;
 }
 
-.selected-fonts {
-    margin-top: 10px;
-}
-
 .input-button {
+    padding: 10px;
     margin-block-start: 10px;
-    padding-inline-start: 40px;
-    margin-bottom: 15px;
+    padding-inline-start: 70px;
 }
 
+.descriptor {
+    margin-top: 20px;
+    font-size: large;
+}

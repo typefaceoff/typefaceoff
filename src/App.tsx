@@ -41,7 +41,7 @@ function App() {
         {/* Left side */}
         <div className="left-container">
           <div>
-            <FontUploader onFontSelected={handleFontSelectedLeft} />
+            <FontUploader onFontSelected={handleFontSelectedLeft} side="left" />
             <div className="tool-bar">
               <div className="line-height-adjustment">
                 <label htmlFor="lineHeightInputLeft">Line Height</label>
@@ -68,7 +68,7 @@ function App() {
         {/* Right side */}
         <div className="right-container">
           <div>
-            <FontUploader onFontSelected={handleFontSelectedRight} />
+            <FontUploader onFontSelected={handleFontSelectedRight} side="right" />
             <div className="tool-bar">
               <div className="line-height-adjustment">
                 <label htmlFor="lineHeightInputRight">Line Height</label>
