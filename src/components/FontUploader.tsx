@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/FontUploader.css';
 
-const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selectedFonts: File[]) => void })> = ({ side, onFontSelected }) => {
+const FontUploader: React.FC<{
+  side: 'left' | 'right';
+  onFontSelected: (selectedFonts: File[]) => void;
+}> = ({ side, onFontSelected }) => {
   const [selectedFonts, setSelectedFonts] = useState<File[]>([]);
-  const initialTxt = "Drag and drop font files here";
+  const initialTxt = 'Drag and drop font files here';
   const [text, setText] = React.useState(initialTxt);
   let fontUrl;
 
@@ -14,8 +17,8 @@ const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selecte
       onFontSelected([...selectedFonts, ...files]);
 
       // Set text as font name uploaded
-      const fileName = e.target.files[0].name
-      const name = fileName.split('.').slice(0, -1).join('.')
+      const fileName = e.target.files[0].name;
+      const name = fileName.split('.').slice(0, -1).join('.');
       setText(name);
       fontUrl = URL.createObjectURL(e.target.files[0]);
     }
@@ -35,9 +38,9 @@ const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selecte
     setSelectedFonts([...selectedFonts, ...fontFiles]);
     onFontSelected([...selectedFonts, ...fontFiles]);
 
-    // Set text as font name when file is dragged 
-    const fileName =files[0].name
-    const name = fileName.split('.').slice(0, -1).join('.')
+    // Set text as font name when file is dragged
+    const fileName = files[0].name;
+    const name = fileName.split('.').slice(0, -1).join('.');
     setText(name);
     fontUrl = URL.createObjectURL(files[0]);
   };
@@ -63,7 +66,9 @@ const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selecte
       <div className="drop-area" onDrop={handleDrop} onDragOver={handleDragOver}>
         <div>
           <style>{fontFace}</style>
-          <div className="descriptor" style={fontStyles}>{text}</div>
+          <div className="descriptor" style={fontStyles}>
+            {text}
+          </div>
         </div>
         <input
           className="input-button"
