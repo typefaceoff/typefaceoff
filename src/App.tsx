@@ -34,6 +34,7 @@ function App() {
 
   return (
     <>
+
       <h1>Welcome to TypefaceOff!</h1>
       <p className="read-the-docs">Get started by uploading two fonts</p>
       <div className="battle-ground">
