@@ -6,7 +6,6 @@ const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selecte
   let initialTxt = "Drag and drop font files here";
   const [text, setText] = React.useState(initialTxt);
   var fontUrl;
-  var currentText;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -19,7 +18,6 @@ const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selecte
       const name = fileName.split('.').slice(0, -1).join('.')
       setText(name);
       fontUrl = URL.createObjectURL(e.target.files[0]);
-      currentText = text;
     }
   };
 
@@ -42,7 +40,6 @@ const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selecte
     const name = fileName.split('.').slice(0, -1).join('.')
     setText(name);
     fontUrl = URL.createObjectURL(files[0]);
-    currentText = text;
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
