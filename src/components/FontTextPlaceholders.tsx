@@ -2,7 +2,7 @@ import '../App.css';
 
 export default function FontTextPlaceholders() {
   return (
-    <div>
+    <div className="placeholder">
       <h1>Header Text</h1>
       <p className="placeholder italic">Italic Text</p>
       <p className="placeholder bold">Bold Text</p>
