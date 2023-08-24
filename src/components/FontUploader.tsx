@@ -36,6 +36,13 @@ const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selecte
 
     setSelectedFonts([...selectedFonts, ...fontFiles]);
     onFontSelected([...selectedFonts, ...fontFiles]);
+
+    // Set text as font name when file is dragged 
+    const fileName =files[0].name
+    const name = fileName.split('.').slice(0, -1).join('.')
+    setText(name);
+    fontUrl = URL.createObjectURL(files[0]);
+    currentText = text;
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
