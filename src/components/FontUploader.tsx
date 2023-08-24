@@ -3,9 +3,9 @@ import '../styles/FontUploader.css';
 
 const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selectedFonts: File[]) => void })> = ({ side, onFontSelected }) => {
   const [selectedFonts, setSelectedFonts] = useState<File[]>([]);
-  let initialTxt = "Drag and drop font files here";
+  const initialTxt = "Drag and drop font files here";
   const [text, setText] = React.useState(initialTxt);
-  var fontUrl;
+  let fontUrl;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -57,7 +57,6 @@ const FontUploader: React.FC<({ side: 'left' | 'right', onFontSelected: (selecte
     font-display: swap;
   }
 `;
-
 
   return (
     <div className="font-uploader">

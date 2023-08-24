@@ -3,7 +3,6 @@
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
-    user-select: none;
 }
 
 @keyframes logo-spin {
@@ -21,12 +20,6 @@
     }
 }
 
-.logo{
-    position:absolute;
-    top:0;
-    left:0;
-
-}
 .card {
     padding: 2em;
 }
@@ -43,16 +36,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-block-start: 20px;
+    margin-block-start: 1rem;
 }
 
 .vs {
     font-size: 2rem;
     font-weight: bold;
-    margin-block-end: 60px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 50px;
+    padding: 1.5rem;
 }
 
 .placeholder {
@@ -73,30 +63,28 @@
 
 .line-height-adjustment{
     text-align: left;
-    margin-left: 15px;
-    margin-top: 33px;
+    margin-inline-start: 0.6em;
+    margin-block-start: 2em;
 
     #lineHeightInputLeft {
-        padding: 5px;
-        margin-left: 5px;
+        padding: 0.4em;
+        margin-inline-start: 0.4em;
         width: 45px;
         border-width: 1px;
         border-radius: 4px;
         border-color: #808080;
         text-align: left;
-
     }
 
     #lineHeightInputRight {
-        padding: 5px;
-        margin-left: 5px;
+        padding: 0.4em;
+        margin-inline-start: 0.4em;
         width: 45px;
         border-width: 1px;
         border-radius: 4px;
         border-color: #808080;
         text-align: left;
     }
-
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -105,8 +93,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .tool-bar {
-    margin: 20px;
-    margin-top: -48px;
+    margin-inline-start: 1.25em;
+    margin-block-start: -2.9em;
     display: flex;
     background-color: #D9D9D9;
     height: 8.6vh;
