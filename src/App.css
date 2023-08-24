@@ -43,7 +43,8 @@
 .vs {
     font-size: 2rem;
     font-weight: bold;
-    padding: 1.5rem;
+    padding: 0.7em;
+    margin-inline-start: 0.1em;
 }
 
 .placeholder {
@@ -67,17 +68,7 @@
     margin-inline-start: 0.6em;
     margin-block-start: 2em;
 
-    #lineHeightInputLeft {
-        padding: 0.4em;
-        margin-inline-start: 0.4em;
-        width: 45px;
-        border-width: 1px;
-        border-radius: 4px;
-        border-color: #808080;
-        text-align: left;
-    }
-
-    #lineHeightInputRight {
+    #lineHeightInput {
         padding: 0.4em;
         margin-inline-start: 0.4em;
         width: 45px;

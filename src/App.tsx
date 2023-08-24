@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      <h1>Welcome to TypefaceOff!</h1>
+      <h1>Welcome to TypeFaceOff!</h1>
       <p className="read-the-docs">Get started by uploading two fonts</p>
       <div className="battle-ground">
         {/* Left side */}
@@ -46,7 +46,7 @@ function App() {
                 <label htmlFor="lineHeightInputLeft">Line Height</label>
                 <input
                   type="number"
-                  id="lineHeightInputLeft"
+                  id="lineHeightInput"
                   value={lineHeightLeft}
                   step={0.05}
                   onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
@@ -73,7 +73,7 @@ function App() {
                 <label htmlFor="lineHeightInputRight">Line Height</label>
                 <input
                   type="number"
-                  id="lineHeightInputRight"
+                  id="lineHeightInput"
                   value={lineHeightRight}
                   step={0.05}
                   onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
