@@ -20,7 +20,7 @@ This project uses:
 - vanilla [CSS](https://www.w3.org/Style/CSS) for styling, and
 - [Vite](https://vitejs.dev) for server tooling.
 
-[Node.js](https://nodejs.org) 16+ is recommended for development; Typefaceoff is not tested with older versions. The package manager of choice is pnpm—installation instructions on [the pnpm website](https://pnpm.io/installation).
+[Node.js](https://nodejs.org)&nbsp;16+ is recommended for development; Typefaceoff is not tested with older versions. The package manager of choice is [pnpm](https://pnpm.io)—installation instructions on [the pnpm website](https://pnpm.io/installation).
 
 For a smoother contribution process, we recommend you:
 
