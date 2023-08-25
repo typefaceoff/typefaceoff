@@ -20,6 +20,12 @@ body {
     padding: 0;
 }
 
+div {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 nav {
     margin: 0;
     padding: 0;
