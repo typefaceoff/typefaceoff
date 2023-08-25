@@ -1,0 +1,69 @@
+html {
+    color-scheme: light dark;
+    font-kerning: normal;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
+    font-weight: 400;
+    hyphenate-character: "‐"; /* Unambiguous hyphen U+2010 */
+    letter-spacing: 0;
+    margin: 0;
+    orphans: 2;
+    padding: 0;
+    tab-size: 4;
+    text-rendering: geometricPrecision;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin-block-start: 0;
+    margin-block-end: 1em;
+    margin-inline: 0;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+em,
+i,
+var {
+    font-style: italic;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+}
+
+picture {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+}
