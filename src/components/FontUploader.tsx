@@ -10,7 +10,7 @@ const FontUploader: React.FC<{
   const initialTxt = 'Drag and drop font files here';
   const [text, setText] = React.useState(initialTxt);
   let fontUrl;
-
+    
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
@@ -41,7 +41,7 @@ const FontUploader: React.FC<{
       setSelectedFont(selectedFile);
       onFontSelected(selectedFile);
       setFontPreview(URL.createObjectURL(selectedFile));
-
+      
       // Set text as font name when file is dragged
       const fileName = files[0].name;
       const name = fileName.split('.').slice(0, -1).join('.');
