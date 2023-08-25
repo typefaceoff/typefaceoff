@@ -20,7 +20,7 @@ This project uses:
 - vanilla [CSS](https://www.w3.org/Style/CSS) for styling, and
 - [Vite](https://vitejs.dev) for server tooling.
 
-[Node.js](https://nodejs.org) 16+ is recommended for development; Typefaceoff is not tested with older versions. The package manager of choice is pnpm—installation instructions on [the pnpm website](https://pnpm.io/installation).
+[Node.js](https://nodejs.org)&nbsp;16+ is recommended for development; Typefaceoff is not tested with older versions. The package manager of choice is [pnpm](https://pnpm.io)—installation instructions on [the pnpm website](https://pnpm.io/installation).
 
 For a smoother contribution process, we recommend you:
 
@@ -70,7 +70,10 @@ pnpm run format
 ## 🙏 Acknowledgements
 
 - [Dr&nbsp;Kelly Blincoe](https://profiles.auckland.ac.nz/k-blincoe), for making us do this. (Typefaceoff started as an assignment for [SOFTENG&nbsp;310 Software Evolution and Maintenance](https://courseoutline.auckland.ac.nz/dco/course/SOFTENG/310) at [Waipapa Taumata Rau](https://www.auckland.ac.nz/en.html), the University of Auckland.)
-- [Pablo Impallari](https://www.impallari.com), whose [Font Testing Page](https://github.com/impallari/Font-Testing-Page) inspired this idea.
+- Those whose work inspired this project:
+	- [Pablo Impallari](https://www.impallari.com) for the [Font Testing Page](https://github.com/impallari/Font-Testing-Page),
+	- [Roel Nieskens](https://pixelambacht.nl) for [Wakamai Fondue](https://wakamaifondue.com), and
+	- [Peter Nowell](https://pnowell.com) for [Font Proofer](https://fontproofer.com).
 - [All](https://mass-driver.com) [the](https://mbtype.com) [many](https://typejockeys.com) [great](https://www.fonderiacavedoni.com) [typeface](https://www.boldmonday.com) [designers](https://djr.com) [out](https://www.colophon-foundry.org) [there](https://tosche.net).
 
 ## 📄 Licence
