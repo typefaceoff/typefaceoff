@@ -37,7 +37,7 @@ function App() {
         <section className="side-container">
           <FontUploader onFontSelected={handleFontSelectedLeft} />
           <div className="line-height-adjustment">
-            <label htmlFor="lineHeightInputLeft">Adjust Line Height:</label>
+            <label htmlFor="lineHeightInputLeft">Line spacing: </label>
             <input
               type="number"
               id="lineHeightInputLeft"
@@ -55,7 +55,7 @@ function App() {
         <section className="side-container">
           <FontUploader onFontSelected={handleFontSelectedRight} />
           <div className="line-height-adjustment">
-            <label htmlFor="lineHeightInputRight">Adjust Line Height:</label>
+            <label htmlFor="lineHeightInputRight">Line spacing: </label>
             <input
               type="number"
               id="lineHeightInputRight"
