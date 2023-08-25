@@ -28,9 +28,11 @@ function App() {
 
   return (
     <div>
-      <h1>Welcome to TypeFaceOff!</h1>
-      <p className="read-the-docs">Get started by uploading two fonts</p>
-      <div className="battle-ground">
+      <header>
+        <h1>Welcome to TypeFaceOff!</h1>
+        <p className="subtitle">Get started by dropping two fonts</p>
+      </header>
+      <main className="battle-ground">
         {/* Left side */}
         <div className="side-container">
           <div>
@@ -75,7 +77,7 @@ function App() {
             )}
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
