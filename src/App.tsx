@@ -32,7 +32,7 @@ function App() {
       <p className="read-the-docs">Get started by uploading two fonts</p>
       <div className="battle-ground">
         {/* Left side */}
-        <div className="left-container">
+        <div className="side-container">
           <div>
             <FontUploader onFontSelected={handleFontSelectedLeft} side="left" />
             <div className="tool-bar">
@@ -59,7 +59,7 @@ function App() {
         </div>
 
         {/* Right side */}
-        <div className="right-container">
+        <div className="side-container">
           <div>
             <FontUploader onFontSelected={handleFontSelectedRight} side="right" />
             <div className="tool-bar">

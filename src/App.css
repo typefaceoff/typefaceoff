@@ -42,8 +42,8 @@
 .vs {
     font-size: 2rem;
     font-weight: bold;
-    padding: 0.7em;
-    margin-inline-start: 0.1em;
+    padding: 1em;
+    margin-block-start: 1rem;
 }
 
 .placeholder {
@@ -64,8 +64,8 @@
 
 .line-height-adjustment {
     text-align: left;
-    margin-inline-start: 0.6em;
-    margin-block-start: 2em;
+    margin-inline-start: 1.5em;
+    margin-block-end: 1.5em;
 
     #lineHeightInput {
         padding: 0.4em;
@@ -81,14 +81,4 @@
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     opacity: 1;
-}
-
-.tool-bar {
-    margin-inline-start: 1.25em;
-    margin-block-start: -2.9em;
-    display: flex;
-    background-color: #d9d9d9;
-    height: 8.6vh;
-    width: 60.4vh;
-    border-radius: 10px;
 }
