@@ -1,6 +1,8 @@
 :root {
+    --font-stack-default: Inter, system-ui, "Segoe UI", sans-serif;
+
     color-scheme: light;
-    font-family: Inter, system-ui, "Segoe UI", sans-serif;
+    font-family: var(--font-stack-default);
     font-size: 16px;
     line-height: 1.5;
 }
@@ -49,6 +51,13 @@ button {
 
 .app {
     width: 100%;
+}
+
+.full-width-line-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0.5rem;
 }
 
 .full-width-line {
