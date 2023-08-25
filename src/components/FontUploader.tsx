@@ -39,16 +39,14 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
   };
 
   return (
-    <div className="font-uploader">
-      <div className="drop-area" onDrop={handleDrop} onDragOver={handleDragOver}>
-        <p>Drag and drop a font file here</p>
-        <input
-          className="input-button"
-          type="file"
-          accept=".otf, .ttf, .woff, .woff2"
-          onChange={handleFileChange}
-        />
-      </div>
+    <div className="drop-area" onDrop={handleDrop} onDragOver={handleDragOver}>
+      <p>Drag and drop a font file here</p>
+      <input
+        className="input-button"
+        type="file"
+        accept=".otf, .ttf, .woff, .woff2"
+        onChange={handleFileChange}
+      />
     </div>
   );
 };
