@@ -1,38 +1,38 @@
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color-scheme: light;
+    font-family: Inter, system-ui, "Segoe UI", sans-serif;
+    font-size: 16px;
     line-height: 1.5;
-    font-weight: 400;
-
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-
-    font-synthesis: none;
-    text-rendering: geometricPrecision;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-}
-
-a {
-    color: #646cff;
-    text-decoration: inherit;
-}
-a:hover {
-    color: #535bf2;
 }
 
 body {
-    margin: 0;
     display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
+    align-items: flex-start;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    padding: 2rem 3.75rem;
+}
+
+header {
+    text-align: center;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+    text-decoration-line: none;
+    text-decoration-skip: all;
+    text-decoration-thickness: max(1px, 0.06em);
+    text-underline-offset: max(1px, 0.085em);
+}
+
+a:hover {
+    text-decoration-line: underline;
 }
 
 h1 {
     font-size: 3.2rem;
-    line-height: 1.1;
+    line-height: 1.2em;
 }
 
 button {
@@ -46,23 +46,17 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
 }
-button:hover {
-    border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+
+.app {
+    width: 100%;
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        color: #213547;
-        background-color: #ffffff;
-    }
-    a:hover {
-        color: #747bff;
-    }
-    button {
-        background-color: #f9f9f9;
-    }
+.full-width-line {
+    margin: 0;
+    text-overflow: clip;
+    overflow-x: clip;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.15;
 }
