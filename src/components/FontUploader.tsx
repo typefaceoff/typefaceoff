@@ -3,18 +3,20 @@ import '../styles/FontUploader.css';
 
 const FontUploader: React.FC<{
   side: 'left' | 'right';
-  onFontSelected: (selectedFonts: File[]) => void;
+  onFontSelected: (selectedFont: File | null) => void;
 }> = ({ side, onFontSelected }) => {
-  const [selectedFonts, setSelectedFonts] = useState<File[]>([]);
+  const [, setSelectedFont] = useState<File | null>(null);
+  const [, setFontPreview] = useState<string | null>(null);
   const initialTxt = 'Drag and drop font files here';
   const [text, setText] = React.useState(initialTxt);
   let fontUrl;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const files = Array.from(e.target.files);
-      setSelectedFonts([...selectedFonts, ...files]);
-      onFontSelected([...selectedFonts, ...files]);
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      setSelectedFont(file);
+      onFontSelected(file);
+      setFontPreview(URL.createObjectURL(file));
 
       // Set text as font name uploaded
       const fileName = e.target.files[0].name;
@@ -28,21 +30,24 @@ const FontUploader: React.FC<{
     e.preventDefault();
     const files = Array.from(e.dataTransfer.files);
 
-    // Filter out files that have the allowed extensions
     const allowedExtensions = ['.otf', '.ttf', '.woff', '.woff2'];
     const fontFiles = files.filter((file) => {
       const extension = file.name.split('.').pop()?.toLowerCase();
       return allowedExtensions.includes(`.${extension}`);
     });
 
-    setSelectedFonts([...selectedFonts, ...fontFiles]);
-    onFontSelected([...selectedFonts, ...fontFiles]);
+    if (fontFiles.length > 0) {
+      const selectedFile = fontFiles[0];
+      setSelectedFont(selectedFile);
+      onFontSelected(selectedFile);
+      setFontPreview(URL.createObjectURL(selectedFile));
 
-    // Set text as font name when file is dragged
-    const fileName = files[0].name;
-    const name = fileName.split('.').slice(0, -1).join('.');
-    setText(name);
-    fontUrl = URL.createObjectURL(files[0]);
+      // Set text as font name when file is dragged
+      const fileName = files[0].name;
+      const name = fileName.split('.').slice(0, -1).join('.');
+      setText(name);
+      fontUrl = URL.createObjectURL(files[0]);
+    }
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -74,7 +79,6 @@ const FontUploader: React.FC<{
           className="input-button"
           type="file"
           accept=".otf, .ttf, .woff, .woff2"
-          multiple
           onChange={handleFileChange}
         />
       </div>
