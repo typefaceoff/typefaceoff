@@ -24,8 +24,8 @@ main {
     flex-direction: column;
     flex: 1;
     gap: 2rem;
-    max-width: 47.5%;
-    width: 47.5%;
+    max-width: 48%;
+    width: 48%;
 }
 
 .proof-template {
