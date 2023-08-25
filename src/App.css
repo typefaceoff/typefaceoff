@@ -1,64 +1,40 @@
 #root {
-    max-width: 1280px;
     margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+    max-width: 100%;
+    width: 100%;
 }
 
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.subtitle {
+    opacity: 60%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
-    }
-}
+/* Proofing template */
 
-.card {
-    padding: 2em;
-}
-
-.read-the-docs {
-    color: #888;
-}
-
-.home-screen-sentence {
-    font-family: system-ui, "Segoe UI", sans-serif;
-}
-
-.battle-ground {
+main {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin-block-start: 20px;
+    gap: 2rem;
+    justify-content: space-between;
+    max-width: 100vw;
+    width: 100%;
 }
 
-.vs {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-block-end: 60px;
-    margin-left: 20px;
-    margin-right: 20px;
+.side-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2rem;
+    max-width: 48%;
+    width: 48%;
 }
 
-.placeholder {
-    font-size: 30px;
+.proof-template {
+    width: 100%;
+    padding: 2rem 1.5rem;
 }
 
-.italic {
-    font-style: italic;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.underline {
-    text-decoration: underline;
+.template-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }

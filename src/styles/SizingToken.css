@@ -1,0 +1,8 @@
+.sizing-token {
+    color: var(--color-fg-variant);
+    font-family: var(--font-stack-default);
+    font-size: 1rem;
+    overflow-x: clip;
+    text-overflow: clip;
+    width: 60px;
+}
