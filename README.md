@@ -71,7 +71,7 @@ pnpm run format
 
 - [Dr&nbsp;Kelly Blincoe](https://profiles.auckland.ac.nz/k-blincoe), for making us do this. (Typefaceoff started as an assignment for [SOFTENG&nbsp;310 Software Evolution and Maintenance](https://courseoutline.auckland.ac.nz/dco/course/SOFTENG/310) at [Waipapa Taumata Rau](https://www.auckland.ac.nz/en.html), the University of Auckland.)
 - Those whose work inspired this project:
-	- [Pablo Impallari](https://www.impallari.com) for his [Font Testing Page](https://github.com/impallari/Font-Testing-Page),
+	- [Pablo Impallari](https://www.impallari.com) for the [Font Testing Page](https://github.com/impallari/Font-Testing-Page),
 	- [Roel Nieskens](https://pixelambacht.nl) for [Wakamai Fondue](https://wakamaifondue.com), and
 	- [Peter Nowell](https://pnowell.com) for [Font Proofer](https://fontproofer.com).
 - [All](https://mass-driver.com) [the](https://mbtype.com) [many](https://typejockeys.com) [great](https://www.fonderiacavedoni.com) [typeface](https://www.boldmonday.com) [designers](https://djr.com) [out](https://www.colophon-foundry.org) [there](https://tosche.net).
