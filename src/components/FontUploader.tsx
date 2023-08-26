@@ -1,4 +1,4 @@
-import React, { useCallback, useState} from 'react';
+import React, { useCallback, useState } from 'react';
 import '../styles/FontUploader.css';
 import { useDropzone } from 'react-dropzone';
 
@@ -7,6 +7,8 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
 }) => {
   const [, setSelectedFont] = useState<File | null>(null);
   const [, setFontPreview] = useState<string | null>(null);
+  const initialTxt = 'Drag and drop font files here';
+  const [text, setText] = React.useState(initialTxt);
 
   const onDrop = useCallback((acceptedFiles: Array<File>) => {
     const allowedExtensions = ['.otf', '.ttf', '.woff', '.woff2'];
@@ -19,20 +21,25 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
       setSelectedFont(selectedFile);
       onFontSelected(selectedFile);
       setFontPreview(URL.createObjectURL(selectedFile));
+
+      // Set text as font name uploaded
+      const fileName = selectedFile.name;
+      const name = fileName.split('.').slice(0, -1).join('.');
+      setText(name);
     }
   }, [onFontSelected]);
 
-  const { getRootProps, getInputProps, isDragActive} = useDropzone({
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    maxFiles: 1, 
+    maxFiles: 1,
     multiple: false
   });
 
   return (
     <form>
-      <div {...getRootProps({ className: 'drop-area'})}>
+      <div {...getRootProps({ className: 'drop-area' })}>
         <input {...getInputProps()} />
-        {isDragActive ? <p>Drop here...</p> : <p>Drag and drop a font file here</p>}
+        {isDragActive ? <p>Drop here...</p> : <p>{text}</p>}
       </div>
     </form>
   );
