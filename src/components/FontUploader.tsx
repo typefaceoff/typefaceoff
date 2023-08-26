@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import '../styles/FontUploader.css';
 import { useDropzone } from 'react-dropzone';
-import { Typr } from "typr-ts";
+import { Typr } from 'typr-ts';
 
 const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => void }> = ({
   onFontSelected,
@@ -27,12 +27,12 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
 
         // Set text as font name uploaded by parsing font file buffer
         const buffer = selectedFile.arrayBuffer();
-        buffer.then(data => {
+        buffer.then((data) => {
           const font = Typr.parse(data);
           const fullFontName = font.name.fullName + ' ' + font.name.fontSubfamily;
           setFontName(fullFontName);
         });
-        setText('drop another font here')
+        setText('drop another font here');
       }
     },
     [onFontSelected]
@@ -48,8 +48,16 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
     <form>
       <div {...getRootProps({ className: 'drop-area' })}>
         <input {...getInputProps()} />
-        {isDragActive ? <div><p className="drop-text">Drop here</p></div>
-          : <div><p className="font-name">{fontName}</p><p className="descriptor">{text}</p></div>}
+        {isDragActive ? (
+          <div>
+            <p className="drop-text">Drop here</p>
+          </div>
+        ) : (
+          <div>
+            <p className="font-name">{fontName}</p>
+            <p className="descriptor">{text}</p>
+          </div>
+        )}
       </div>
     </form>
   );
