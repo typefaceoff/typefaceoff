@@ -10,29 +10,32 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
   const initialTxt = 'Drag and drop font files here';
   const [text, setText] = React.useState(initialTxt);
 
-  const onDrop = useCallback((acceptedFiles: Array<File>) => {
-    const allowedExtensions = ['.otf', '.ttf', '.woff', '.woff2'];
-    const fontFiles = acceptedFiles.filter((file) => {
-      const extension = file.name.split('.').pop()?.toLowerCase();
-      return allowedExtensions.includes(`.${extension}`);
-    });
-    if (fontFiles.length > 0) {
-      const selectedFile = fontFiles[0];
-      setSelectedFont(selectedFile);
-      onFontSelected(selectedFile);
-      setFontPreview(URL.createObjectURL(selectedFile));
+  const onDrop = useCallback(
+    (acceptedFiles: Array<File>) => {
+      const allowedExtensions = ['.otf', '.ttf', '.woff', '.woff2'];
+      const fontFiles = acceptedFiles.filter((file) => {
+        const extension = file.name.split('.').pop()?.toLowerCase();
+        return allowedExtensions.includes(`.${extension}`);
+      });
+      if (fontFiles.length > 0) {
+        const selectedFile = fontFiles[0];
+        setSelectedFont(selectedFile);
+        onFontSelected(selectedFile);
+        setFontPreview(URL.createObjectURL(selectedFile));
 
-      // Set text as font name uploaded
-      const fileName = selectedFile.name;
-      const name = fileName.split('.').slice(0, -1).join('.');
-      setText(name);
-    }
-  }, [onFontSelected]);
+        // Set text as font name uploaded
+        const fileName = selectedFile.name;
+        const name = fileName.split('.').slice(0, -1).join('.');
+        setText(name);
+      }
+    },
+    [onFontSelected]
+  );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     maxFiles: 1,
-    multiple: false
+    multiple: false,
   });
 
   return (
