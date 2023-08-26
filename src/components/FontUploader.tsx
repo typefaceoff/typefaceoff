@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo } from 'react';
+import React, { useCallback, useState} from 'react';
 import '../styles/FontUploader.css';
 import { useDropzone } from 'react-dropzone';
 
@@ -20,27 +20,17 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
       onFontSelected(selectedFile);
       setFontPreview(URL.createObjectURL(selectedFile));
     }
-  }, []);
+  }, [onFontSelected]);
 
-  const { getRootProps, getInputProps, isDragActive, isFocused } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive} = useDropzone({
     onDrop,
-    maxFiles: 1,
+    maxFiles: 1, 
+    multiple: false
   });
-
-  const focusedStyle = {
-    borderColor: '#2196f3',
-  };
-
-  const style = useMemo(
-    () => ({
-      ...(isFocused ? focusedStyle : {}),
-    }),
-    [isFocused]
-  );
 
   return (
     <form>
-      <div {...getRootProps({ className: 'drop-area', style })}>
+      <div {...getRootProps({ className: 'drop-area'})}>
         <input {...getInputProps()} />
         {isDragActive ? <p>Drop here...</p> : <p>Drag and drop a font file here</p>}
       </div>
