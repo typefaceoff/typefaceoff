@@ -1,10 +1,14 @@
 :root {
     --font-stack-default: Inter, system-ui, "Segoe UI", sans-serif;
-
     color-scheme: light;
     font-family: var(--font-stack-default);
     font-size: 16px;
     line-height: 1.5;
+    --color-bg: rgb(98% 98% 98%);
+    --color-fg: rgb(12% 12% 12%);
+    --color-fg-variant: rgb(60% 60% 60%);
+    --color-border: rgb(86% 86% 86%);
+    --color-accent: rgb(39.22% 42.35% 100%);
 }
 
 body {
@@ -47,25 +51,4 @@ button {
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
-}
-
-.app {
-    width: 100%;
-}
-
-.full-width-line-container {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 0.5rem;
-}
-
-.full-width-line {
-    margin: 0;
-    text-overflow: clip;
-    overflow-x: clip;
-    white-space: nowrap;
-    width: 100%;
-    max-width: 100%;
-    line-height: 1.15;
 }

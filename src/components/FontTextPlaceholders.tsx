@@ -1,4 +1,4 @@
-import '../App.css';
+import '../styles/FontTextPlaceholders.css';
 import FullWidthLine from './ProofFullWidthLine';
 import HalfWidthLine from './ProofHalfWidthLine';
 

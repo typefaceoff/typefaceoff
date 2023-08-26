@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './App.css';
-import FontUploader from './components/FontUploader';
-import FontPreview from './components/FontPreview';
+import '../styles/App.css';
+import FontUploader from './FontUploader';
+import FontPreview from './FontPreview';
 
 function App() {
   // State for the selected font on the left
