@@ -7,7 +7,7 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
 }) => {
   const [, setSelectedFont] = useState<File | null>(null);
   const [, setFontPreview] = useState<string | null>(null);
-  
+
   const onDrop = useCallback((acceptedFiles: Array<File>) => {
     const allowedExtensions = ['.otf', '.ttf', '.woff', '.woff2'];
     const fontFiles = acceptedFiles.filter((file) => {
@@ -20,29 +20,29 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
       onFontSelected(selectedFile);
       setFontPreview(URL.createObjectURL(selectedFile));
     }
-  }, [])
+  }, []);
 
-  const { getRootProps, getInputProps, isDragActive, isFocused } = useDropzone({ onDrop, maxFiles: 1});
+  const { getRootProps, getInputProps, isDragActive, isFocused } = useDropzone({
+    onDrop,
+    maxFiles: 1,
+  });
 
   const focusedStyle = {
-    borderColor: '#2196f3'
+    borderColor: '#2196f3',
   };
 
-  const style = useMemo(() => ({
-    ...(isFocused ? focusedStyle : {}),
-  }), [
-    isFocused,
-  ]);
+  const style = useMemo(
+    () => ({
+      ...(isFocused ? focusedStyle : {}),
+    }),
+    [isFocused]
+  );
 
   return (
     <form>
-      <div {...getRootProps({ className: 'drop-area', style})}>
+      <div {...getRootProps({ className: 'drop-area', style })}>
         <input {...getInputProps()} />
-        {
-          isDragActive ?
-            <p>Drop here...</p> :
-            <p>Drag and drop a font file here</p>
-        }
+        {isDragActive ? <p>Drop here...</p> : <p>Drag and drop a font file here</p>}
       </div>
     </form>
   );
