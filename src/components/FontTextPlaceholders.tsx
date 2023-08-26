@@ -1,4 +1,4 @@
-import '../styles/FontTexPlaceholders.css';
+import '../styles/FontTextPlaceholders.css';
 import FullWidthLine from './ProofFullWidthLine';
 
 export default function FontTextPlaceholders() {
