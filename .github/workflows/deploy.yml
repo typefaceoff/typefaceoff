@@ -3,6 +3,7 @@ name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
+  # Could be disabled if we don't want it to automatically deployed when merging a PR
   push:
     branches: ['main']
 
