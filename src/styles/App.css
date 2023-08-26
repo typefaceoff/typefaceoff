@@ -28,13 +28,6 @@ main {
     width: 48%;
 }
 
-.proof-template {
+.app {
     width: 100%;
-    padding: 2rem 1.5rem;
-}
-
-.template-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
 }
