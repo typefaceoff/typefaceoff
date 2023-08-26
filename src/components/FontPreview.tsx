@@ -24,10 +24,10 @@ const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight })
   `;
 
   return (
-    <section className="half-page-template">
+    <section>
       <style>{fontFace}</style>
       <div style={fontStyles}>
-        <FontTextPlaceholders />
+        <FontTextPlaceholders lineHeight={lineHeight} />
       </div>
     </section>
   );
