@@ -7,13 +7,9 @@
     padding: 2rem 2.5rem;
     text-align: center;
     width: 100%;
+    cursor: pointer;
 }
 
 .selected-fonts {
     margin-top: 10px;
-}
-
-.input-button {
-    margin-block-start: 10px;
-    padding-inline-start: 40px;
 }
