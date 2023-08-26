@@ -1,14 +1,16 @@
 import React, { useCallback, useState } from 'react';
 import '../styles/FontUploader.css';
 import { useDropzone } from 'react-dropzone';
+import { Typr } from "typr-ts";
 
 const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => void }> = ({
   onFontSelected,
 }) => {
   const [, setSelectedFont] = useState<File | null>(null);
   const [, setFontPreview] = useState<string | null>(null);
-  const initialTxt = 'Drag and drop font files here';
-  const [text, setText] = React.useState(initialTxt);
+  const initialFontName = 'Drag and drop font files here';
+  const [fontName, setFontName] = React.useState(initialFontName);
+  const [text, setText] = React.useState(' ');
 
   const onDrop = useCallback(
     (acceptedFiles: Array<File>) => {
@@ -23,10 +25,14 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
         onFontSelected(selectedFile);
         setFontPreview(URL.createObjectURL(selectedFile));
 
-        // Set text as font name uploaded
-        const fileName = selectedFile.name;
-        const name = fileName.split('.').slice(0, -1).join('.');
-        setText(name);
+        // Set text as font name uploaded by parsing font file buffer
+        const buffer = selectedFile.arrayBuffer();
+        buffer.then(data => {
+          const font = Typr.parse(data);
+          const fullFontName = font.name.fullName + ' ' + font.name.fontSubfamily;
+          setFontName(fullFontName);
+        });
+        setText('drop another font here')
       }
     },
     [onFontSelected]
@@ -42,7 +48,8 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
     <form>
       <div {...getRootProps({ className: 'drop-area' })}>
         <input {...getInputProps()} />
-        {isDragActive ? <p>Drop here...</p> : <p>{text}</p>}
+        {isDragActive ? <div><p className="drop-text">Drop here</p></div>
+          : <div><p className="font-name">{fontName}</p><p className="descriptor">{text}</p></div>}
       </div>
     </form>
   );

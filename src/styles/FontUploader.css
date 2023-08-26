@@ -4,12 +4,25 @@
     border: 2px dashed var(--color-border);
     display: flex;
     flex-direction: column;
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 2rem;
     text-align: center;
     width: 100%;
+    height: 7.5em;
     cursor: pointer;
 }
 
 .selected-fonts {
     margin-top: 10px;
+}
+
+.font-name{
+    font-size: 1.2rem;
+}
+
+.drop-text{
+    opacity: 80%;
+}
+.descriptor {
+    opacity: 60%;
+    font-size: 0.7rem;
 }
