@@ -1,0 +1,16 @@
+.full-width-line-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0.5rem;
+}
+
+.full-width-line {
+    margin: 0;
+    text-overflow: clip;
+    overflow-x: clip;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.15;
+}

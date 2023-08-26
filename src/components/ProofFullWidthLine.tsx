@@ -1,4 +1,5 @@
 import SizingToken from './SizingToken';
+import '../styles/ProofFullWidthLine.css';
 
 export default function FullWidthLine(proofingText: string, pointSize: number, lineHeight: number) {
   return (
