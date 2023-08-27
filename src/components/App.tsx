@@ -43,13 +43,13 @@ function App() {
               type="number"
               id="lineHeightInputLeft"
               value={lineHeightLeft}
+              min={0.95}
+              max={1.9}
               step={0.05}
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          {selectedFontLeft && (
-            <FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />
-          )}
+          {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
         </section>
 
         {/* Right side */}
@@ -61,13 +61,13 @@ function App() {
               type="number"
               id="lineHeightInputRight"
               value={lineHeightRight}
+              min={0.95}
+              max={1.9}
               step={0.05}
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          {selectedFontRight && (
-            <FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />
-          )}
+          {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
         </section>
       </main>
       <footer>
