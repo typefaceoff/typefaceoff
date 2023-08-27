@@ -5,7 +5,10 @@ export default function HalfWidthLine(proofingText: string, pointSize: number, l
   return (
     <div>
       {SizingToken(pointSize, pointSize * lineHeight)}
-      <p className="half-width-line" style={{ fontSize: pointSize, lineHeight: lineHeight }}>
+      <p
+        className="half-width-line"
+        style={{ fontSize: pointSize, lineHeight: lineHeight, maxHeight: 100 * lineHeight }}
+      >
         {proofingText}
       </p>
     </div>

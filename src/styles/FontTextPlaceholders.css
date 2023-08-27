@@ -8,6 +8,5 @@
 .template-double-columns {
     display: flex;
     gap: 2.5rem;
-    max-height: 300px;
     overflow-y: hidden;
 }

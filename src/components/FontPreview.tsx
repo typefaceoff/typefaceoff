@@ -23,7 +23,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight })
     @font-face {
       font-family: '${side === 'left' ? 'CustomFontLeft' : 'CustomFontRight'}';
       src: url(${fontUrl}) format('opentype');
-
+      font-display: swap;
     }
   `;
 
