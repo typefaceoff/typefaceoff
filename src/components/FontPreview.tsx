@@ -8,14 +8,18 @@ interface FontPreviewProps {
   lineHeight: number;
 }
 
+function getFontFamily(fontFile: File | null, side: string) {
+  if (fontFile) {
+    return side === 'left' ? 'CustomFontLeft' : 'CustomFontRight';
+  }
+  return 'var(--font-stack-default)';
+}
+
 const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight }) => {
   const fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
 
-  const fontFamily = fontFile
-    ? side === 'left'
-      ? 'CustomFontLeft'
-      : 'CustomFontRight'
-    : 'var(--font-stack-default)';
+  // Getting Font Family depending on the fontFile and side
+  const fontFamily = getFontFamily(fontFile, side);
 
   const fontStyles: React.CSSProperties = {
     fontFamily: fontFamily,
