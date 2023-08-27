@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React from 'react';
 import FontTextPlaceholders from './FontTextPlaceholders';
 
@@ -7,21 +8,22 @@ interface FontPreviewProps {
   lineHeight: number;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight }) => {
   const fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
 
+  const fontFamily = fontFile
+    ? side === 'left'
+      ? 'CustomFontLeft'
+      : 'CustomFontRight'
+    : 'var(--font-stack-default)';
+
   const fontStyles: React.CSSProperties = {
-    fontFamily: fontFile
-      ? side === 'left'
-        ? 'CustomFontLeft'
-        : 'CustomFontRight'
-      : 'var(--font-stack-default)',
+    fontFamily: fontFamily,
   };
 
   const fontFace = `
     @font-face {
-      font-family: '${side === 'left' ? 'CustomFontLeft' : 'CustomFontRight'}';
+      font-family: '${fontFamily}';
       src: url(${fontUrl}) format('opentype');
       font-display: swap;
     }
@@ -37,8 +39,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight })
   );
 };
 
-// Only re-render if fontFile, lineHeight or side props change
-// eslint-disable-next-line react-refresh/only-export-components
+// Only re-render if fontFile, lineHeight, or side props change
 export default React.memo(FontPreview, (prevProps, nextProps) => {
   return (
     prevProps.fontFile === nextProps.fontFile &&
