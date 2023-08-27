@@ -2,16 +2,20 @@ import React from 'react';
 import FontTextPlaceholders from './FontTextPlaceholders';
 
 interface FontPreviewProps {
-  fontFile: File;
+  fontFile: File | null;
   side: 'left' | 'right';
   lineHeight: number;
 }
 
 const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight }) => {
-  const fontUrl = URL.createObjectURL(fontFile);
+  const fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
 
   const fontStyles: React.CSSProperties = {
-    fontFamily: side === 'left' ? "'CustomFontLeft', sans-serif" : "'CustomFontRight', sans-serif",
+    fontFamily: fontFile
+      ? side === 'left'
+        ? "'CustomFontLeft', var(--font-stack-default)"
+        : "'CustomFontRight', var(--font-stack-default)"
+      : 'var(--font-stack-default)', // Use the default font if no font is selected
     lineHeight: lineHeight,
   };
 
@@ -19,7 +23,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight })
     @font-face {
       font-family: '${side === 'left' ? 'CustomFontLeft' : 'CustomFontRight'}';
       src: url(${fontUrl}) format('opentype');
-      font-display: swap;
+
     }
   `;
 

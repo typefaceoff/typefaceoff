@@ -14,10 +14,10 @@ export default function FontTextPlaceholders({ lineHeight }: FontTextPlaceholder
   return (
     <div>
       <div className="template-single-column">
-        {FullWidthLine(proofingText, displayPointSizes[0], 1.15)}
-        {FullWidthLine(proofingText, displayPointSizes[1], 1.15)}
-        {FullWidthLine(proofingText, displayPointSizes[2], 1.15)}
-        {FullWidthLine(proofingText, displayPointSizes[3], 1.15)}
+        {FullWidthLine(proofingText, displayPointSizes[0], 1.5)}
+        {FullWidthLine(proofingText, displayPointSizes[1], 1.5)}
+        {FullWidthLine(proofingText, displayPointSizes[2], 1.5)}
+        {FullWidthLine(proofingText, displayPointSizes[3], 1.5)}
       </div>
       <div className="template-double-columns">
         {HalfWidthLine(proofingText, displayPointSizes[4], lineHeight)}

@@ -46,9 +46,7 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          {selectedFontLeft && (
-            <FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />
-          )}
+          {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
         </section>
 
         {/* Right side */}
@@ -64,9 +62,7 @@ function App() {
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          {selectedFontRight && (
-            <FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />
-          )}
+          {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
         </section>
       </main>
     </div>
