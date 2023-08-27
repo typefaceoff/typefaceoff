@@ -1,6 +1,6 @@
 # Typefaceoff
 
-<img width="1353" alt="Screenshot of Typefaceoff" src="https://github.com/jaskfla/typefaceoff/assets/33956381/600ce943-6102-4033-a9f3-41a9d3e0867d" />
+<img width="1969" alt="Screenshot of Typefaceoff" src="https://github.com/jaskfla/typefaceoff/assets/33956381/32426d2e-dd6d-411d-a8bc-3d6e20bf2825">
 
 Typefaceoff is a a drag-and-drop tool for proofing and comparing typefaces in a browser.
 
