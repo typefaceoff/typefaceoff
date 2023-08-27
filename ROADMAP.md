@@ -12,16 +12,9 @@ Minor bug fixes and enhancements to existing features don’t need to be mention
 
 ## 🗺️ Feature roadmap
 
-*Last updated August 14, 2023.*
+*Last updated August 27, 2023.*
 
-### Planned for v0.1 (August 23, 2023)
-
-#### Side-by-side comparison of two fonts
-
-The core-most feature of this tool. A user should be able to drag and drop two fonts into Typefaceoff in the browser, and see two side-by-side “pages”—each effectively a type specimen—one typeset in each of the imported fonts.
-
-- At this stage, text in the proofing template will be fixed and uneditable by the user—unless they’re savvy enough to edit the page source. (If that’s you, you might make a good [contributor](CONTRIBUTING.md) around these parts!)
-- To ensure the user is never at risk of violating any of their font licences, the fonts should be accessed using [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) or [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage).
+### Planned for v0.2 (September 29, 2023)
 
 #### Configurable leading
 
@@ -41,11 +34,11 @@ For typesetting in English, OpenType features are used to access alternate glyph
 
 Typefaceoff should reveal what OpenType features a font supports, let the user enable/disable individual features used in the proofing template, and/or select the stylistic set(s) used.
 
-### Planned for v0.2 (September 29, 2023)
+#### Allow the user to customise the text used in the proofing template(s)
 
-- Allow the user to customise the text used in the proofing template(s).
-- Configurable colours.
-- Export type specimen to PDF.
+Proofing text is currently a fixed, uneditable extract (from *Alice in Wonderland*). Users may wish to enter their own text to see how fonts look using copy that is more immediately relevant to their work.
+
+#### Export type specimen to PDF
 
 ### Planned for v0.3 (October 20, 2023)
 
@@ -54,8 +47,6 @@ Typefaceoff should reveal what OpenType features a font supports, let the user e
 	- e.g., Article, web page, research paper.
 
 ### Under review
-
-#### Comparison of more than two fonts at a time
 
 #### Configurable tracking
 
@@ -67,3 +58,24 @@ It may also be pertinent to testing all caps or small caps fonts, where increase
 
 > [!NOTE]
 > **Tracking**, **letterspacing**, and **character spacing** are interchangeable terms
+
+#### Comparison of more than two fonts at a time
+
+We don’t have a design for how this may be laid out, but it remains on the table… somewhere.
+
+#### Configurable colours
+
+Colourful proofing templates? Maybe?
+
+### Released
+
+#### Side-by-side comparison of two fonts `v0.1.0`
+
+The core-most feature of this tool. A user should be able to drag and drop two fonts into Typefaceoff in the browser, and see two side-by-side “pages”—each effectively a type specimen—one typeset in each of the imported fonts.
+
+- At this stage, text in the proofing template will be fixed and uneditable by the user—unless they’re savvy enough to edit the page source. (If that’s you, you might make a good [contributor](CONTRIBUTING.md) around these parts!)
+- To ensure the user is never at risk of violating any of their font licences, the fonts should be accessed using [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) or [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage).
+
+#### Configurable line spacing `v0.1.0`
+
+Different fonts set with the same line height will *optically* look different. Allowing separate adjustments to line height, for each font being proofed, lets the user make manual adjustments to get a truer, one-to-one comparison of how the two fonts they are consider would actually behave in use.
