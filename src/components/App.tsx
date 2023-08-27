@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
+import { BsGithub } from 'react-icons/bs';
 
 function App() {
   // State for the selected font on the left
@@ -29,7 +30,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>Welcome to TypeFaceOff!</h1>
+        <h1>Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
       </header>
       <main>
@@ -69,6 +70,15 @@ function App() {
           )}
         </section>
       </main>
+      <footer>
+        <p className="footer-text">
+          Typefaceoff takes font licensing seriously, and works works locally in your browser. Your
+          fonts stay on your device, and aren’t uploaded anywhere.{' '}
+        </p>
+        <a href="https://github.com/typefaceoff/typefaceoff" target="_blank">
+          <BsGithub className="github-icon" />
+        </a>
+      </footer>
     </div>
   );
 }

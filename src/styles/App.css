@@ -31,3 +31,17 @@ main {
 .app {
     width: 100%;
 }
+
+.github-icon {
+    font-size: 1.6rem;
+    color: black;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-bg-variant);
+    padding: 1.25rem;
+    margin-block-start: 8rem;
+}
