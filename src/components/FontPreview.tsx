@@ -7,16 +7,16 @@ interface FontPreviewProps {
   lineHeight: number;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight }) => {
   const fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
 
   const fontStyles: React.CSSProperties = {
     fontFamily: fontFile
       ? side === 'left'
-        ? "'CustomFontLeft', var(--font-stack-default)"
-        : "'CustomFontRight', var(--font-stack-default)"
-      : 'var(--font-stack-default)', // Use the default font if no font is selected
-    lineHeight: lineHeight,
+        ? 'CustomFontLeft'
+        : 'CustomFontRight'
+      : 'var(--font-stack-default)',
   };
 
   const fontFace = `
@@ -37,4 +37,12 @@ const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight })
   );
 };
 
-export default FontPreview;
+// Only re-render if fontFile, lineHeight or side props change
+// eslint-disable-next-line react-refresh/only-export-components
+export default React.memo(FontPreview, (prevProps, nextProps) => {
+  return (
+    prevProps.fontFile === nextProps.fontFile &&
+    prevProps.lineHeight === nextProps.lineHeight &&
+    prevProps.side === nextProps.side
+  );
+});
