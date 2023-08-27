@@ -8,8 +8,7 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
 }) => {
   const [, setSelectedFont] = useState<File | null>(null);
   const [, setFontPreview] = useState<string | null>(null);
-  const initialFontName = 'Drag and drop font files here';
-  const [fontName, setFontName] = React.useState(initialFontName);
+  const [fontName, setFontName] = React.useState('Drop a font here');
   const [text, setText] = React.useState(' ');
 
   const onDrop = useCallback(
@@ -49,9 +48,9 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
       <div {...getRootProps({ className: 'drop-area' })}>
         <input {...getInputProps()} />
         {isDragActive ? (
-          <div>
-            <p className="drop-text">Drop here</p>
-          </div>
+          <p className="font-name" style={{ opacity: 0.6 }}>
+            Drop here
+          </p>
         ) : (
           <div>
             <p className="font-name">{fontName}</p>
