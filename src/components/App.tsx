@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>Welcome to TypeFaceOff!</h1>
+        <h1>Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
       </header>
       <main>
