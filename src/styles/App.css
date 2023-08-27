@@ -1,0 +1,33 @@
+#root {
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
+}
+
+.subtitle {
+    opacity: 60%;
+}
+
+/* Proofing template */
+
+main {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+    max-width: 100vw;
+    width: 100%;
+}
+
+.side-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2rem;
+    max-width: 48%;
+    width: 48%;
+}
+
+.app {
+    width: 100%;
+}

@@ -1,51 +1,50 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import '../styles/FontUploader.css';
+import { useDropzone } from 'react-dropzone';
 
-const FontUploader: React.FC<{ onFontSelected: (selectedFonts: File[]) => void }> = ({
+const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => void }> = ({
   onFontSelected,
 }) => {
-  const [selectedFonts, setSelectedFonts] = useState<File[]>([]);
+  const [, setSelectedFont] = useState<File | null>(null);
+  const [, setFontPreview] = useState<string | null>(null);
+  const initialTxt = 'Drag and drop font files here';
+  const [text, setText] = React.useState(initialTxt);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const files = Array.from(e.target.files);
-      setSelectedFonts([...selectedFonts, ...files]);
-      onFontSelected([...selectedFonts, ...files]);
-    }
-  };
+  const onDrop = useCallback(
+    (acceptedFiles: Array<File>) => {
+      const allowedExtensions = ['.otf', '.ttf', '.woff', '.woff2'];
+      const fontFiles = acceptedFiles.filter((file) => {
+        const extension = file.name.split('.').pop()?.toLowerCase();
+        return allowedExtensions.includes(`.${extension}`);
+      });
+      if (fontFiles.length > 0) {
+        const selectedFile = fontFiles[0];
+        setSelectedFont(selectedFile);
+        onFontSelected(selectedFile);
+        setFontPreview(URL.createObjectURL(selectedFile));
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    const files = Array.from(e.dataTransfer.files);
+        // Set text as font name uploaded
+        const fileName = selectedFile.name;
+        const name = fileName.split('.').slice(0, -1).join('.');
+        setText(name);
+      }
+    },
+    [onFontSelected]
+  );
 
-    // Filter out files that have the allowed extensions
-    const allowedExtensions = ['.otf', '.ttf', '.woff', '.woff2'];
-    const fontFiles = files.filter((file) => {
-      const extension = file.name.split('.').pop()?.toLowerCase();
-      return allowedExtensions.includes(`.${extension}`);
-    });
-
-    setSelectedFonts([...selectedFonts, ...fontFiles]);
-    onFontSelected([...selectedFonts, ...fontFiles]);
-  };
-
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-  };
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    maxFiles: 1,
+    multiple: false,
+  });
 
   return (
-    <div className="font-uploader">
-      <div className="drop-area" onDrop={handleDrop} onDragOver={handleDragOver}>
-        <p>Drag and drop font files here</p>
-        <input
-          className="input-button"
-          type="file"
-          accept=".otf, .ttf, .woff, .woff2"
-          multiple
-          onChange={handleFileChange}
-        />
+    <form>
+      <div {...getRootProps({ className: 'drop-area' })}>
+        <input {...getInputProps()} />
+        {isDragActive ? <p>Drop here...</p> : <p>{text}</p>}
       </div>
-    </div>
+    </form>
   );
 };
 

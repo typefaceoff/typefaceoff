@@ -1,25 +1,15 @@
-.font-uploader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-}
-
 .drop-area {
+    align-items: center;
+    border-radius: 24px;
+    border: 2px dashed var(--color-border);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: 2px dashed #ddd;
-    padding: 20px;
+    padding: 2rem 2.5rem;
     text-align: center;
+    width: 100%;
     cursor: pointer;
 }
 
 .selected-fonts {
     margin-top: 10px;
-}
-
-.input-button {
-    margin-block-start: 10px;
-    padding-inline-start: 40px;
 }
