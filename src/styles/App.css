@@ -41,7 +41,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #f0f0f0;
+    background-color: var(--color-footer-bg);
     padding: 1.25rem;
     margin-block-start: 8rem;
 }
