@@ -72,8 +72,8 @@ function App() {
       </main>
       <footer>
         <p className="footer-text">
-          Typefaceoff takes font licensing seriously, and works works locally in your browser. Your
-          fonts stay on your device, and aren’t uploaded anywhere.{' '}
+          Typefaceoff takes font licensing seriously. It works locally in your browser meaning your
+          fonts stay on your device and aren’t uploaded anywhere.{' '}
         </p>
         <a href="https://github.com/typefaceoff/typefaceoff" target="_blank">
           <BsGithub className="github-icon" />
