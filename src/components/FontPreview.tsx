@@ -6,7 +6,6 @@ interface FontPreviewProps {
   fontFile: File | null;
   side: 'left' | 'right';
   lineHeight: number;
-  proofingText: string;
 }
 
 function getFontFamily(fontFile: File | null, side: string) {
@@ -16,7 +15,7 @@ function getFontFamily(fontFile: File | null, side: string) {
   return 'var(--font-stack-default)';
 }
 
-const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight, proofingText }) => {
+const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight }) => {
   const fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
 
   // Getting Font Family depending on the fontFile and side
@@ -38,7 +37,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight, p
     <section>
       <style>{fontFace}</style>
       <div style={fontStyles}>
-        <FontTextPlaceholders proofingText={proofingText} lineHeight={lineHeight} />
+        <FontTextPlaceholders lineHeight={lineHeight} />
       </div>
     </section>
   );
@@ -49,7 +48,6 @@ export default React.memo(FontPreview, (prevProps, nextProps) => {
   return (
     prevProps.fontFile === nextProps.fontFile &&
     prevProps.lineHeight === nextProps.lineHeight &&
-    prevProps.side === nextProps.side &&
-    prevProps.proofingText === nextProps.proofingText
+    prevProps.side === nextProps.side
   );
 });

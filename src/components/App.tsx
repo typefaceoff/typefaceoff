@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
+import { useState } from 'react';
 
 function App() {
   // State for the selected font on the left
@@ -16,9 +16,6 @@ function App() {
 
   // State for the line height on the left
   const [lineHeightLeft, setLineHeightLeft] = useState<number>(1.5);
-
-  // State for the proofing text
-  const [proofingText, setProofingText] = useState<string>('');
 
   // Handler for when a font is selected on the left side
   const handleFontSelectedLeft = (selectedFont: File | null) => {
@@ -35,16 +32,6 @@ function App() {
       <header>
         <h1>Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
-        <div>
-          <label htmlFor="proofingText">Proofing text: </label>
-          <input
-            type="text"
-            id="proofingText"
-            onChange={(e) => {
-              setProofingText(e.target.value);
-            }}
-          />
-        </div>
       </header>
       <main>
         {/* Left side */}
@@ -62,14 +49,8 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          {
-            <FontPreview
-              fontFile={selectedFontLeft}
-              side="left"
-              lineHeight={lineHeightLeft}
-              proofingText={proofingText}
-            />
-          }
+
+          {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
         </section>
 
         {/* Right side */}
@@ -87,14 +68,7 @@ function App() {
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          {
-            <FontPreview
-              fontFile={selectedFontRight}
-              side="right"
-              lineHeight={lineHeightRight}
-              proofingText={proofingText}
-            />
-          }
+          {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
         </section>
       </main>
       <footer>
