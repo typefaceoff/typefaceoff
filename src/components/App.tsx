@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
+import { useState } from 'react';
 
 function App() {
   // State for the selected font on the left
@@ -49,6 +49,7 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
+
           {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
         </section>
 
