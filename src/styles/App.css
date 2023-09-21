@@ -37,6 +37,11 @@ main {
     color: black;
 }
 
+.button {
+    color: aliceblue;
+    margin-bottom: 15px;
+}
+
 footer {
     display: flex;
     align-items: center;
