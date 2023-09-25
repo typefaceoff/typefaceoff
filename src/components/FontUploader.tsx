@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import '../styles/FontUploader.css';
 import { useDropzone } from 'react-dropzone';
 import { Typr } from 'typr-ts';
+import Features, { Feature } from 'opentype.features.js';
 
 const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => void }> = ({
   onFontSelected,
@@ -10,6 +11,7 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
   const [, setFontPreview] = useState<string | null>(null);
   const [fontName, setFontName] = React.useState('Drop a font here');
   const [text, setText] = React.useState(' ');
+  const [fontFeatureOptions, setFontFeatureOptions] = React.useState<Feature[]>([]);
 
   const onDrop = useCallback(
     (acceptedFiles: Array<File>) => {
@@ -22,7 +24,17 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
         const selectedFile = fontFiles[0];
         setSelectedFont(selectedFile);
         onFontSelected(selectedFile);
-        setFontPreview(URL.createObjectURL(selectedFile));
+        const selectedFileUrl = URL.createObjectURL(selectedFile);
+        setFontPreview(selectedFileUrl);
+
+        // Get list of font features (for opentype fonts)
+        Features.getFeaturesFromUrl(selectedFileUrl).then((features) => {
+          if (features != null) {
+            setFontFeatureOptions(features);
+            console.log(JSON.stringify(features));
+            console.log(JSON.stringify(selectedFileUrl));
+          }
+        });
 
         // Set text as font name uploaded by parsing font file buffer
         const buffer = selectedFile.arrayBuffer();
@@ -55,6 +67,7 @@ const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => vo
           <div>
             <p className="font-name">{fontName}</p>
             <p className="descriptor">{text}</p>
+            <p className="feature-options">{fontFeatureOptions.toString()}</p>
           </div>
         )}
       </div>
