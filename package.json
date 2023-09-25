@@ -12,11 +12,13 @@
     "husky": "husky install"
   },
   "dependencies": {
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
-    "typr-ts": "^1.1.5",
-    "react-icons": "^4.10.1"
+    "react-icons": "^4.10.1",
+    "typr-ts": "^1.1.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
