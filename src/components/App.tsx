@@ -3,6 +3,8 @@ import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 function App() {
   // State for the selected font on the left
@@ -42,6 +44,29 @@ function App() {
           }}
         >
           Alice in Wonderland
+        </button>
+        <button
+          className="button"
+          onClick={() => {
+            html2canvas(document.body, {
+              windowWidth: window.scrollX + window.outerWidth,
+              windowHeight: window.scrollY + window.outerHeight,
+            }).then((canvas) => {
+              const imgData = canvas.toDataURL('image/png');
+              const doc = new jsPDF('l', 'mm');
+              doc.addImage(
+                imgData,
+                'PNG',
+                0,
+                0,
+                doc.internal.pageSize.getWidth(),
+                doc.internal.pageSize.getHeight()
+              );
+              doc.save('sample.pdf');
+            });
+          }}
+        >
+          Save page as PDF
         </button>
       </header>
       <main>
