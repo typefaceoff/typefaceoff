@@ -37,6 +37,26 @@ function App() {
     }
   };
 
+  // Event handler to save the page as a PDF
+  const savePageAsPDF = () => {
+    html2canvas(document.body, {
+      windowWidth: window.scrollX + window.outerWidth,
+      windowHeight: window.scrollY + window.outerHeight,
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const doc = new jsPDF('l', 'mm');
+      doc.addImage(
+        imgData,
+        'PNG',
+        0,
+        0,
+        doc.internal.pageSize.getWidth(),
+        doc.internal.pageSize.getHeight()
+      );
+      doc.save('sample.pdf');
+    });
+  };
+
 
   return (
     <div className="app">
@@ -51,24 +71,7 @@ function App() {
         </button>
         <button
           className="button"
-          onClick={() => {
-            html2canvas(document.body, {
-              windowWidth: window.scrollX + window.outerWidth,
-              windowHeight: window.scrollY + window.outerHeight,
-            }).then((canvas) => {
-              const imgData = canvas.toDataURL('image/png');
-              const doc = new jsPDF('l', 'mm');
-              doc.addImage(
-                imgData,
-                'PNG',
-                0,
-                0,
-                doc.internal.pageSize.getWidth(),
-                doc.internal.pageSize.getHeight()
-              );
-              doc.save('sample.pdf');
-            });
-          }}
+          onClick={savePageAsPDF}
         >
           Save page as PDF
         </button>
