@@ -3,8 +3,6 @@ import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 import { proofingText } from './constants';
 import opentype from 'opentype.js';
 
@@ -57,6 +55,27 @@ function App() {
     }
   };
 
+  // Handles page print
+  const handlePrint = () => {
+    const css = '@page { size: landscape; }',
+      head = document.head || document.getElementsByTagName('head')[0],
+      style = document.createElement('style');
+
+    style.type = 'text/css';
+    style.media = 'print';
+
+    if ('styleSheet' in style) {
+      const styleSheet = style.sheet as CSSStyleSheet;
+      styleSheet.insertRule(css, styleSheet.cssRules.length);
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+
+    head.appendChild(style);
+
+    window.print();
+  };
+
   // Event handler to set a common text for all proof elements
   const setCommonText = () => {
     const all = document.getElementsByClassName('proof');
@@ -65,42 +84,29 @@ function App() {
     }
   };
 
-  // Event handler to save the page as a PDF
-  const savePageAsPDF = () => {
-    html2canvas(document.body, {
-      windowWidth: window.scrollX + window.outerWidth,
-      windowHeight: window.scrollY + window.outerHeight,
-    }).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const doc = new jsPDF('l', 'mm');
-      doc.addImage(
-        imgData,
-        'PNG',
-        0,
-        0,
-        doc.internal.pageSize.getWidth(),
-        doc.internal.pageSize.getHeight()
-      );
-      doc.save('sample.pdf');
-    });
-  };
-
   return (
     <div className="app">
       <header>
-        <h1>Welcome to Typefaceoff!</h1>
+        <h1 className="title">Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
         <button className="button" onClick={setCommonText}>
           Alice in Wonderland
         </button>
-        <button className="button" onClick={savePageAsPDF}>
-          Save page as PDF
+        <button
+          className="button"
+          onClick={() => {
+            handlePrint();
+          }}
+        >
+          Save previews as PDF
         </button>
       </header>
       <main>
         {/* Left side */}
         <section className="side-container">
-          <FontUploader onFontSelected={handleFontSelectedLeft} />
+          <div className="font-uploader">
+            <FontUploader onFontSelected={handleFontSelectedLeft} />
+          </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputLeft">Line spacing: </label>
             <input
@@ -113,13 +119,18 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
+          <div><p>Font features detected: {fontFeatureOptionsLeft.toString()}</p></div>
           {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
+          <div className="font-preview">
+            {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
+          </div>
         </section>
 
         {/* Right side */}
         <section className="side-container">
-          <FontUploader onFontSelected={handleFontSelectedRight} />
+          <div className="font-uploader">
+            <FontUploader onFontSelected={handleFontSelectedRight} />
+          </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputRight">Line spacing: </label>
             <input
@@ -132,8 +143,10 @@ function App() {
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
-          {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
+          <div><p>Font features detected: {fontFeatureOptionsRight.toString()}</p></div>
+          <div className="font-preview">
+            {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
+          </div>
         </section>
       </main>
       <footer>
