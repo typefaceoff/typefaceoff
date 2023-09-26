@@ -34,11 +34,6 @@ For typesetting in English, OpenType features are used to access alternate glyph
 
 Typefaceoff should reveal what OpenType features a font supports, let the user enable/disable individual features used in the proofing template, and/or select the stylistic set(s) used.
 
-#### Allow the user to customise the text used in the proofing template(s)
-
-Proofing text is currently a fixed, uneditable extract (from *Alice in Wonderland*). Users may wish to enter their own text to see how fonts look using copy that is more immediately relevant to their work.
-
-#### Export type specimen to PDF
 
 ### Planned for v0.3 (October 20, 2023)
 
@@ -79,3 +74,9 @@ The core-most feature of this tool. A user should be able to drag and drop two f
 #### Configurable line spacing `v0.1.0`
 
 Different fonts set with the same line height will *optically* look different. Allowing separate adjustments to line height, for each font being proofed, lets the user make manual adjustments to get a truer, one-to-one comparison of how the two fonts they are consider would actually behave in use.
+
+#### Allow the user to customise the text used in the proofing template(s)
+
+Proofing text is currently a fixed, uneditable extract (from *Alice in Wonderland*). Users may wish to enter their own text to see how fonts look using copy that is more immediately relevant to their work.
+
+#### Export type specimen to PDF
