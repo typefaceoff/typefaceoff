@@ -38,9 +38,8 @@ cd typefaceoff
 # Install dependencies
 pnpm install
 
-# Install pdf tools
-npm update
-npm install jspdf html2canvas --save
+# Install font tools
+pnpm install opentype.js
 
 # Set up pre-commit hooks for code formatting
 pnpm run husky
