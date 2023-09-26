@@ -60,19 +60,14 @@ function App() {
     const css = '@page { size: landscape; }',
       head = document.head || document.getElementsByTagName('head')[0],
       style = document.createElement('style');
-
-    style.type = 'text/css';
     style.media = 'print';
-
     if ('styleSheet' in style) {
       const styleSheet = style.sheet as CSSStyleSheet;
       styleSheet.insertRule(css, styleSheet.cssRules.length);
     } else {
       style.appendChild(document.createTextNode(css));
     }
-
     head.appendChild(style);
-
     window.print();
   };
 
@@ -119,7 +114,7 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          <div>
+          <div className="font-features">
             <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
           </div>
           <div className="font-preview">
@@ -144,7 +139,7 @@ function App() {
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          <div>
+          <div className="font-features">
             <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
           </div>
           <div className="font-preview">
