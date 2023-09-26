@@ -4,6 +4,9 @@ import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
 import opentype from 'opentype.js';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { proofingText } from './constants';
 
 function App() {
   // State for the selected font on the left
@@ -62,21 +65,44 @@ function App() {
     }
   };
 
+  // Event handler to set a common text for all proof elements
+  const setCommonText = () => {
+    const all = document.getElementsByClassName('proof');
+    for (const elem of all) {
+      elem.textContent = proofingText;
+    }
+  };
+
+  // Event handler to save the page as a PDF
+  const savePageAsPDF = () => {
+    html2canvas(document.body, {
+      windowWidth: window.scrollX + window.outerWidth,
+      windowHeight: window.scrollY + window.outerHeight,
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const doc = new jsPDF('l', 'mm');
+      doc.addImage(
+        imgData,
+        'PNG',
+        0,
+        0,
+        doc.internal.pageSize.getWidth(),
+        doc.internal.pageSize.getHeight()
+      );
+      doc.save('sample.pdf');
+    });
+  };
+
   return (
     <div className="app">
       <header>
         <h1>Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
-        <button
-          className="button"
-          onClick={() => {
-            const all = document.getElementsByClassName('proof');
-            for (const elem of all) {
-              elem.textContent = `There was nothing so very remarkable in that; nor did Alice think it so very much out \n of the way to hear the Rabbit say to itself, “Oh dear! Oh dear! I shall be late!” (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.`;
-            }
-          }}
-        >
+        <button className="button" onClick={setCommonText}>
           Alice in Wonderland
+        </button>
+        <button className="button" onClick={savePageAsPDF}>
+          Save page as PDF
         </button>
       </header>
       <main>
