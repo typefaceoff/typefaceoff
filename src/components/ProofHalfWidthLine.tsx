@@ -9,6 +9,11 @@ export default function HalfWidthLine(proofingText: string, pointSize: number, l
     }
   };
 
+  const paragraphStyle: React.CSSProperties = {
+    fontSize: pointSize,
+    lineHeight: lineHeight,
+    maxHeight: 100 * lineHeight,
+  };
 
   return (
     <div>
@@ -17,7 +22,7 @@ export default function HalfWidthLine(proofingText: string, pointSize: number, l
         className="half-width-line proof"
         contentEditable
         onInput={updateProofingText}
-        style={{ fontSize: pointSize, lineHeight: lineHeight, maxHeight: 100 * lineHeight }}
+        style={paragraphStyle}
       >
         {proofingText}
       </p>
