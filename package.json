@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@types/opentype.js": "^1.3.6",
-    "opentype.features.js": "^1.0.17",
+    "opentype.js": "^1.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",

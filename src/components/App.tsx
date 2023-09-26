@@ -3,6 +3,7 @@ import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
+import opentype from 'opentype.js';
 
 function App() {
   // State for the selected font on the left
@@ -17,14 +18,48 @@ function App() {
   // State for the line height on the left
   const [lineHeightLeft, setLineHeightLeft] = useState<number>(1.5);
 
+  // Opentype feature option names from the gsub table of the font file on the left
+  const [fontFeatureOptionsLeft, setFontFeatureOptionsLeft] = useState<unknown[]>([]);
+
+  // Opentype feature option names from the gsub table of the font file on the right
+  const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<unknown[]>([]);
+
   // Handler for when a font is selected on the left side
   const handleFontSelectedLeft = (selectedFont: File | null) => {
     setSelectedFontLeft(selectedFont);
+    if (selectedFont != null) {
+      const buffer = selectedFont.arrayBuffer();
+      buffer.then((data) => {
+        const otfFont = opentype.parse(data);
+        const featureNames = [
+          ...Array.from(new Set(otfFont.tables.gsub.features.map((f: any) => f.tag))),
+        ];
+        //TODO: Remove debug logging of feature names
+        for (const name of featureNames) {
+          console.log(name);
+        }
+        setFontFeatureOptionsLeft(featureNames);
+      });
+    }
   };
 
   // Handler for when a font is selected on the right side
   const handleFontSelectedRight = (selectedFont: File | null) => {
     setSelectedFontRight(selectedFont);
+    if (selectedFont != null) {
+      const buffer = selectedFont.arrayBuffer();
+      buffer.then((data) => {
+        const otfFont = opentype.parse(data);
+        const featureNames = [
+          ...Array.from(new Set(otfFont.tables.gsub.features.map((f: any) => f.tag))),
+        ];
+        //TODO: Remove debug logging of feature names
+        for (const name of featureNames) {
+          console.log(name);
+        }
+        setFontFeatureOptionsRight(featureNames);
+      });
+    }
   };
 
   return (
@@ -60,6 +95,9 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
+          <div>
+            <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
+          </div>
           {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
         </section>
 
@@ -77,6 +115,9 @@ function App() {
               step={0.05}
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
+          </div>
+          <div>
+            <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
           </div>
           {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
         </section>
