@@ -52,3 +52,18 @@ footer {
     padding: 1.25rem;
     margin-block-start: 8rem;
 }
+
+@media print {
+    .title,
+    .subtitle,
+    .button,
+    .font-uploader,
+    .footer-text,
+    .github-icon,
+    .line-height-adjustment {
+        display: none;
+    }
+    .main > .side-container * {
+        display: block;
+    }
+}
