@@ -3,6 +3,7 @@ import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
+import { proofingText } from './constants';
 
 function App() {
   // State for the selected font on the left
