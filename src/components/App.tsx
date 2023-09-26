@@ -37,10 +37,6 @@ function App() {
         const featureNames = [
           ...Array.from(new Set(otfFont.tables.gsub.features.map((f: any) => f.tag))),
         ];
-        //TODO: Remove debug logging of feature names
-        for (const name of featureNames) {
-          console.log(name);
-        }
         setFontFeatureOptionsLeft(featureNames);
       });
     }
@@ -56,10 +52,6 @@ function App() {
         const featureNames = [
           ...Array.from(new Set(otfFont.tables.gsub.features.map((f: any) => f.tag))),
         ];
-        //TODO: Remove debug logging of feature names
-        for (const name of featureNames) {
-          console.log(name);
-        }
         setFontFeatureOptionsRight(featureNames);
       });
     }
