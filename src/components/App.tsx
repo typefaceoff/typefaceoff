@@ -122,7 +122,6 @@ function App() {
           <div>
             <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
           </div>
-          {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
           <div className="font-preview">
             {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
           </div>
