@@ -119,7 +119,9 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          <div><p>Font features detected: {fontFeatureOptionsLeft.toString()}</p></div>
+          <div>
+            <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
+          </div>
           {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
           <div className="font-preview">
             {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
@@ -143,7 +145,9 @@ function App() {
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          <div><p>Font features detected: {fontFeatureOptionsRight.toString()}</p></div>
+          <div>
+            <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
+          </div>
           <div className="font-preview">
             {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
           </div>
