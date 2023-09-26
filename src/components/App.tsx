@@ -57,22 +57,15 @@ function App() {
     });
   };
 
-
   return (
     <div className="app">
       <header>
         <h1>Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
-        <button
-          className="button"
-          onClick={setCommonText}
-        >
+        <button className="button" onClick={setCommonText}>
           Alice in Wonderland
         </button>
-        <button
-          className="button"
-          onClick={savePageAsPDF}
-        >
+        <button className="button" onClick={savePageAsPDF}>
           Save page as PDF
         </button>
       </header>
