@@ -41,10 +41,11 @@ function App() {
         const featureNames: string[] = Array.from(
           new Set(otfFont.tables.gsub.features.map((f: { tag: string }) => f.tag))
         ).map((name: unknown) => String(name));
+        const featureSettings: boolean[] = featureNames.map(() => false);
 
         if (side === 'left') {
           setFontFeatureOptionsLeft(featureNames);
-          setFontFeatureOptionsLeft(featureNames);
+          setFontSettingsLeft(featureSettings);
         }
         if (side === 'right') {
           setFontFeatureOptionsRight(featureNames);

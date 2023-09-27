@@ -1,26 +1,46 @@
+import React, { useCallback } from 'react';
 import FontFeatureCheckbox from './FontFeatureCheckbox';
+import '../styles/FontUploader.css';
 
-const FontFeaturesSetting = ({ fontFeatureOptions, fontSettings, fontSettingHandler }) => {
-  const handleChange = (i) => {
-    if (fontSettings[i]) {
-      fontSettings[i] = false;
-    } else {
-      fontSettings[i] = true;
-    }
-    console.log('Feature settings ', fontSettings.toString());
-    fontSettingHandler(fontSettings);
-  };
+interface FontFeaturesProps {
+  fontSettingHandler: (feature: boolean[] | null) => void;
+  fontFeatureOptions: string[];
+  fontSettings: boolean[];
+}
+
+const FontFeaturesSetting: React.FC<FontFeaturesProps> = ({
+  fontSettingHandler,
+  fontFeatureOptions,
+  fontSettings,
+}) => {
+  const onChecked = useCallback(
+    (index: number) => {
+      fontSettings[index] = !fontSettings[index];
+      console.log('Settings: ', fontSettings.toString());
+      fontSettingHandler(fontSettings);
+    },
+    [fontSettings, fontSettingHandler]
+  );
 
   const features = fontFeatureOptions.map(function (feature, i) {
     return (
       <FontFeatureCheckbox
         label={feature.toString()}
         value={fontSettings[i]}
-        onChange={() => handleChange(i)}
+        onChange={() => onChecked(i)}
       />
     );
   });
 
-  return <div>{features}</div>;
+  if (fontFeatureOptions.length == 0) {
+    return (
+      <div>
+        <p>No OpenType font features detected</p>
+      </div>
+    );
+  } else {
+    return <div>{features}</div>;
+  }
 };
+
 export default FontFeaturesSetting;
