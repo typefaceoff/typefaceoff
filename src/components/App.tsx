@@ -4,7 +4,7 @@ import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
 import { proofingText } from './constants';
-import opentype, { Font } from 'opentype.js';
+import opentype from 'opentype.js';
 
 function App() {
   // State for the selected font on the left
@@ -33,35 +33,6 @@ function App() {
         const featureNames: string[] = Array.from(
           new Set(otfFont.tables.gsub.features.map((f: { tag: string }) => f.tag))
         ).map((name: unknown) => String(name));
-
-        if (side === 'left') {
-          setFontFeatureOptionsLeft(featureNames);
-        }
-        if (side === 'right') {
-          setFontFeatureOptionsRight(featureNames);
-        }
-      });
-    }
-  };
-
-  // Opentype feature option names from the gsub table of the font file on the left
-  const [fontFeatureOptionsLeft, setFontFeatureOptionsLeft] = useState<unknown[]>([]);
-
-  // Opentype feature option names from the gsub table of the font file on the right
-  const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<unknown[]>([]);
-
-  const handleFontSelected = (selectedFont: File | null, side: string) => {
-    if (selectedFont != null) {
-      const buffer = selectedFont.arrayBuffer();
-      buffer.then((data) => {
-        const otfFont = opentype.parse(data);
-        const featureNames = [
-          ...Array.from(new Set(otfFont.tables.gsub.features.map((f: { tag: string }) => f.tag))),
-        ];
-        // Check featureNames is not empty
-        if (featureNames.length === 0 || featureNames[0] === undefined) {
-          featureNames.push('No OpenType features detected');
-        }
 
         if (side === 'left') {
           setFontFeatureOptionsLeft(featureNames);
