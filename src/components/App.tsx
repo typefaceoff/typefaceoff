@@ -28,7 +28,7 @@ function App() {
 
   const [fontSettingsLeft, setFontSettingsLeft] = useState<boolean[]>([]);
 
-  const handleFontSettingChange = (newSettings: boolean[]) => {
+  const handleFontSettingChangeLeft = (newSettings: boolean[]) => {
     setFontSettingsLeft(newSettings);
     console.log('Final settings', fontSettingsLeft.toString());
   };
@@ -137,12 +137,20 @@ function App() {
               <FontFeaturesSetting
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
-                fontSettingsHandler={handleFontSettingChange}
+                fontSettingHandler={handleFontSettingChangeLeft}
               />
             }
           </div>
           <div className="font-preview">
-            {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
+            {
+              <FontPreview
+                fontFile={selectedFontLeft}
+                side="left"
+                lineHeight={lineHeightLeft}
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+              />
+            }
           </div>
         </section>
 
@@ -167,7 +175,15 @@ function App() {
             <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
           </div>
           <div className="font-preview">
-            {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
+            {
+              <FontPreview
+                fontFile={selectedFontRight}
+                side="right"
+                lineHeight={lineHeightRight}
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+              />
+            }
           </div>
         </section>
       </main>
