@@ -11,7 +11,7 @@ const FontFeaturesSetting = ({ fontFeatureOptions, fontSettings, fontSettingHand
     fontSettingHandler(fontSettings);
   };
 
-  var features = fontFeatureOptions.map(function (feature, i) {
+  const features = fontFeatureOptions.map(function (feature, i) {
     return (
       <FontFeatureCheckbox
         label={feature.toString()}

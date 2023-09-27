@@ -116,7 +116,7 @@ function App() {
         {/* Left side */}
         <section className="side-container">
           <div className="font-uploader">
-            <FontUploader onFontSelected={() => handleFontSelectedLeft} />
+            <FontUploader onFontSelected={handleFontSelectedLeft} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputLeft">Line spacing: </label>
@@ -138,7 +138,7 @@ function App() {
               <FontFeaturesSetting
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
-                fontSettingsHandler={() => handleFontSettingChange}
+                fontSettingsHandler={handleFontSettingChange}
               />
             }
           </div>
