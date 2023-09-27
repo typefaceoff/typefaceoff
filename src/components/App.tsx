@@ -44,6 +44,35 @@ function App() {
     }
   };
 
+  // Opentype feature option names from the gsub table of the font file on the left
+  const [fontFeatureOptionsLeft, setFontFeatureOptionsLeft] = useState<unknown[]>([]);
+
+  // Opentype feature option names from the gsub table of the font file on the right
+  const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<unknown[]>([]);
+
+  const handleFontSelected = (selectedFont: File | null, side: string) => {
+    if (selectedFont != null) {
+      const buffer = selectedFont.arrayBuffer();
+      buffer.then((data) => {
+        const otfFont = opentype.parse(data);
+        const featureNames = [
+          ...Array.from(new Set(otfFont.tables.gsub.features.map((f: { tag: string }) => f.tag))),
+        ];
+        // Check featureNames is not empty
+        if (featureNames.length === 0 || featureNames[0] === undefined) {
+          featureNames.push('No OpenType features detected');
+        }
+
+        if (side === 'left') {
+          setFontFeatureOptionsLeft(featureNames);
+        }
+        if (side === 'right') {
+          setFontFeatureOptionsRight(featureNames);
+        }
+      });
+    }
+  };
+
   // Handler for when a font is selected on the left side
   const handleFontSelectedLeft = (selectedFont: File | null) => {
     setSelectedFontLeft(selectedFont);

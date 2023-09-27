@@ -37,6 +37,13 @@ main {
     color: black;
 }
 
+.button {
+    color: aliceblue;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 footer {
     display: flex;
     align-items: center;
@@ -44,4 +51,19 @@ footer {
     background-color: var(--color-bg-variant);
     padding: 1.25rem;
     margin-block-start: 8rem;
+}
+
+@media print {
+    .title,
+    .subtitle,
+    .button,
+    .font-uploader,
+    .footer-text,
+    .github-icon,
+    .line-height-adjustment {
+        display: none;
+    }
+    .main > .side-container * {
+        display: block;
+    }
 }
