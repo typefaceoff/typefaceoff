@@ -1,10 +1,11 @@
-import { useState } from 'react';
 import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
-import { proofingText } from './constants';
+import { useState } from 'react';
+import { proofingText, opentypeText } from './constants';
 import opentype from 'opentype.js';
+import FontFeaturesSetting from './FontFeaturesSetting';
 
 function App() {
   // State for the selected font on the left
@@ -25,6 +26,20 @@ function App() {
   // Opentype feature option names from the gsub table of the font file on the right
   const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<string[]>([]);
 
+  //Opentype feature current on/off settings for left font, initialised to all off
+  const [fontSettingsLeft, setFontSettingsLeft] = useState<boolean[]>([]);
+
+  //Opentype feature current on/off settings for false font, initialised to all off
+  const [fontSettingsRight, setFontSettingsRight] = useState<boolean[]>([]);
+
+  const handleFontSettingChangeLeft = (newSettings: boolean[]) => {
+    setFontSettingsLeft(newSettings);
+  };
+
+  const handleFontSettingChangeRight = (newSettings: boolean[]) => {
+    setFontSettingsRight(newSettings);
+  };
+
   const handleFontSelected = (selectedFont: File | null, side: string) => {
     if (selectedFont != null) {
       const buffer = selectedFont.arrayBuffer();
@@ -33,12 +48,15 @@ function App() {
         const featureNames: string[] = Array.from(
           new Set(otfFont.tables.gsub.features.map((f: { tag: string }) => f.tag))
         ).map((name: unknown) => String(name));
+        const featureSettings: boolean[] = featureNames.map(() => false);
 
         if (side === 'left') {
           setFontFeatureOptionsLeft(featureNames);
+          setFontSettingsLeft(featureSettings);
         }
         if (side === 'right') {
           setFontFeatureOptionsRight(featureNames);
+          setFontSettingsRight(featureSettings);
         }
       });
     }
@@ -58,29 +76,25 @@ function App() {
 
   // Handles page print
   const handlePrint = () => {
-    const css = '@page { size: landscape; }',
+    const css = '@page { size: A3 landscape; margin: 0; }',
       head = document.head || document.getElementsByTagName('head')[0],
       style = document.createElement('style');
-
     style.media = 'print';
-
     if ('styleSheet' in style) {
       const styleSheet = style.sheet as CSSStyleSheet;
       styleSheet.insertRule(css, styleSheet.cssRules.length);
     } else {
       style.appendChild(document.createTextNode(css));
     }
-
     head.appendChild(style);
-
     window.print();
   };
 
   // Event handler to set a common text for all proof elements
-  const setCommonText = () => {
+  const setText = (text: string) => {
     const all = document.getElementsByClassName('proof');
     for (const elem of all) {
-      elem.textContent = proofingText;
+      elem.textContent = text;
     }
   };
 
@@ -89,8 +103,11 @@ function App() {
       <header>
         <h1 className="title">Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
-        <button className="button" onClick={setCommonText}>
+        <button className="button" onClick={() => setText(proofingText)}>
           Alice in Wonderland
+        </button>
+        <button className="button" onClick={() => setText(opentypeText)}>
+          Quick Brown Fox
         </button>
         <button
           className="button"
@@ -119,11 +136,28 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          <div>
+          <div className="font-features">
             <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
           </div>
+          <div className="font-feature-checkboxes-container-left">
+            {
+              <FontFeaturesSetting
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+                fontSettingHandler={handleFontSettingChangeLeft}
+              />
+            }
+          </div>
           <div className="font-preview">
-            {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
+            {
+              <FontPreview
+                fontFile={selectedFontLeft}
+                side="left"
+                lineHeight={lineHeightLeft}
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+              />
+            }
           </div>
         </section>
 
@@ -144,11 +178,28 @@ function App() {
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          <div>
+          <div className="font-features">
             <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
           </div>
+          <div className="font-feature-checkboxes-container-Right">
+            {
+              <FontFeaturesSetting
+                fontFeatureOptions={fontFeatureOptionsRight}
+                fontSettings={fontSettingsRight}
+                fontSettingHandler={handleFontSettingChangeRight}
+              />
+            }
+          </div>
           <div className="font-preview">
-            {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
+            {
+              <FontPreview
+                fontFile={selectedFontRight}
+                side="right"
+                lineHeight={lineHeightRight}
+                fontFeatureOptions={fontFeatureOptionsRight}
+                fontSettings={fontSettingsRight}
+              />
+            }
           </div>
         </section>
       </main>
