@@ -12,28 +12,7 @@ Minor bug fixes and enhancements to existing features don’t need to be mention
 
 ## 🗺️ Feature roadmap
 
-*Last updated August 27, 2023.*
-
-### Planned for v0.2 (September 29, 2023)
-
-#### Configurable leading
-
-Simply changing the typeface used to typeset a document does not lend itself to fair comparison between two choices. This is, in part, because the *point size* of a font is [surprisingly non-standard](https://tonsky.me/blog/font-size). Different typefaces need to be set at different point sizes, with different line spacing, to optically *appear* as though they’re otherwise typeset similarly.
-
-The user should be able to adjust the line spacing (within a small but reasonable range) separately for each font being compared. This lets them see the text typeset closer to how they would use it in production, rather than having to optimise for one font at the detriment of the other.
-
-> [!NOTE]
-> **Leading** (pronounced *ledding*) is the traditional term for **line spacing**, because printers used to put strips of lead between lines to adjust line spacing.
-
-#### Comparison of OpenType feature support
-
-For typesetting in English, OpenType features are used to access alternate glyphs in a font, enabling features such as ligatures, proportional/tabular figures, lining/old-style figures, ordinals, true superscript & subscript figures, among others. OpenType features are a domain in which typeface designers can flex their muscles, and support for and execution of OpenType features can be a major deciding factor for some typesetters.
-
-> [!NOTE]
-> OpenType was primarily developed for improved support for various international writing systems. OpenType features are somewhat of a luxury when typesetting in Latin script, but are table-stakes for some languages such as Arabic or Urdu.
-
-Typefaceoff should reveal what OpenType features a font supports, let the user enable/disable individual features used in the proofing template, and/or select the stylistic set(s) used.
-
+*Last updated September 27, 2023.*
 
 ### Planned for v0.3 (October 20, 2023)
 
@@ -75,8 +54,26 @@ The core-most feature of this tool. A user should be able to drag and drop two f
 
 Different fonts set with the same line height will *optically* look different. Allowing separate adjustments to line height, for each font being proofed, lets the user make manual adjustments to get a truer, one-to-one comparison of how the two fonts they are consider would actually behave in use.
 
+#### Configurable leading
+
+Simply changing the typeface used to typeset a document does not lend itself to fair comparison between two choices. This is, in part, because the *point size* of a font is [surprisingly non-standard](https://tonsky.me/blog/font-size). Different typefaces need to be set at different point sizes, with different line spacing, to optically *appear* as though they’re otherwise typeset similarly.
+
+The user should be able to adjust the line spacing (within a small but reasonable range) separately for each font being compared. This lets them see the text typeset closer to how they would use it in production, rather than having to optimise for one font at the detriment of the other.
+
+> [!NOTE]
+> **Leading** (pronounced *ledding*) is the traditional term for **line spacing**, because printers used to put strips of lead between lines to adjust line spacing.
+
 #### Allow the user to customise the text used in the proofing template(s)
 
 Proofing text is currently a fixed, uneditable extract (from *Alice in Wonderland*). Users may wish to enter their own text to see how fonts look using copy that is more immediately relevant to their work.
 
 #### Export type specimen to PDF
+
+#### Comparison of OpenType feature support
+
+For typesetting in English, OpenType features are used to access alternate glyphs in a font, enabling features such as ligatures, proportional/tabular figures, lining/old-style figures, ordinals, true superscript & subscript figures, among others. OpenType features are a domain in which typeface designers can flex their muscles, and support for and execution of OpenType features can be a major deciding factor for some typesetters.
+
+> [!NOTE]
+> OpenType was primarily developed for improved support for various international writing systems. OpenType features are somewhat of a luxury when typesetting in Latin script, but are table-stakes for some languages such as Arabic or Urdu.
+
+Typefaceoff should reveal what OpenType features a font supports, let the user enable/disable individual features used in the proofing template, and/or select the stylistic set(s) used.
