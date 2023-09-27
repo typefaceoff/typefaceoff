@@ -3,6 +3,8 @@ import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
+import { proofingText } from './constants';
+import opentype, { Font } from 'opentype.js';
 
 function App() {
   // State for the selected font on the left
@@ -17,26 +19,94 @@ function App() {
   // State for the line height on the left
   const [lineHeightLeft, setLineHeightLeft] = useState<number>(1.5);
 
+  // Opentype feature option names from the gsub table of the font file on the left
+  const [fontFeatureOptionsLeft, setFontFeatureOptionsLeft] = useState<string[]>([]);
+
+  // Opentype feature option names from the gsub table of the font file on the right
+  const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<string[]>([]);
+
+  const handleFontSelected = (selectedFont: File | null, side: string) => {
+    if (selectedFont != null) {
+      const buffer = selectedFont.arrayBuffer();
+      buffer.then((data) => {
+        const otfFont = opentype.parse(data);
+        const featureNames: string[] = Array.from(
+          new Set(otfFont.tables.gsub.features.map((f: { tag: string }) => f.tag))
+        ).map((name: unknown) => String(name));
+
+        if (side === 'left') {
+          setFontFeatureOptionsLeft(featureNames);
+        }
+        if (side === 'right') {
+          setFontFeatureOptionsRight(featureNames);
+        }
+      });
+    }
+  };
+
   // Handler for when a font is selected on the left side
   const handleFontSelectedLeft = (selectedFont: File | null) => {
     setSelectedFontLeft(selectedFont);
+    handleFontSelected(selectedFont, 'left');
   };
 
   // Handler for when a font is selected on the right side
   const handleFontSelectedRight = (selectedFont: File | null) => {
     setSelectedFontRight(selectedFont);
+    handleFontSelected(selectedFont, 'right');
+  };
+
+  // Handles page print
+  const handlePrint = () => {
+    const css = '@page { size: landscape; }',
+      head = document.head || document.getElementsByTagName('head')[0],
+      style = document.createElement('style');
+
+    style.media = 'print';
+
+    if ('styleSheet' in style) {
+      const styleSheet = style.sheet as CSSStyleSheet;
+      styleSheet.insertRule(css, styleSheet.cssRules.length);
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+
+    head.appendChild(style);
+
+    window.print();
+  };
+
+  // Event handler to set a common text for all proof elements
+  const setCommonText = () => {
+    const all = document.getElementsByClassName('proof');
+    for (const elem of all) {
+      elem.textContent = proofingText;
+    }
   };
 
   return (
     <div className="app">
       <header>
-        <h1>Welcome to Typefaceoff!</h1>
+        <h1 className="title">Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
+        <button className="button" onClick={setCommonText}>
+          Alice in Wonderland
+        </button>
+        <button
+          className="button"
+          onClick={() => {
+            handlePrint();
+          }}
+        >
+          Save previews as PDF
+        </button>
       </header>
       <main>
         {/* Left side */}
         <section className="side-container">
-          <FontUploader onFontSelected={handleFontSelectedLeft} />
+          <div className="font-uploader">
+            <FontUploader onFontSelected={handleFontSelectedLeft} />
+          </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputLeft">Line spacing: </label>
             <input
@@ -49,12 +119,19 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
+          <div>
+            <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
+          </div>
+          <div className="font-preview">
+            {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
+          </div>
         </section>
 
         {/* Right side */}
         <section className="side-container">
-          <FontUploader onFontSelected={handleFontSelectedRight} />
+          <div className="font-uploader">
+            <FontUploader onFontSelected={handleFontSelectedRight} />
+          </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputRight">Line spacing: </label>
             <input
@@ -67,7 +144,12 @@ function App() {
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
+          <div>
+            <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
+          </div>
+          <div className="font-preview">
+            {<FontPreview fontFile={selectedFontRight} side="right" lineHeight={lineHeightRight} />}
+          </div>
         </section>
       </main>
       <footer>
