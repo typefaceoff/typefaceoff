@@ -57,7 +57,7 @@ function App() {
 
   // Handles page print
   const handlePrint = () => {
-    const css = '@page { size: landscape; }',
+    const css = '@page { size: A3 landscape; margin: 0; }',
       head = document.head || document.getElementsByTagName('head')[0],
       style = document.createElement('style');
     style.media = 'print';
