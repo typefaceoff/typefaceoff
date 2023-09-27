@@ -26,11 +26,20 @@ function App() {
   // Opentype feature option names from the gsub table of the font file on the right
   const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<string[]>([]);
 
+  //Opentype feature current on/off settings for left font, initialised to all off
   const [fontSettingsLeft, setFontSettingsLeft] = useState<boolean[]>([]);
+
+  //Opentype feature current on/off settings for false font, initialised to all off
+  const [fontSettingsRight, setFontSettingsRight] = useState<boolean[]>([]);
 
   const handleFontSettingChangeLeft = (newSettings: boolean[]) => {
     setFontSettingsLeft(newSettings);
     console.log('Final settings', fontSettingsLeft.toString());
+  };
+
+  const handleFontSettingChangeRight = (newSettings: boolean[]) => {
+    setFontSettingsRight(newSettings);
+    console.log('Final settings', fontSettingsRight.toString());
   };
 
   const handleFontSelected = (selectedFont: File | null, side: string) => {
@@ -49,6 +58,7 @@ function App() {
         }
         if (side === 'right') {
           setFontFeatureOptionsRight(featureNames);
+          setFontSettingsRight(featureSettings);
         }
       });
     }
@@ -173,6 +183,15 @@ function App() {
           </div>
           <div>
             <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
+          </div>
+          <div>
+            {
+              <FontFeaturesSetting
+                fontFeatureOptions={fontFeatureOptionsRight}
+                fontSettings={fontSettingsRight}
+                fontSettingHandler={handleFontSettingChangeRight}
+              />
+            }
           </div>
           <div className="font-preview">
             {

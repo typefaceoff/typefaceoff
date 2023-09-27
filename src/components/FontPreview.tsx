@@ -10,6 +10,14 @@ interface FontPreviewProps {
   fontSettings: boolean[];
 }
 
+function arraysEqual(prevArray, nextArray) {
+  if (prevArray.length != nextArray.length) return false;
+  for (let i = 0; i < prevArray.length; i++) {
+    if (prevArray[i] != nextArray[i]) return false;
+  }
+  return true;
+}
+
 function getFontFamily(fontFile: File | null, side: string) {
   if (fontFile) {
     return side === 'left' ? 'CustomFontLeft' : 'CustomFontRight';
@@ -74,7 +82,7 @@ export default React.memo(FontPreview, (prevProps, nextProps) => {
     prevProps.fontFile === nextProps.fontFile &&
     prevProps.lineHeight === nextProps.lineHeight &&
     prevProps.side === nextProps.side &&
-    prevProps.fontFeatureOptions === nextProps.fontFeatureOptions &&
-    prevProps.fontSettings === nextProps.fontSettings
+    arraysEqual(prevProps.fontFeatureOptions, nextProps.fontFeatureOptions) &&
+    arraysEqual(prevProps.fontSettings, nextProps.fontSettings)
   );
 });
