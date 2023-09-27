@@ -91,18 +91,10 @@ function App() {
   };
 
   // Event handler to set a common text for all proof elements
-  const setAliceText = () => {
+  const setText = (text: string) => {
     const all = document.getElementsByClassName('proof');
     for (const elem of all) {
-      elem.textContent = proofingText;
-    }
-  };
-
-  // Event handler to set a common text for all proof elements (for opentype)
-  const setOpentypeText = () => {
-    const all = document.getElementsByClassName('proof');
-    for (const elem of all) {
-      elem.textContent = opentypeText;
+      elem.textContent = text;
     }
   };
 
@@ -111,10 +103,10 @@ function App() {
       <header>
         <h1 className="title">Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
-        <button className="button" onClick={setAliceText}>
+        <button className="button" onClick={() => setText(proofingText)}>
           Alice in Wonderland
         </button>
-        <button className="button" onClick={setOpentypeText}>
+        <button className="button" onClick={() => setText(opentypeText)}>
           Quick Brown Fox
         </button>
         <button
