@@ -1,5 +1,6 @@
 import SizingToken from './SizingToken';
 import '../styles/ProofHalfWidthLine.css';
+import { maxHeightMultiplier } from './constants';
 
 export default function HalfWidthLine(proofingText: string, pointSize: number, lineHeight: number) {
   const updateProofingText = (e: React.FormEvent<HTMLParagraphElement>) => {
@@ -12,7 +13,7 @@ export default function HalfWidthLine(proofingText: string, pointSize: number, l
   const paragraphStyle: React.CSSProperties = {
     fontSize: pointSize,
     lineHeight: lineHeight,
-    maxHeight: 100 * lineHeight,
+    maxHeight: maxHeightMultiplier * lineHeight,
   };
 
   return (
