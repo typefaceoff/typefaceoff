@@ -23,6 +23,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({ fontFile, side, lineHeight })
 
   const fontStyles: React.CSSProperties = {
     fontFamily: fontFamily,
+    fontFeatureSettings: `'aalt' on`,
   };
 
   const fontFace = `

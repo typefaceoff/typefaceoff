@@ -5,6 +5,7 @@ import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
 import { proofingText } from './constants';
 import opentype from 'opentype.js';
+import FontFeaturesSetting from './FontFeaturesSetting';
 
 function App() {
   // State for the selected font on the left
@@ -25,6 +26,8 @@ function App() {
   // Opentype feature option names from the gsub table of the font file on the right
   const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<unknown[]>([]);
 
+  const [fontSettingsLeft, setFontSettingsLeft] = useState<unknown[]>([]);
+
   // Handler for when a font is selected on the left side
   const handleFontSelectedLeft = (selectedFont: File | null) => {
     setSelectedFontLeft(selectedFont);
@@ -35,7 +38,10 @@ function App() {
         const featureNames = [
           ...Array.from(new Set(otfFont.tables.gsub.features.map((f: any) => f.tag))),
         ];
+        const fontSettings = featureNames.map(() => false);
+
         setFontFeatureOptionsLeft(featureNames);
+        setFontSettingsLeft(fontSettings);
       });
     }
   };
@@ -121,6 +127,15 @@ function App() {
           </div>
           <div>
             <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
+          </div>
+          <div>
+            {
+              <FontFeaturesSetting
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+                fontSettingsHandler={setFontSettingsLeft}
+              />
+            }
           </div>
           <div className="font-preview">
             {<FontPreview fontFile={selectedFontLeft} side="left" lineHeight={lineHeightLeft} />}
