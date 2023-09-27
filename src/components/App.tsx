@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
