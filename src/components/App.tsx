@@ -197,8 +197,8 @@ function App() {
                 fontFile={selectedFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
-                fontFeatureOptions={fontFeatureOptionsLeft}
-                fontSettings={fontSettingsLeft}
+                fontFeatureOptions={fontFeatureOptionsRight}
+                fontSettings={fontSettingsRight}
               />
             }
           </div>
