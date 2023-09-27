@@ -80,7 +80,7 @@ export default React.memo(FontPreview, (prevProps, nextProps) => {
     prevProps.fontFile === nextProps.fontFile &&
     prevProps.lineHeight === nextProps.lineHeight &&
     prevProps.side === nextProps.side &&
-    arraysEqual(prevProps.fontFeatureOptions, nextProps.fontFeatureOptions) &&
-    arraysEqual(prevProps.fontSettings, nextProps.fontSettings)
+    prevProps.fontFeatureOptions === nextProps.fontFeatureOptions &&
+    prevProps.fontSettings === nextProps.fontSettings
   );
 });
