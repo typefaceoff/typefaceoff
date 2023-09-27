@@ -3,7 +3,7 @@ import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
-import { proofingText } from './constants';
+import { proofingText, opentypeText } from './constants';
 import opentype from 'opentype.js';
 
 function App() {
@@ -72,10 +72,18 @@ function App() {
   };
 
   // Event handler to set a common text for all proof elements
-  const setCommonText = () => {
+  const setAliceText = () => {
     const all = document.getElementsByClassName('proof');
     for (const elem of all) {
       elem.textContent = proofingText;
+    }
+  };
+
+  // Event handler to set a common text for all proof elements (for opentype)
+  const setOpentypeText = () => {
+    const all = document.getElementsByClassName('proof');
+    for (const elem of all) {
+      elem.textContent = opentypeText;
     }
   };
 
@@ -84,8 +92,11 @@ function App() {
       <header>
         <h1 className="title">Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
-        <button className="button" onClick={setCommonText}>
+        <button className="button" onClick={setAliceText}>
           Alice in Wonderland
+        </button>
+        <button className="button" onClick={setOpentypeText}>
+          Quick Brown Fox
         </button>
         <button
           className="button"
