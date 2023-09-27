@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
-import { proofingText } from './constants';
+import { useState } from 'react';
+import { proofingText, opentypeText } from './constants';
 import opentype from 'opentype.js';
 import FontFeaturesSetting from './FontFeaturesSetting';
 
@@ -76,29 +76,33 @@ function App() {
 
   // Handles page print
   const handlePrint = () => {
-    const css = '@page { size: landscape; }',
+    const css = '@page { size: A3 landscape; margin: 0; }',
       head = document.head || document.getElementsByTagName('head')[0],
       style = document.createElement('style');
-
     style.media = 'print';
-
     if ('styleSheet' in style) {
       const styleSheet = style.sheet as CSSStyleSheet;
       styleSheet.insertRule(css, styleSheet.cssRules.length);
     } else {
       style.appendChild(document.createTextNode(css));
     }
-
     head.appendChild(style);
-
     window.print();
   };
 
   // Event handler to set a common text for all proof elements
-  const setCommonText = () => {
+  const setAliceText = () => {
     const all = document.getElementsByClassName('proof');
     for (const elem of all) {
       elem.textContent = proofingText;
+    }
+  };
+
+  // Event handler to set a common text for all proof elements (for opentype)
+  const setOpentypeText = () => {
+    const all = document.getElementsByClassName('proof');
+    for (const elem of all) {
+      elem.textContent = opentypeText;
     }
   };
 
@@ -107,8 +111,11 @@ function App() {
       <header>
         <h1 className="title">Welcome to Typefaceoff!</h1>
         <p className="subtitle">Get started by dropping two fonts</p>
-        <button className="button" onClick={setCommonText}>
+        <button className="button" onClick={setAliceText}>
           Alice in Wonderland
+        </button>
+        <button className="button" onClick={setOpentypeText}>
+          Quick Brown Fox
         </button>
         <button
           className="button"
@@ -137,7 +144,7 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          <div>
+          <div className="font-features">
             <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
           </div>
           <div className="font-feature-checkboxes-container-left">
@@ -179,7 +186,7 @@ function App() {
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          <div>
+          <div className="font-features">
             <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
           </div>
           <div className="font-feature-checkboxes-container-Right">
