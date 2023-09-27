@@ -26,7 +26,12 @@ function App() {
   // Opentype feature option names from the gsub table of the font file on the right
   const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<unknown[]>([]);
 
-  const [fontSettingsLeft, setFontSettingsLeft] = useState<unknown[]>([]);
+  const [fontSettingsLeft, setFontSettingsLeft] = useState<boolean[]>([]);
+
+  const handleFontSettingChange = (newSettings: boolean[]) => {
+    setFontSettingsLeft(newSettings);
+    console.log('Final settings', fontSettingsLeft.toString());
+  };
 
   // Handler for when a font is selected on the left side
   const handleFontSelectedLeft = (selectedFont: File | null) => {
@@ -111,7 +116,7 @@ function App() {
         {/* Left side */}
         <section className="side-container">
           <div className="font-uploader">
-            <FontUploader onFontSelected={handleFontSelectedLeft} />
+            <FontUploader onFontSelected={() => handleFontSelectedLeft} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputLeft">Line spacing: </label>
@@ -133,7 +138,7 @@ function App() {
               <FontFeaturesSetting
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
-                fontSettingsHandler={setFontSettingsLeft}
+                fontSettingsHandler={() => handleFontSettingChange}
               />
             }
           </div>

@@ -1,13 +1,14 @@
 import FontFeatureCheckbox from './FontFeatureCheckbox';
 
 const FontFeaturesSetting = ({ fontFeatureOptions, fontSettings, fontSettingHandler }) => {
-  const handleChangeOne = (e, i) => {
+  const handleChange = (i) => {
     if (fontSettings[i]) {
       fontSettings[i] = false;
     } else {
       fontSettings[i] = true;
     }
-    e.fontSettingHandler(fontSettings);
+    console.log('Feature settings ', fontSettings.toString());
+    fontSettingHandler(fontSettings);
   };
 
   var features = fontFeatureOptions.map(function (feature, i) {
@@ -15,7 +16,7 @@ const FontFeaturesSetting = ({ fontFeatureOptions, fontSettings, fontSettingHand
       <FontFeatureCheckbox
         label={feature.toString()}
         value={fontSettings[i]}
-        onChange={handleChangeOne(this, i)}
+        onChange={() => handleChange(i)}
       />
     );
   });
