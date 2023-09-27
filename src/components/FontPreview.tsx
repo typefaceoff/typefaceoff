@@ -22,7 +22,6 @@ function getFontFamily(fontFile: File | null, side: string) {
   if (fontFile) {
     return side === 'left' ? 'CustomFontLeft' : 'CustomFontRight';
   }
-  console.log('i ran');
   return 'var(--font-stack-default)';
 }
 
@@ -36,7 +35,6 @@ function getFontSettings(featureOptions: string[], featureSettings: boolean[]) {
     }
   }
   setting = setting.slice(0, -1);
-  console.log('setting ', setting);
   return setting;
 }
 

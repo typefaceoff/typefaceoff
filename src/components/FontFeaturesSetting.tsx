@@ -12,10 +12,11 @@ const FontFeaturesSetting: React.FC<FontFeaturesProps> = ({
   fontFeatureOptions,
   fontSettings,
 }: FontFeaturesProps) => {
+  //create new array so the state change is triggered for the font preview rerender
   const onChecked = useCallback(
     (index: number) => {
-      fontSettings[index] = !fontSettings[index];
-      fontSettingHandler(fontSettings);
+      const newSettings = fontSettings.map((setting, i) => (i === index ? !setting : setting));
+      fontSettingHandler(newSettings);
     },
     [fontSettings, fontSettingHandler]
   );

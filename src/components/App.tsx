@@ -34,12 +34,10 @@ function App() {
 
   const handleFontSettingChangeLeft = (newSettings: boolean[]) => {
     setFontSettingsLeft(newSettings);
-    console.log('Final settings', fontSettingsLeft.toString());
   };
 
   const handleFontSettingChangeRight = (newSettings: boolean[]) => {
     setFontSettingsRight(newSettings);
-    console.log('Final settings', fontSettingsRight.toString());
   };
 
   const handleFontSelected = (selectedFont: File | null, side: string) => {
@@ -142,7 +140,7 @@ function App() {
           <div>
             <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
           </div>
-          <div>
+          <div className="font-feature-checkboxes-container-left">
             {
               <FontFeaturesSetting
                 fontFeatureOptions={fontFeatureOptionsLeft}
@@ -184,7 +182,7 @@ function App() {
           <div>
             <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
           </div>
-          <div>
+          <div className="font-feature-checkboxes-container-Right">
             {
               <FontFeaturesSetting
                 fontFeatureOptions={fontFeatureOptionsRight}
