@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import { BsGithub } from 'react-icons/bs';
-import { useState } from 'react';
 import { proofingText } from './constants';
 import opentype from 'opentype.js';
 import FontFeaturesSetting from './FontFeaturesSetting';
@@ -21,10 +21,10 @@ function App() {
   const [lineHeightLeft, setLineHeightLeft] = useState<number>(1.5);
 
   // Opentype feature option names from the gsub table of the font file on the left
-  const [fontFeatureOptionsLeft, setFontFeatureOptionsLeft] = useState<unknown[]>([]);
+  const [fontFeatureOptionsLeft, setFontFeatureOptionsLeft] = useState<string[]>([]);
 
   // Opentype feature option names from the gsub table of the font file on the right
-  const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<unknown[]>([]);
+  const [fontFeatureOptionsRight, setFontFeatureOptionsRight] = useState<string[]>([]);
 
   const [fontSettingsLeft, setFontSettingsLeft] = useState<boolean[]>([]);
 
@@ -33,37 +33,36 @@ function App() {
     console.log('Final settings', fontSettingsLeft.toString());
   };
 
-  // Handler for when a font is selected on the left side
-  const handleFontSelectedLeft = (selectedFont: File | null) => {
-    setSelectedFontLeft(selectedFont);
+  const handleFontSelected = (selectedFont: File | null, side: string) => {
     if (selectedFont != null) {
       const buffer = selectedFont.arrayBuffer();
       buffer.then((data) => {
         const otfFont = opentype.parse(data);
-        const featureNames = [
-          ...Array.from(new Set(otfFont.tables.gsub.features.map((f: any) => f.tag))),
-        ];
-        const fontSettings = featureNames.map(() => false);
+        const featureNames: string[] = Array.from(
+          new Set(otfFont.tables.gsub.features.map((f: { tag: string }) => f.tag))
+        ).map((name: unknown) => String(name));
 
-        setFontFeatureOptionsLeft(featureNames);
-        setFontSettingsLeft(fontSettings);
+        if (side === 'left') {
+          setFontFeatureOptionsLeft(featureNames);
+          setFontFeatureOptionsLeft(featureNames);
+        }
+        if (side === 'right') {
+          setFontFeatureOptionsRight(featureNames);
+        }
       });
     }
+  };
+
+  // Handler for when a font is selected on the left side
+  const handleFontSelectedLeft = (selectedFont: File | null) => {
+    setSelectedFontLeft(selectedFont);
+    handleFontSelected(selectedFont, 'left');
   };
 
   // Handler for when a font is selected on the right side
   const handleFontSelectedRight = (selectedFont: File | null) => {
     setSelectedFontRight(selectedFont);
-    if (selectedFont != null) {
-      const buffer = selectedFont.arrayBuffer();
-      buffer.then((data) => {
-        const otfFont = opentype.parse(data);
-        const featureNames = [
-          ...Array.from(new Set(otfFont.tables.gsub.features.map((f: any) => f.tag))),
-        ];
-        setFontFeatureOptionsRight(featureNames);
-      });
-    }
+    handleFontSelected(selectedFont, 'right');
   };
 
   // Handles page print
@@ -72,7 +71,6 @@ function App() {
       head = document.head || document.getElementsByTagName('head')[0],
       style = document.createElement('style');
 
-    style.type = 'text/css';
     style.media = 'print';
 
     if ('styleSheet' in style) {
