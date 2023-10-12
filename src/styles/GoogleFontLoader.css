@@ -7,7 +7,7 @@
     text-decoration: none;
     font-size: 16px;
     margin: 5px;
-    }
+}
 
 .borderless-input {
     width: 50%;
@@ -17,4 +17,4 @@
     padding: 8px; /* Adjust padding according to your preference */
     font-size: 16px; /* Adjust font size according to your preference */
     color: #333; /* Text color */
-    }
+}

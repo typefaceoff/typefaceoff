@@ -39,11 +39,9 @@ const FontPreview: React.FC<FontPreviewProps> = ({
   fontFeatureOptions,
   fontSettings,
 }: FontPreviewProps): JSX.Element | null => {
-
-  if(googleFontData && !fontFile){
-
+  if (googleFontData && !fontFile) {
     const fontStyles: React.CSSProperties = {
-      fontFamily: extractGoogleFontFamily(googleFontData)
+      fontFamily: extractGoogleFontFamily(googleFontData),
     };
 
     return (
@@ -56,7 +54,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
     );
   }
 
-  if(fontFile && !googleFontData){
+  if (fontFile && !googleFontData) {
     const fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
 
     // Getting Font Family depending on the fontFile and side

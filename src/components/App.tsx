@@ -146,7 +146,7 @@ function App() {
             <FontUploader onFontSelected={handleFontSelectedLeft} />
           </div>
           <div>
-            <GoogleFontLoader onFontLoaded={handleGoogleFontLeft}/>
+            <GoogleFontLoader onFontLoaded={handleGoogleFontLeft} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputLeft">Line spacing: </label>
@@ -192,7 +192,7 @@ function App() {
             <FontUploader onFontSelected={handleFontSelectedRight} />
           </div>
           <div>
-            <GoogleFontLoader onFontLoaded={handleGoogleFontRight}/>
+            <GoogleFontLoader onFontLoaded={handleGoogleFontRight} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputRight">Line spacing: </label>
