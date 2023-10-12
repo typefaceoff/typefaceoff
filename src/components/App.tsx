@@ -6,13 +6,20 @@ import { useState } from 'react';
 import { proofingText, opentypeText } from './constants';
 import opentype from 'opentype.js';
 import FontFeaturesSetting from './FontFeaturesSetting';
+import GoogleFontLoader from './GoogleFontLoader';
 
 function App() {
   // State for the selected font on the left
   const [selectedFontLeft, setSelectedFontLeft] = useState<File | null>(null);
 
+  // State for the google font declarations on the left
+  const [googleFontLeft, setGoogleFontLeft] = useState<string | null>(null);
+
   // State for the selected font on the right
   const [selectedFontRight, setSelectedFontRight] = useState<File | null>(null);
+
+  // State for the google font declarations on the right
+  const [googleFontRight, setGoogleFontRight] = useState<string | null>(null);
 
   // State for the line height on the right
   const [lineHeightRight, setLineHeightRight] = useState<number>(1.5);
@@ -65,13 +72,33 @@ function App() {
   // Handler for when a font is selected on the left side
   const handleFontSelectedLeft = (selectedFont: File | null) => {
     setSelectedFontLeft(selectedFont);
+    setGoogleFontLeft(null);
     handleFontSelected(selectedFont, 'left');
   };
 
   // Handler for when a font is selected on the right side
   const handleFontSelectedRight = (selectedFont: File | null) => {
     setSelectedFontRight(selectedFont);
+    setGoogleFontRight(null);
     handleFontSelected(selectedFont, 'right');
+  };
+
+  // Handler for when left Google font form is submitted
+  const handleGoogleFontLeft = (fontData: string | null) => {
+    setSelectedFontLeft(null);
+    setGoogleFontLeft(fontData);
+    // Clear features and options for Google fonts (not supported).
+    setFontFeatureOptionsLeft([]);
+    setFontSettingsLeft([]);
+  };
+
+  // Handler for when right Google font form is submitted
+  const handleGoogleFontRight = (fontData: string | null) => {
+    setSelectedFontRight(null);
+    setGoogleFontRight(fontData);
+    // Clear features and options for Google fonts (not supported).
+    setFontFeatureOptionsLeft([]);
+    setFontSettingsLeft([]);
   };
 
   // Handles page print
@@ -102,7 +129,9 @@ function App() {
     <div className="app">
       <header>
         <h1 className="title">Welcome to Typefaceoff!</h1>
-        <p className="subtitle">Get started by dropping two fonts</p>
+        <p className="subtitle">
+          Get started by dropping two font files, or by loading Google fonts.
+        </p>
         <button className="button" onClick={() => setText(proofingText)}>
           Alice in Wonderland
         </button>
@@ -123,6 +152,9 @@ function App() {
         <section className="side-container">
           <div className="font-uploader">
             <FontUploader onFontSelected={handleFontSelectedLeft} />
+          </div>
+          <div>
+            <GoogleFontLoader onFontLoaded={handleGoogleFontLeft} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputLeft">Line spacing: </label>
@@ -152,6 +184,7 @@ function App() {
             {
               <FontPreview
                 fontFile={selectedFontLeft}
+                googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
@@ -165,6 +198,9 @@ function App() {
         <section className="side-container">
           <div className="font-uploader">
             <FontUploader onFontSelected={handleFontSelectedRight} />
+          </div>
+          <div>
+            <GoogleFontLoader onFontLoaded={handleGoogleFontRight} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputRight">Line spacing: </label>
@@ -194,6 +230,7 @@ function App() {
             {
               <FontPreview
                 fontFile={selectedFontRight}
+                googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}

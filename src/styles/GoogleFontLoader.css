@@ -1,0 +1,28 @@
+.submitButton {
+    background-color: black; /* Green */
+    color: aliceblue;
+    border: none;
+    border-radius: 0px 12px 12px 0px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: -2px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+}
+
+.borderless-input {
+    border: 2px dashed #ccc; /* Light dashed border */
+    border-radius: 12px 0px 0px 12px; /* Rounded corners */
+    background-color: white; /* Optional: Make the background transparent */
+    padding: 8px; /* Adjust padding according to your preference */
+    font-size: 18px; /* Adjust font size according to your preference */
+    color: #333; /* Text color */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.google-font-bar {
+    display: flex;
+}

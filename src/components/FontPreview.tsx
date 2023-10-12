@@ -1,16 +1,18 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react';
 import FontTextPlaceholders from './FontTextPlaceholders';
+import postcss from 'postcss';
 
 interface FontPreviewProps {
   fontFile: File | null;
+  googleFontData: string | null;
   side: 'left' | 'right';
   lineHeight: number;
   fontFeatureOptions: string[];
   fontSettings: boolean[];
 }
 
-function getFontFamily(fontFile: File | null, side: string) {
+function getFontFamily(fontFile: File | string | null, side: string) {
   if (fontFile) {
     return side === 'left' ? 'CustomFontLeft' : 'CustomFontRight';
   }
@@ -32,29 +34,46 @@ function getFontSettings(featureOptions: string[], featureSettings: boolean[]) {
 
 const FontPreview: React.FC<FontPreviewProps> = ({
   fontFile,
+  googleFontData,
   side,
   lineHeight,
   fontFeatureOptions,
   fontSettings,
 }) => {
-  const fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
+  let fontUrl = '';
+  let fontFamily = '';
+  let fontFace = '';
 
-  // Getting Font Family depending on the fontFile and side
-  const fontFamily = getFontFamily(fontFile, side);
+  if (googleFontData && !fontFile) {
+    fontFamily = getFontFamily(googleFontData, side);
+    const parsedCss = postcss.parse(googleFontData);
+    parsedCss.walkAtRules('font-face', (rule) => {
+      rule.walkDecls('font-family', (decl) => {
+        decl.value = `${fontFamily}`;
+      });
+    });
+    fontFace = parsedCss.toString();
+  }
+
+  if (fontFile && !googleFontData) {
+    fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
+    fontFamily = getFontFamily(fontFile, side);
+
+    fontFace = `
+      @font-face {
+        font-family: '${fontFamily}';
+        src: url(${fontUrl}) format('opentype');
+        font-display: swap;
+      }
+    `;
+  }
+
   const featureSettings = getFontSettings(fontFeatureOptions, fontSettings);
 
   const fontStyles: React.CSSProperties = {
     fontFamily: fontFamily,
     fontFeatureSettings: featureSettings,
   };
-
-  const fontFace = `
-    @font-face {
-      font-family: '${fontFamily}';
-      src: url(${fontUrl}) format('opentype');
-      font-display: swap;
-    }
-  `;
 
   return (
     <section>
@@ -70,6 +89,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
 export default React.memo(FontPreview, (prevProps, nextProps) => {
   return (
     prevProps.fontFile === nextProps.fontFile &&
+    prevProps.googleFontData === nextProps.googleFontData &&
     prevProps.lineHeight === nextProps.lineHeight &&
     prevProps.side === nextProps.side &&
     prevProps.fontFeatureOptions === nextProps.fontFeatureOptions &&
