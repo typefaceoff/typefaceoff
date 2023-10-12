@@ -39,9 +39,11 @@ const FontPreview: React.FC<FontPreviewProps> = ({
   fontFeatureOptions,
   fontSettings,
 }: FontPreviewProps): JSX.Element | null => {
-  if (googleFontData && !fontFile) {
+   
+  if(googleFontData && !fontFile){
+
     const fontStyles: React.CSSProperties = {
-      fontFamily: extractGoogleFontFamily(googleFontData),
+      fontFamily: extractGoogleFontFamily(googleFontData)
     };
 
     return (
@@ -54,7 +56,8 @@ const FontPreview: React.FC<FontPreviewProps> = ({
     );
   }
 
-  if (fontFile && !googleFontData) {
+  if(fontFile && !googleFontData){
+    
     const fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
 
     // Getting Font Family depending on the fontFile and side
@@ -81,9 +84,9 @@ const FontPreview: React.FC<FontPreviewProps> = ({
           <FontTextPlaceholders lineHeight={lineHeight} />
         </div>
       </section>
-    );
-  }
-  return null;
+      );
+    }
+    return null;
 };
 
 // Only re-render if fontFile, lineHeight, or side props change
@@ -102,6 +105,7 @@ function extractGoogleFontFamily(cssString: string): string {
   const fontFamilyRegex = /font-family:\s*['"]?([^"']*)['"]?;/;
   const match = cssString.match(fontFamilyRegex);
   if (match && match[1]) {
+    console.log("regex found matching: " + match[1]);
     return match[1];
   }
   return ''; // Font family not found

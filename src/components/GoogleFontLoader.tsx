@@ -31,8 +31,6 @@ const GoogleFontLoader: React.FC<{ onFontLoaded: (fontData: string) => void }> =
 
         // Notify the parent component about the loaded font data
         onFontLoaded(fontData);
-        console.log('Google Font ' + extractFontFamily(fontData) + ' Loaded');
-        console.log('Google font data:\n' + fontData);
       } catch (error) {
         console.error('Error loading Google Font:', error);
         // Handle error loading font (e.g., show an error message to the user)
@@ -47,6 +45,7 @@ const GoogleFontLoader: React.FC<{ onFontLoaded: (fontData: string) => void }> =
         className="borderless-input"
         type="text"
         spellCheck="false"
+        maxLength={40}
         value={input}
         onChange={handleInputChange}
         placeholder="Google Font Name or URL..."
@@ -61,15 +60,6 @@ const GoogleFontLoader: React.FC<{ onFontLoaded: (fontData: string) => void }> =
 function isValidFontUrl(input: string): boolean {
   const fontUrlPrefix = 'https://fonts.googleapis.com/css2?family=';
   return input.startsWith(fontUrlPrefix);
-}
-
-function extractFontFamily(cssString: string): string | null {
-  const fontFamilyRegex = /font-family:\s*['"]?([^"']*)['"]?;/;
-  const match = cssString.match(fontFamilyRegex);
-  if (match && match[1]) {
-    return match[1];
-  }
-  return null; // Font family not found
 }
 
 export default GoogleFontLoader;
