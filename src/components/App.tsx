@@ -6,13 +6,20 @@ import { useState } from 'react';
 import { proofingText, opentypeText } from './constants';
 import opentype from 'opentype.js';
 import FontFeaturesSetting from './FontFeaturesSetting';
+import GoogleFontLoader from './GoogleFontLoader';
 
 function App() {
   // State for the selected font on the left
   const [selectedFontLeft, setSelectedFontLeft] = useState<File | null>(null);
 
+  // State for the google font declarations on the left
+  const [googleFontLeft, setGoogleFontLeft] = useState<string | null>(null);
+
   // State for the selected font on the right
   const [selectedFontRight, setSelectedFontRight] = useState<File | null>(null);
+
+  // State for the google font declarations on the right
+  const [googleFontRight, setGoogleFontRight] = useState<string | null>(null);
 
   // State for the line height on the right
   const [lineHeightRight, setLineHeightRight] = useState<number>(1.5);
@@ -65,13 +72,27 @@ function App() {
   // Handler for when a font is selected on the left side
   const handleFontSelectedLeft = (selectedFont: File | null) => {
     setSelectedFontLeft(selectedFont);
+    setGoogleFontLeft(null);
     handleFontSelected(selectedFont, 'left');
   };
 
   // Handler for when a font is selected on the right side
   const handleFontSelectedRight = (selectedFont: File | null) => {
     setSelectedFontRight(selectedFont);
+    setGoogleFontRight(null);
     handleFontSelected(selectedFont, 'right');
+  };
+
+  const handleGoogleFontLeft = (fontData: string | null) => {
+    setSelectedFontLeft(null);
+    setGoogleFontLeft(fontData);
+    console.log(fontData);
+  };
+
+  const handleGoogleFontRight = (fontData: string | null) => {
+    setSelectedFontRight(null);
+    setGoogleFontRight(fontData);
+    console.log(fontData);
   };
 
   // Handles page print
@@ -124,6 +145,9 @@ function App() {
           <div className="font-uploader">
             <FontUploader onFontSelected={handleFontSelectedLeft} />
           </div>
+          <div>
+            <GoogleFontLoader onFontLoaded={handleGoogleFontLeft}/>
+          </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputLeft">Line spacing: </label>
             <input
@@ -152,6 +176,7 @@ function App() {
             {
               <FontPreview
                 fontFile={selectedFontLeft}
+                googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
@@ -165,6 +190,9 @@ function App() {
         <section className="side-container">
           <div className="font-uploader">
             <FontUploader onFontSelected={handleFontSelectedRight} />
+          </div>
+          <div>
+            <GoogleFontLoader onFontLoaded={handleGoogleFontRight}/>
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputRight">Line spacing: </label>
@@ -194,6 +222,7 @@ function App() {
             {
               <FontPreview
                 fontFile={selectedFontRight}
+                googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}

@@ -1,0 +1,19 @@
+.submitButton {
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 5px;
+    }
+
+.borderless-input {
+    border: 2px dashed #ccc; /* Light dashed border */
+    border-radius: 12px; /* Rounded corners */
+    background-color: white; /* Optional: Make the background transparent */
+    padding: 8px; /* Adjust padding according to your preference */
+    font-size: 16px; /* Adjust font size according to your preference */
+    color: #333; /* Text color */
+    }
