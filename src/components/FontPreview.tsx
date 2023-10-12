@@ -40,23 +40,22 @@ const FontPreview: React.FC<FontPreviewProps> = ({
   fontFeatureOptions,
   fontSettings,
 }) => {
-   
   let fontUrl = '';
   let fontFamily = '';
   let fontFace = '';
 
-  if(googleFontData && !fontFile){
-      fontFamily = getFontFamily(googleFontData, side);
-      const parsedCss = postcss.parse(googleFontData);
-      parsedCss.walkAtRules('font-face', (rule) =>{
-        rule.walkDecls('font-family', (decl) =>{
-          decl.value = `${fontFamily}`;
-        })
-      })
-      fontFace = parsedCss.toString();
+  if (googleFontData && !fontFile) {
+    fontFamily = getFontFamily(googleFontData, side);
+    const parsedCss = postcss.parse(googleFontData);
+    parsedCss.walkAtRules('font-face', (rule) => {
+      rule.walkDecls('font-family', (decl) => {
+        decl.value = `${fontFamily}`;
+      });
+    });
+    fontFace = parsedCss.toString();
   }
 
-  if(fontFile && !googleFontData){
+  if (fontFile && !googleFontData) {
     fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
     fontFamily = getFontFamily(fontFile, side);
 
@@ -83,7 +82,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
         <FontTextPlaceholders lineHeight={lineHeight} />
       </div>
     </section>
-    );
+  );
 };
 
 // Only re-render if fontFile, lineHeight, or side props change

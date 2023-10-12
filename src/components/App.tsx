@@ -129,7 +129,9 @@ function App() {
     <div className="app">
       <header>
         <h1 className="title">Welcome to Typefaceoff!</h1>
-        <p className="subtitle">Get started by dropping two font files, or by loading Google fonts.</p>
+        <p className="subtitle">
+          Get started by dropping two font files, or by loading Google fonts.
+        </p>
         <button className="button" onClick={() => setText(proofingText)}>
           Alice in Wonderland
         </button>

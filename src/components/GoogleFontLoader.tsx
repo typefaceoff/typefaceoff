@@ -40,8 +40,8 @@ const GoogleFontLoader: React.FC<{ onFontLoaded: (fontData: string) => void }> =
   );
 
   return (
-    <form className='google-font-form' onSubmit={handleInputSubmit}>
-      <div className='google-font-bar'>
+    <form className="google-font-form" onSubmit={handleInputSubmit}>
+      <div className="google-font-bar">
         <input
           className="borderless-input"
           type="text"
