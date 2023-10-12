@@ -10,6 +10,7 @@
     }
 
 .borderless-input {
+    width: 50%;
     border: 2px dashed #ccc; /* Light dashed border */
     border-radius: 12px; /* Rounded corners */
     background-color: white; /* Optional: Make the background transparent */
