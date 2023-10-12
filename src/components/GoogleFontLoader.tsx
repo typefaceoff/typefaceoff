@@ -40,19 +40,21 @@ const GoogleFontLoader: React.FC<{ onFontLoaded: (fontData: string) => void }> =
   );
 
   return (
-    <form onSubmit={handleInputSubmit}>
-      <input
-        className="borderless-input"
-        type="text"
-        spellCheck="false"
-        maxLength={40}
-        value={input}
-        onChange={handleInputChange}
-        placeholder="Google Font Name or URL..."
-      />
-      <button className="submitButton" type="submit">
-        Load
-      </button>
+    <form className='google-font-form' onSubmit={handleInputSubmit}>
+      <div className='google-font-bar'>
+        <input
+          className="borderless-input"
+          type="text"
+          spellCheck="false"
+          maxLength={40}
+          value={input}
+          onChange={handleInputChange}
+          placeholder="Google font name or URL..."
+        />
+        <button className="submitButton" type="submit">
+          Load
+        </button>
+      </div>
     </form>
   );
 };

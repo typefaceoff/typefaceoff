@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react';
 import FontTextPlaceholders from './FontTextPlaceholders';
+import postcss from 'postcss';
 
 interface FontPreviewProps {
   fontFile: File | null;
@@ -11,7 +12,7 @@ interface FontPreviewProps {
   fontSettings: boolean[];
 }
 
-function getFontFamily(fontFile: File | null, side: string) {
+function getFontFamily(fontFile: File | string | null, side: string) {
   if (fontFile) {
     return side === 'left' ? 'CustomFontLeft' : 'CustomFontRight';
   }
@@ -38,55 +39,51 @@ const FontPreview: React.FC<FontPreviewProps> = ({
   lineHeight,
   fontFeatureOptions,
   fontSettings,
-}: FontPreviewProps): JSX.Element | null => {
+}) => {
    
+  let fontUrl = '';
+  let fontFamily = '';
+  let fontFace = '';
+
   if(googleFontData && !fontFile){
-
-    const fontStyles: React.CSSProperties = {
-      fontFamily: extractGoogleFontFamily(googleFontData)
-    };
-
-    return (
-      <section>
-        <style>{googleFontData}</style>
-        <div style={fontStyles}>
-          <FontTextPlaceholders lineHeight={lineHeight} />
-        </div>
-      </section>
-    );
+      fontFamily = getFontFamily(googleFontData, side);
+      const parsedCss = postcss.parse(googleFontData);
+      parsedCss.walkAtRules('font-face', (rule) =>{
+        rule.walkDecls('font-family', (decl) =>{
+          decl.value = `${fontFamily}`;
+        })
+      })
+      fontFace = parsedCss.toString();
   }
 
   if(fontFile && !googleFontData){
-    
-    const fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
+    fontUrl = fontFile ? URL.createObjectURL(fontFile) : '';
+    fontFamily = getFontFamily(fontFile, side);
 
-    // Getting Font Family depending on the fontFile and side
-    const fontFamily = getFontFamily(fontFile, side);
-    const featureSettings = getFontSettings(fontFeatureOptions, fontSettings);
-
-    const fontStyles: React.CSSProperties = {
-      fontFamily: fontFamily,
-      fontFeatureSettings: featureSettings,
-    };
-
-    const fontFace = `
+    fontFace = `
       @font-face {
         font-family: '${fontFamily}';
         src: url(${fontUrl}) format('opentype');
         font-display: swap;
       }
     `;
+  }
 
-    return (
-      <section>
-        <style>{fontFace}</style>
-        <div style={fontStyles}>
-          <FontTextPlaceholders lineHeight={lineHeight} />
-        </div>
-      </section>
-      );
-    }
-    return null;
+  const featureSettings = getFontSettings(fontFeatureOptions, fontSettings);
+
+  const fontStyles: React.CSSProperties = {
+    fontFamily: fontFamily,
+    fontFeatureSettings: featureSettings,
+  };
+
+  return (
+    <section>
+      <style>{fontFace}</style>
+      <div style={fontStyles}>
+        <FontTextPlaceholders lineHeight={lineHeight} />
+      </div>
+    </section>
+    );
 };
 
 // Only re-render if fontFile, lineHeight, or side props change
@@ -100,13 +97,3 @@ export default React.memo(FontPreview, (prevProps, nextProps) => {
     prevProps.fontSettings === nextProps.fontSettings
   );
 });
-
-function extractGoogleFontFamily(cssString: string): string {
-  const fontFamilyRegex = /font-family:\s*['"]?([^"']*)['"]?;/;
-  const match = cssString.match(fontFamilyRegex);
-  if (match && match[1]) {
-    console.log("regex found matching: " + match[1]);
-    return match[1];
-  }
-  return ''; // Font family not found
-}

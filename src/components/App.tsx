@@ -83,16 +83,22 @@ function App() {
     handleFontSelected(selectedFont, 'right');
   };
 
+  // Handler for when left Google font form is submitted
   const handleGoogleFontLeft = (fontData: string | null) => {
     setSelectedFontLeft(null);
     setGoogleFontLeft(fontData);
-    console.log(fontData);
+    // Clear features and options for Google fonts (not supported).
+    setFontFeatureOptionsLeft([]);
+    setFontSettingsLeft([]);
   };
 
+  // Handler for when right Google font form is submitted
   const handleGoogleFontRight = (fontData: string | null) => {
     setSelectedFontRight(null);
     setGoogleFontRight(fontData);
-    console.log(fontData);
+    // Clear features and options for Google fonts (not supported).
+    setFontFeatureOptionsLeft([]);
+    setFontSettingsLeft([]);
   };
 
   // Handles page print
@@ -123,7 +129,7 @@ function App() {
     <div className="app">
       <header>
         <h1 className="title">Welcome to Typefaceoff!</h1>
-        <p className="subtitle">Get started by dropping two fonts</p>
+        <p className="subtitle">Get started by dropping two font files, or by loading Google fonts.</p>
         <button className="button" onClick={() => setText(proofingText)}>
           Alice in Wonderland
         </button>
