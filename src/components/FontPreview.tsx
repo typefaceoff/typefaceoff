@@ -38,7 +38,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
   lineHeight,
   fontFeatureOptions,
   fontSettings,
-}) => {
+}: FontPreviewProps): JSX.Element | null => {
 
   if(googleFontData && !fontFile){
 
@@ -85,6 +85,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
       </section>
     );
   }
+  return null;
 };
 
 // Only re-render if fontFile, lineHeight, or side props change
