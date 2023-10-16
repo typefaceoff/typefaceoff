@@ -42,6 +42,40 @@ main {
     margin-bottom: 15px;
     margin-left: 10px;
     margin-right: 10px;
+    transition: background-color 0.4s;
+}
+
+.button:hover {
+    background-color: #404040;
+}
+
+.dropdown {
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: aliceblue;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.dropdown:hover {
+    background-color: #404040;
+}
+
+.dropdown option {
+    background-color: #1a1a1a; /* Or any color you want */
+    color: aliceblue; /* Or any color you want */
+}
+
+.dropdown:hover option {
+    background-color: #1a1a1a; /* Or any color you want */
 }
 
 footer {

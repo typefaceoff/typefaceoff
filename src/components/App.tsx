@@ -146,6 +146,11 @@ function App() {
         >
           Save previews as PDF
         </button>
+        <select className="dropdown">
+          <option value="Paragraph">Paragraph</option>
+          <option value="Article">Article</option>
+          <option value="Research Paper">Research Paper</option>
+        </select>
       </header>
       <main>
         {/* Left side */}
