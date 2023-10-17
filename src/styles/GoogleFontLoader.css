@@ -1,5 +1,5 @@
 .submitButton {
-    background-color: black; /* Green */
+    background-color: #1a1a1a;
     color: aliceblue;
     border: none;
     border-radius: 0px 12px 12px 0px;
@@ -9,6 +9,11 @@
     font-size: 16px;
     display: flex;
     flex-direction: row;
+    transition: background-color 0.4s;
+}
+
+.submitButton:hover {
+    background-color: #404040;
 }
 
 .borderless-input {
@@ -21,6 +26,16 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    transition: background-color 0.4s;
+}
+
+.borderless-input:hover {
+    background-color: #f0f0f0;
+}
+
+.borderless-input:focus {
+    outline: none; /* Removes the default outline */
+    border: 2px solid rgb(182, 173, 173);
 }
 
 .google-font-bar {

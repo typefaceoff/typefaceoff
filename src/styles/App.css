@@ -41,6 +41,65 @@ main {
     margin-bottom: 15px;
     margin-left: 10px;
     margin-right: 10px;
+    transition: background-color 0.4s;
+}
+
+.button:hover {
+    background-color: #404040;
+}
+
+.dropdown {
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: aliceblue;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.4s;
+    font-weight: 500;
+    padding: 0.6em 1.2em;
+}
+
+.dropdown:hover {
+    background-color: #404040;
+}
+
+.dropdown option {
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    background-color: #1a1a1a; /* Or any color you want */
+    color: aliceblue; /* Or any color you want */
+}
+
+.dropdown:hover option {
+    background-color: #1a1a1a; /* Or any color you want */
+}
+
+.lineHeightInput {
+    border: 2px solid #ccc; /* Light dashed border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: white; /* Optional: Make the background transparent */
+    padding: 8px; /* Adjust padding according to your preference */
+    font-size: 16px; /* Adjust font size according to your preference */
+    text-align: center;
+    color: #333; /* Text color */
+    transition: background-color 0.4s;
+    width: 5rem;
+}
+
+.lineHeightInput:hover {
+    background-color: #f0f0f0;
+}
+
+.lineHeightInput:focus {
+    outline: none; /* Removes the default outline */
+    border: 2px solid rgb(182, 173, 173);
 }
 
 footer {
@@ -64,6 +123,7 @@ footer {
     .title,
     .subtitle,
     .button,
+    .dropdown,
     .font-features,
     .font-uploader,
     .footer-text,
