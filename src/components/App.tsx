@@ -158,12 +158,13 @@ function App() {
           <div className="font-uploader">
             <FontUploader onFontSelected={handleFontSelectedLeft} />
           </div>
-          <div>
+          <div className="font-uploader">
             <GoogleFontLoader onFontLoaded={handleGoogleFontLeft} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputLeft">Line spacing: </label>
             <input
+              className="lineHeightInput"
               type="number"
               id="lineHeightInputLeft"
               value={lineHeightLeft}
@@ -204,12 +205,13 @@ function App() {
           <div className="font-uploader">
             <FontUploader onFontSelected={handleFontSelectedRight} />
           </div>
-          <div>
+          <div className="font-uploader">
             <GoogleFontLoader onFontLoaded={handleGoogleFontRight} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputRight">Line spacing: </label>
             <input
+              className="lineHeightInput"
               type="number"
               id="lineHeightInputRight"
               value={lineHeightRight}
