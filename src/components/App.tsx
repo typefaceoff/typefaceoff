@@ -7,6 +7,7 @@ import { proofingText, opentypeText } from './constants';
 import opentype from 'opentype.js';
 import FontFeaturesSetting from './FontFeaturesSetting';
 import GoogleFontLoader from './GoogleFontLoader';
+import postcss from 'postcss';
 
 function App() {
   // State for the selected font on the left
@@ -15,11 +16,17 @@ function App() {
   // State for the google font declarations on the left
   const [googleFontLeft, setGoogleFontLeft] = useState<string | null>(null);
 
+  // State for updating the font drop area with Google font name on the left
+  const [googelFontNameLeft, setGoogleFontNameLeft] = useState<string>('');
+
   // State for the selected font on the right
   const [selectedFontRight, setSelectedFontRight] = useState<File | null>(null);
 
   // State for the google font declarations on the right
   const [googleFontRight, setGoogleFontRight] = useState<string | null>(null);
+
+  // State for updating the font drop area with Google font name on the right
+  const [googelFontNameRight, setGoogleFontNameRight] = useState<string>('');
 
   // State for the line height on the right
   const [lineHeightRight, setLineHeightRight] = useState<number>(1.5);
@@ -73,6 +80,7 @@ function App() {
   const handleFontSelectedLeft = (selectedFont: File | null) => {
     setSelectedFontLeft(selectedFont);
     setGoogleFontLeft(null);
+    setGoogleFontName('', 'left');
     handleFontSelected(selectedFont, 'left');
   };
 
@@ -80,25 +88,56 @@ function App() {
   const handleFontSelectedRight = (selectedFont: File | null) => {
     setSelectedFontRight(selectedFont);
     setGoogleFontRight(null);
+    setGoogleFontName('', 'right');
     handleFontSelected(selectedFont, 'right');
   };
 
+  const setGoogleFontName = (fontData: string, side: string) => {
+    let fontName = ' ';
+    const parsedCss = postcss.parse(fontData);
+
+    // Find the first font-family value
+    parsedCss.walkAtRules('font-face', (atRule) => {
+      atRule.walkDecls('font-family', (decl) => {
+        fontName = decl.value.replace(/^['"]|['"]$/g, '');
+        return false; // Stop traversal after finding the first font-family
+      });
+    });
+
+    console.log(fontName);
+    switch(side){
+      case 'left':
+        setGoogleFontNameLeft(fontName);
+        break;
+      case 'right':
+        setGoogleFontNameRight(fontName);
+        break;
+    }
+  }
+
   // Handler for when left Google font form is submitted
   const handleGoogleFontLeft = (fontData: string | null) => {
-    setSelectedFontLeft(null);
-    setGoogleFontLeft(fontData);
-    // Clear features and options for Google fonts (not supported).
-    setFontFeatureOptionsLeft([]);
-    setFontSettingsLeft([]);
+    if(fontData){
+      setSelectedFontLeft(null);
+      setGoogleFontName(fontData, 'left');
+      setGoogleFontLeft(fontData);
+      // Clear features and options for Google fonts (not supported).
+      setFontFeatureOptionsLeft([]);
+      setFontSettingsLeft([]);
+    }
   };
 
   // Handler for when right Google font form is submitted
   const handleGoogleFontRight = (fontData: string | null) => {
-    setSelectedFontRight(null);
-    setGoogleFontRight(fontData);
-    // Clear features and options for Google fonts (not supported).
-    setFontFeatureOptionsLeft([]);
-    setFontSettingsLeft([]);
+    if(fontData){
+      setSelectedFontRight(null);
+      setGoogleFontName(fontData, 'right');
+      setGoogleFontRight(fontData);
+      // Clear features and options for Google fonts (not supported).
+      setFontFeatureOptionsRight([]);
+      setFontSettingsRight([]);
+      console.log("hello");
+    }
   };
 
   // Handles page print
@@ -151,7 +190,7 @@ function App() {
         {/* Left side */}
         <section className="side-container">
           <div className="font-uploader">
-            <FontUploader onFontSelected={handleFontSelectedLeft} />
+            <FontUploader onFontSelected={handleFontSelectedLeft} externalFontName={googelFontNameLeft} />
           </div>
           <div>
             <GoogleFontLoader onFontLoaded={handleGoogleFontLeft} />
@@ -197,7 +236,7 @@ function App() {
         {/* Right side */}
         <section className="side-container">
           <div className="font-uploader">
-            <FontUploader onFontSelected={handleFontSelectedRight} />
+            <FontUploader onFontSelected={handleFontSelectedRight} externalFontName={googelFontNameRight} />
           </div>
           <div>
             <GoogleFontLoader onFontLoaded={handleGoogleFontRight} />
