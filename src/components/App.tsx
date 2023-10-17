@@ -103,7 +103,7 @@ function App() {
     // Find the first font-family value
     parsedCss.walkAtRules('font-face', (atRule) => {
       atRule.walkDecls('font-family', (decl) => {
-        fontName = decl.value.replace(/^['"]|['"]$/g, '');
+        fontName = decl.value.substring(1, decl.value.length - 1);
         return false; // Stop traversal after finding the first font-family
       });
     });
