@@ -78,27 +78,6 @@ main {
     background-color: #1a1a1a; /* Or any color you want */
 }
 
-#lineHeightInputLeft {
-    border: 2px solid #ccc; /* Light dashed border */
-    border-radius: 8px; /* Rounded corners */
-    background-color: white; /* Optional: Make the background transparent */
-    padding: 8px; /* Adjust padding according to your preference */
-    font-size: 16px; /* Adjust font size according to your preference */
-    text-align: center;
-    color: #333; /* Text color */
-    transition: background-color 0.4s;
-    width: fit-content;
-}
-
-#lineHeightInputLeft:hover {
-    background-color: #f0f0f0;
-}
-
-#lineHeightInputLeft:focus {
-    outline: none; /* Removes the default outline */
-    border: 2px solid rgb(182, 173, 173);
-}
-
 .lineHeightInput {
     border: 2px solid #ccc; /* Light dashed border */
     border-radius: 8px; /* Rounded corners */
@@ -108,7 +87,7 @@ main {
     text-align: center;
     color: #333; /* Text color */
     transition: background-color 0.4s;
-    width: fit-content;
+    width: 5rem;
 }
 
 .lineHeightInput:hover {

@@ -6,6 +6,7 @@
     flex-direction: column;
     padding: 1.5rem 2rem;
     text-align: center;
+    color: #666666; /* Text color */
     width: 100%;
     height: 7.5rem;
     cursor: pointer;
