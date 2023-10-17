@@ -1,3 +1,8 @@
 .half-width-line {
     margin-block-start: 0px;
+    transition: background-color 0.4s;
+}
+
+.half-width-line:hover {
+    background-color: rgb(252, 228, 226);
 }

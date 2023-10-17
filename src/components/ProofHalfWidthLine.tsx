@@ -22,6 +22,7 @@ export default function HalfWidthLine(proofingText: string, pointSize: number, l
       <p
         className="half-width-line proof"
         contentEditable
+        spellCheck="false"
         onInput={updateProofingText}
         style={paragraphStyle}
       >

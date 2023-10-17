@@ -21,6 +21,7 @@ export default function FullWidthLine(proofingText: string, pointSize: number, l
       <p
         className="full-width-line proof"
         contentEditable
+        spellCheck="false"
         onInput={updateProofingText}
         style={paragraphStyle}
       >

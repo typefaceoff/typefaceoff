@@ -1,6 +1,7 @@
 import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
+import Article from './Article';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
 import { proofingText, opentypeText } from './constants';
@@ -9,6 +10,9 @@ import FontFeaturesSetting from './FontFeaturesSetting';
 import GoogleFontLoader from './GoogleFontLoader';
 
 function App() {
+  // Current proof template
+  const [selectedTemplate, setSelectedTemplate] = useState('Font Preview');
+
   // State for the selected font on the left
   const [selectedFontLeft, setSelectedFontLeft] = useState<File | null>(null);
 
@@ -146,6 +150,15 @@ function App() {
         >
           Save previews as PDF
         </button>
+        <select
+          className="dropdown"
+          value={selectedTemplate}
+          onChange={(e) => setSelectedTemplate(e.target.value)}
+        >
+          <option value="Font Preview">Font Preview</option>
+          <option value="Article">Article</option>
+          <option value="Research Paper">Research Paper</option>
+        </select>
       </header>
       <main>
         {/* Left side */}
@@ -153,12 +166,13 @@ function App() {
           <div className="font-uploader">
             <FontUploader onFontSelected={handleFontSelectedLeft} />
           </div>
-          <div>
+          <div className="font-uploader">
             <GoogleFontLoader onFontLoaded={handleGoogleFontLeft} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputLeft">Line spacing: </label>
             <input
+              className="lineHeightInput"
               type="number"
               id="lineHeightInputLeft"
               value={lineHeightLeft}
@@ -181,7 +195,7 @@ function App() {
             }
           </div>
           <div className="font-preview">
-            {
+            {selectedTemplate === 'Font Preview' && (
               <FontPreview
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
@@ -190,7 +204,27 @@ function App() {
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
               />
-            }
+            )}
+            {selectedTemplate === 'Article' && (
+              <Article
+                fontFile={selectedFontLeft}
+                googleFontData={googleFontLeft}
+                side="left"
+                lineHeight={lineHeightLeft}
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+              />
+            )}
+            {selectedTemplate === 'Research Paper' && (
+              <FontPreview
+                fontFile={selectedFontLeft}
+                googleFontData={googleFontLeft}
+                side="left"
+                lineHeight={lineHeightLeft}
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+              />
+            )}
           </div>
         </section>
 
@@ -199,12 +233,13 @@ function App() {
           <div className="font-uploader">
             <FontUploader onFontSelected={handleFontSelectedRight} />
           </div>
-          <div>
+          <div className="font-uploader">
             <GoogleFontLoader onFontLoaded={handleGoogleFontRight} />
           </div>
           <div className="line-height-adjustment">
             <label htmlFor="lineHeightInputRight">Line spacing: </label>
             <input
+              className="lineHeightInput"
               type="number"
               id="lineHeightInputRight"
               value={lineHeightRight}
@@ -227,7 +262,7 @@ function App() {
             }
           </div>
           <div className="font-preview">
-            {
+            {selectedTemplate === 'Font Preview' && (
               <FontPreview
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
@@ -236,7 +271,27 @@ function App() {
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
               />
-            }
+            )}
+            {selectedTemplate === 'Article' && (
+              <Article
+                fontFile={selectedFontRight}
+                googleFontData={googleFontRight}
+                side="right"
+                lineHeight={lineHeightRight}
+                fontFeatureOptions={fontFeatureOptionsRight}
+                fontSettings={fontSettingsRight}
+              />
+            )}
+            {selectedTemplate === 'Research Paper' && (
+              <FontPreview
+                fontFile={selectedFontRight}
+                googleFontData={googleFontRight}
+                side="right"
+                lineHeight={lineHeightRight}
+                fontFeatureOptions={fontFeatureOptionsRight}
+                fontSettings={fontSettingsRight}
+              />
+            )}
           </div>
         </section>
       </main>
