@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react';
-import FontTextPlaceholders from './FontTextPlaceholders';
 import postcss from 'postcss';
 import ArticleTextPlaceholders from './ArticleTextPlaceHolders';
 
