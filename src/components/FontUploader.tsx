@@ -3,21 +3,21 @@ import '../styles/FontUploader.css';
 import { useDropzone } from 'react-dropzone';
 import { Typr } from 'typr-ts';
 
-const FontUploader: React.FC<{ onFontSelected: (selectedFont: File | null) => void; externalFontName: string }> = ({
-  onFontSelected,
-  externalFontName,
-}) => {
+const FontUploader: React.FC<{
+  onFontSelected: (selectedFont: File | null) => void;
+  externalFontName: string;
+}> = ({ onFontSelected, externalFontName }) => {
   const [, setSelectedFont] = useState<File | null>(null);
   const [, setFontPreview] = useState<string | null>(null);
   const [fontName, setFontName] = React.useState('Drop a font here');
   const [text, setText] = React.useState(' ');
 
   useEffect(() => {
-    if(externalFontName != ''){
+    if (externalFontName != '') {
       setFontName(externalFontName);
       setText('drop another font here');
     }
-    console.log("Effect called");
+    console.log('Effect called');
     console.log(externalFontName);
   }, [externalFontName]);
 

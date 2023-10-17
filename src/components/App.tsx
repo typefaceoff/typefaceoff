@@ -109,7 +109,7 @@ function App() {
     });
 
     console.log(fontName);
-    switch(side){
+    switch (side) {
       case 'left':
         setGoogleFontNameLeft(fontName);
         break;
@@ -117,11 +117,11 @@ function App() {
         setGoogleFontNameRight(fontName);
         break;
     }
-  }
+  };
 
   // Handler for when left Google font form is submitted
   const handleGoogleFontLeft = (fontData: string | null) => {
-    if(fontData){
+    if (fontData) {
       setSelectedFontLeft(null);
       setGoogleFontName(fontData, 'left');
       setGoogleFontLeft(fontData);
@@ -133,14 +133,14 @@ function App() {
 
   // Handler for when right Google font form is submitted
   const handleGoogleFontRight = (fontData: string | null) => {
-    if(fontData){
+    if (fontData) {
       setSelectedFontRight(null);
       setGoogleFontName(fontData, 'right');
       setGoogleFontRight(fontData);
       // Clear features and options for Google fonts (not supported).
       setFontFeatureOptionsRight([]);
       setFontSettingsRight([]);
-      console.log("hello");
+      console.log('hello');
     }
   };
 
@@ -203,7 +203,10 @@ function App() {
         {/* Left side */}
         <section className="side-container">
           <div className="font-uploader">
-            <FontUploader onFontSelected={handleFontSelectedLeft} externalFontName={googelFontNameLeft} />
+            <FontUploader
+              onFontSelected={handleFontSelectedLeft}
+              externalFontName={googelFontNameLeft}
+            />
           </div>
           <div className="font-uploader">
             <GoogleFontLoader onFontLoaded={handleGoogleFontLeft} />
@@ -270,7 +273,10 @@ function App() {
         {/* Right side */}
         <section className="side-container">
           <div className="font-uploader">
-            <FontUploader onFontSelected={handleFontSelectedRight} externalFontName={googelFontNameRight} />
+            <FontUploader
+              onFontSelected={handleFontSelectedRight}
+              externalFontName={googelFontNameRight}
+            />
           </div>
           <div className="font-uploader">
             <GoogleFontLoader onFontLoaded={handleGoogleFontRight} />
