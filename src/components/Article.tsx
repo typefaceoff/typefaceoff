@@ -80,6 +80,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
       <style>{fontFace}</style>
       <div style={fontStyles}>
         <FontTextPlaceholders lineHeight={lineHeight} />
+        <FontTextPlaceholders lineHeight={lineHeight} />
       </div>
     </section>
   );

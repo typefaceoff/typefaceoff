@@ -3,6 +3,7 @@
     flex-direction: row;
     align-items: stretch;
     gap: 0.5rem;
+    transition: background-color 0.4s;
 }
 
 .full-width-line {
@@ -13,4 +14,9 @@
     width: 100%;
     max-width: 100%;
     line-height: 1.15;
+    transition: background-color 0.4s;
+}
+
+.full-width-line:hover {
+    background-color: rgb(252, 228, 226);
 }

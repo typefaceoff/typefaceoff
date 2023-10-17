@@ -6,9 +6,15 @@
     flex-direction: column;
     padding: 1.5rem 2rem;
     text-align: center;
+    color: #666666; /* Text color */
     width: 100%;
     height: 7.5rem;
     cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.drop-area:hover {
+    background-color: #f0f0f0;
 }
 
 .selected-fonts {
