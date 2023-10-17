@@ -2,6 +2,7 @@
 import React from 'react';
 import FontTextPlaceholders from './FontTextPlaceholders';
 import postcss from 'postcss';
+import ArticleTextPlaceholders from './ArticleTextPlaceHolders';
 
 interface FontPreviewProps {
   fontFile: File | null;
@@ -79,8 +80,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
     <section>
       <style>{fontFace}</style>
       <div style={fontStyles}>
-        <FontTextPlaceholders lineHeight={lineHeight} />
-        <FontTextPlaceholders lineHeight={lineHeight} />
+        <ArticleTextPlaceholders lineHeight={lineHeight} />
       </div>
     </section>
   );
