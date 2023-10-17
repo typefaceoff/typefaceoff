@@ -23,7 +23,6 @@ main {
     display: flex;
     flex-direction: column;
     flex: 1;
-    gap: 2rem;
     max-width: 48%;
     width: 48%;
 }
@@ -110,6 +109,14 @@ footer {
     background-color: var(--color-bg-variant);
     padding: 1.25rem;
     margin-block-start: 8rem;
+}
+
+.font-features {
+    margin-top: 0.5rem;
+}
+
+.line-height-adjustment {
+    margin-top: 0.5rem;
 }
 
 @media print {

@@ -6,7 +6,7 @@
     text-align: center;
     text-decoration: none;
     margin-left: -2px;
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     flex-direction: row;
     transition: background-color 0.4s;
@@ -21,7 +21,7 @@
     border-radius: 12px 0px 0px 12px; /* Rounded corners */
     background-color: white; /* Optional: Make the background transparent */
     padding: 8px; /* Adjust padding according to your preference */
-    font-size: 18px; /* Adjust font size according to your preference */
+    font-size: 16px; /* Adjust font size according to your preference */
     color: #333; /* Text color */
     display: flex;
     flex-direction: row;
@@ -40,4 +40,5 @@
 
 .google-font-bar {
     display: flex;
+    margin-top: 0.5rem;
 }
