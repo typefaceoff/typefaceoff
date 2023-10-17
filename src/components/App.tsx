@@ -21,7 +21,7 @@ function App() {
   const [googleFontLeft, setGoogleFontLeft] = useState<string | null>(null);
 
   // State for updating the font drop area with Google font name on the left
-  const [googelFontNameLeft, setGoogleFontNameLeft] = useState<string>('');
+  const [googleFontNameLeft, setGoogleFontNameLeft] = useState<string>('');
 
   // State for the selected font on the right
   const [selectedFontRight, setSelectedFontRight] = useState<File | null>(null);
@@ -30,7 +30,7 @@ function App() {
   const [googleFontRight, setGoogleFontRight] = useState<string | null>(null);
 
   // State for updating the font drop area with Google font name on the right
-  const [googelFontNameRight, setGoogleFontNameRight] = useState<string>('');
+  const [googleFontNameRight, setGoogleFontNameRight] = useState<string>('');
 
   // State for the line height on the right
   const [lineHeightRight, setLineHeightRight] = useState<number>(1.5);
@@ -205,7 +205,7 @@ function App() {
           <div className="font-uploader">
             <FontUploader
               onFontSelected={handleFontSelectedLeft}
-              externalFontName={googelFontNameLeft}
+              externalFontName={googleFontNameLeft}
             />
           </div>
           <div className="font-uploader">
@@ -275,7 +275,7 @@ function App() {
           <div className="font-uploader">
             <FontUploader
               onFontSelected={handleFontSelectedRight}
-              externalFontName={googelFontNameRight}
+              externalFontName={googleFontNameRight}
             />
           </div>
           <div className="font-uploader">
