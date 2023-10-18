@@ -4,7 +4,7 @@ import HalfWidthLine from './ProofHalfWidthLine';
 import { articleText, articleTitle, articleSubTitle, articleAuthorLine } from './constants';
 
 interface ArticleTextPlaceholdersProps {
-  lineHeight: number;
+  readonly lineHeight: number;
 }
 
 export default function ArticleTextPlaceholders({ lineHeight }: ArticleTextPlaceholdersProps) {
