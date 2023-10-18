@@ -1,6 +1,8 @@
 .half-width-line {
     margin-block-start: 0px;
     transition: background-color 0.4s;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .half-width-line:hover {

@@ -195,7 +195,7 @@ function App() {
           onChange={(e) => setSelectedTemplate(e.target.value)}
         >
           <option value="Font Preview">Font Preview</option>
-          <option value="Article">Article</option>
+          <option value="Article">News Article</option>
           <option value="Research Paper">Research Paper</option>
         </select>
       </header>
