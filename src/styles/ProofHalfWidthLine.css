@@ -3,8 +3,14 @@
     transition: background-color 0.4s;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-overflow: clip;
+    overflow-y: clip;
 }
 
 .half-width-line:hover {
     background-color: rgb(252, 228, 226);
+}
+
+.half-width-line-container {
+    width: 48%;
 }

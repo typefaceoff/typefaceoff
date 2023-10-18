@@ -23,7 +23,7 @@ export default function HalfWidthLine(
 
   if (!sizingToken) {
     return (
-      <div>
+      <div className="half-width-line-container">
         <p
           className="half-width-line proof"
           contentEditable
@@ -38,7 +38,7 @@ export default function HalfWidthLine(
   }
 
   return (
-    <div>
+    <div className="half-width-line-container">
       {SizingToken(pointSize, pointSize * lineHeight)}
       <p
         className="half-width-line proof"
