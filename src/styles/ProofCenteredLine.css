@@ -1,11 +1,3 @@
-.centered-line-container {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 0.5rem;
-    transition: background-color 0.4s;
-}
-
 .centered-line {
     margin: 0;
     text-overflow: clip;
