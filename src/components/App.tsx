@@ -236,10 +236,10 @@ function App() {
             </a>
             <a
               onClick={() => {
-                handleProofingTemplateChange('Research Paper');
+                handleProofingTemplateChange('Heading');
               }}
             >
-              Research Paper
+              Heading
             </a>
             <a
               onClick={() => {
@@ -313,7 +313,7 @@ function App() {
                 template="Article"
               />
             )}
-            {selectedTemplate === 'Research Paper' && (
+            {selectedTemplate === 'Heading' && (
               <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
@@ -321,7 +321,7 @@ function App() {
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
-                template="Template"
+                template="Heading"
               />
             )}
             {selectedTemplate === 'Poster' && (
@@ -394,7 +394,7 @@ function App() {
                 template="Article"
               />
             )}
-            {selectedTemplate === 'Research Paper' && (
+            {selectedTemplate === 'Heading' && (
               <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
@@ -402,7 +402,7 @@ function App() {
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
-                template="Template"
+                template="Heading"
               />
             )}
             {selectedTemplate === 'Poster' && (

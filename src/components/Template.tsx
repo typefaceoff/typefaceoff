@@ -4,6 +4,7 @@ import postcss from 'postcss';
 import ArticleTextPlaceholders from './TemplatePlaceHolders/ArticleTextPlaceHolders';
 import PosterTextPlaceholders from './TemplatePlaceHolders/PosterTextPlaceHolders';
 import FontTextPlaceholders from './TemplatePlaceHolders/FontTextPlaceholders';
+import HeadingTextPlaceHolders from './TemplatePlaceHolders/HeadingTextPlaceHolders';
 
 interface TemplateProps {
   fontFile: File | null;
@@ -12,7 +13,7 @@ interface TemplateProps {
   lineHeight: number;
   fontFeatureOptions: string[];
   fontSettings: boolean[];
-  template: 'Article' | 'Poster' | 'Template';
+  template: string;
 }
 
 function getFontFamily(fontFile: File | string | null, side: string) {
@@ -78,36 +79,45 @@ const Template: React.FC<TemplateProps> = ({
     fontFamily: fontFamily,
     fontFeatureSettings: featureSettings,
   };
-
-  if (template == 'Article') {
-    return (
-      <section>
-        <style>{fontFace}</style>
-        <div style={fontStyles}>
-          <ArticleTextPlaceholders lineHeight={lineHeight} />
-        </div>
-      </section>
-    );
-  } else if (template == 'Poster') {
-    return (
-      <section>
-        <style>{fontFace}</style>
-        <div style={fontStyles}>
-          <PosterTextPlaceholders lineHeight={lineHeight} />
-        </div>
-      </section>
-    );
-  } else if (template == 'Template') {
-    return (
-      <section>
-        <style>{fontFace}</style>
-        <div style={fontStyles}>
-          <FontTextPlaceholders lineHeight={lineHeight} />
-        </div>
-      </section>
-    );
-  } else {
-    return <></>;
+  switch (template) {
+    case 'Article':
+      return (
+        <section>
+          <style>{fontFace}</style>
+          <div style={fontStyles}>
+            <ArticleTextPlaceholders lineHeight={lineHeight} />
+          </div>
+        </section>
+      );
+    case 'Poster':
+      return (
+        <section>
+          <style>{fontFace}</style>
+          <div style={fontStyles}>
+            <PosterTextPlaceholders lineHeight={lineHeight} />
+          </div>
+        </section>
+      );
+    case 'Template':
+      return (
+        <section>
+          <style>{fontFace}</style>
+          <div style={fontStyles}>
+            <FontTextPlaceholders lineHeight={lineHeight} />
+          </div>
+        </section>
+      );
+    case 'Heading':
+      return (
+        <section>
+          <style>{fontFace}</style>
+          <div style={fontStyles}>
+            <HeadingTextPlaceHolders lineHeight={lineHeight} />
+          </div>
+        </section>
+      );
+    default:
+      return <></>;
   }
 };
 
