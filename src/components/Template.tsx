@@ -1,15 +1,18 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react';
-import FontTextPlaceholders from './FontTextPlaceholders';
 import postcss from 'postcss';
+import ArticleTextPlaceholders from './ArticleTextPlaceHolders';
+import PosterTextPlaceholders from './PosterTextPlaceHolders';
+import FontTextPlaceholders from './FontTextPlaceholders';
 
-interface FontPreviewProps {
+interface TemplateProps {
   fontFile: File | null;
   googleFontData: string | null;
   side: 'left' | 'right';
   lineHeight: number;
   fontFeatureOptions: string[];
   fontSettings: boolean[];
+  template: 'Article' | 'Poster' | 'Template';
 }
 
 function getFontFamily(fontFile: File | string | null, side: string) {
@@ -32,13 +35,14 @@ function getFontSettings(featureOptions: string[], featureSettings: boolean[]) {
   return setting;
 }
 
-const FontPreview: React.FC<FontPreviewProps> = ({
+const Template: React.FC<TemplateProps> = ({
   fontFile,
   googleFontData,
   side,
   lineHeight,
   fontFeatureOptions,
   fontSettings,
+  template,
 }) => {
   let fontUrl = '';
   let fontFamily = '';
@@ -75,18 +79,40 @@ const FontPreview: React.FC<FontPreviewProps> = ({
     fontFeatureSettings: featureSettings,
   };
 
-  return (
-    <section>
-      <style>{fontFace}</style>
-      <div style={fontStyles}>
-        <FontTextPlaceholders lineHeight={lineHeight} />
-      </div>
-    </section>
-  );
+  if (template == 'Article') {
+    return (
+      <section>
+        <style>{fontFace}</style>
+        <div style={fontStyles}>
+          <ArticleTextPlaceholders lineHeight={lineHeight} />
+        </div>
+      </section>
+    );
+  } else if (template == 'Poster') {
+    return (
+      <section>
+        <style>{fontFace}</style>
+        <div style={fontStyles}>
+          <PosterTextPlaceholders lineHeight={lineHeight} />
+        </div>
+      </section>
+    );
+  } else if (template == 'Template') {
+    return (
+      <section>
+        <style>{fontFace}</style>
+        <div style={fontStyles}>
+          <FontTextPlaceholders lineHeight={lineHeight} />
+        </div>
+      </section>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 // Only re-render if fontFile, lineHeight, or side props change
-export default React.memo(FontPreview, (prevProps, nextProps) => {
+export default React.memo(Template, (prevProps, nextProps) => {
   return (
     prevProps.fontFile === nextProps.fontFile &&
     prevProps.googleFontData === nextProps.googleFontData &&

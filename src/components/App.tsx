@@ -1,7 +1,6 @@
 import '../styles/App.css';
 import FontUploader from './FontUploader';
-import FontPreview from './FontPreview';
-import Article from './Article';
+import Template from './Template';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
 import { proofingText, opentypeText } from './constants';
@@ -12,7 +11,7 @@ import postcss from 'postcss';
 
 function App() {
   // Current proof template
-  const [selectedTemplate, setSelectedTemplate] = useState('Font Preview');
+  const [selectedTemplate, setSelectedTemplate] = useState('Template');
 
   // State for the selected font on the left
   const [selectedFontLeft, setSelectedFontLeft] = useState<File | null>(null);
@@ -194,9 +193,10 @@ function App() {
           value={selectedTemplate}
           onChange={(e) => setSelectedTemplate(e.target.value)}
         >
-          <option value="Font Preview">Font Preview</option>
+          <option value="Template">Template</option>
           <option value="Article">News Article</option>
           <option value="Research Paper">Research Paper</option>
+          <option value="Poster">Poster</option>
         </select>
       </header>
       <main>
@@ -233,35 +233,49 @@ function App() {
               />
             }
           </div>
-          <div className="font-preview">
-            {selectedTemplate === 'Font Preview' && (
-              <FontPreview
+          <div className="template">
+            {selectedTemplate === 'Template' && (
+              <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
+                template="Template"
               />
             )}
             {selectedTemplate === 'Article' && (
-              <Article
+              <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
+                template="Article"
               />
             )}
             {selectedTemplate === 'Research Paper' && (
-              <FontPreview
+              <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
+                template="Template"
+              />
+            )}
+            {selectedTemplate === 'Poster' && (
+              <Template
+                fontFile={selectedFontLeft}
+                googleFontData={googleFontLeft}
+                side="left"
+                lineHeight={lineHeightLeft}
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+                template="Poster"
               />
             )}
           </div>
@@ -300,35 +314,49 @@ function App() {
               />
             }
           </div>
-          <div className="font-preview">
-            {selectedTemplate === 'Font Preview' && (
-              <FontPreview
+          <div className="template">
+            {selectedTemplate === 'Template' && (
+              <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
+                template="Template"
               />
             )}
             {selectedTemplate === 'Article' && (
-              <Article
+              <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
+                template="Article"
               />
             )}
             {selectedTemplate === 'Research Paper' && (
-              <FontPreview
+              <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
+                template="Template"
+              />
+            )}
+            {selectedTemplate === 'Poster' && (
+              <Template
+                fontFile={selectedFontRight}
+                googleFontData={googleFontRight}
+                side="right"
+                lineHeight={lineHeightRight}
+                fontFeatureOptions={fontFeatureOptionsRight}
+                fontSettings={fontSettingsRight}
+                template="Poster"
               />
             )}
           </div>
