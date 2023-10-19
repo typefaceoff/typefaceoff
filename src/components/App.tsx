@@ -224,9 +224,6 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          <div className="font-features">
-            <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
-          </div>
           <div className="font-feature-checkboxes-container-left">
             {
               <FontFeaturesSetting
@@ -293,9 +290,6 @@ function App() {
               step={0.05}
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
-          </div>
-          <div className="font-features">
-            <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
           </div>
           <div className="font-feature-checkboxes-container-Right">
             {
