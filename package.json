@@ -12,6 +12,8 @@
     "husky": "husky install"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.14.14",
+    "@mui/material": "^5.14.14",
     "@types/opentype.js": "^1.3.6",
     "axios": "^1.5.1",
     "css": "^3.0.0",
