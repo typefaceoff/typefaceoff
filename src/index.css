@@ -10,6 +10,7 @@
     --color-border: rgb(86% 86% 86%);
     --color-accent: rgb(39.22% 42.35% 100%);
     --color-bg-variant: rgb(94.12% 94.12% 94.12%);
+    --color-hover-highlight-light: rgb(252, 228, 226);
 
     --color-bg-dark: #1e1e1e;
     --color-fg-dark: #f0f0f0;
@@ -17,6 +18,7 @@
     --color-border-dark: #666666;
     --color-accent-dark: #007bff;
     --color-bg-variant-dark: #333333;
+    --color-hover-highlight-dark: rgb(19, 68, 37);
 }
 
 body {
