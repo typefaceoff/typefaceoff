@@ -1,11 +1,19 @@
+.centere-line-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0.5rem;
+    transition: background-color 0.4s;
+}
+
 .centered-line {
     margin: 5px;
     transition: background-color 0.4s;
     text-overflow: clip;
-    overflow-x: clip;
+    overflow-x: auto;
+    overflow-y: auto;
     text-align: center;
     vertical-align: middle;
-    overflow-y: clip;
 }
 
 .centered-line:hover {

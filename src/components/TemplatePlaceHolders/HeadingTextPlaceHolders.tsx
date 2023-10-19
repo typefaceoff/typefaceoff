@@ -9,11 +9,9 @@ export default function HeadingTextPlaceHolders({ lineHeight }: HeadingTextPlace
   return (
     <div>
       <div className="template-single-columns">
-        {CenteredLine('Heading', 150, lineHeight, false)}
+        {CenteredLine('Heading', 150, lineHeight, true)}
       </div>
-      <div className="template-single-columns">
-        {CenteredLine('heading', 80, lineHeight, false)}
-      </div>
+      <div className="template-single-columns">{CenteredLine('heading', 80, lineHeight, true)}</div>
     </div>
   );
 }
