@@ -11,7 +11,7 @@ interface FontPreviewProps {
   lineHeight: number;
   fontFeatureOptions: string[];
   fontSettings: boolean[];
-  template: 'Article' | 'Poster';
+  template: 'Article' | 'Poster' | null;
 }
 
 function getFontFamily(fontFile: File | string | null, side: string) {
@@ -96,6 +96,8 @@ const FontPreview: React.FC<FontPreviewProps> = ({
         </div>
       </section>
     );
+  } else {
+    return;
   }
 };
 
