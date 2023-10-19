@@ -1,9 +1,11 @@
 .centered-line {
+    height: 100%;
+    max-height: fit-content;
     margin: 5px;
     transition: background-color 0.4s;
     text-overflow: clip;
-    overflow-x: auto;
-    overflow-y: auto;
+    overflow-x: clip;
+    overflow-y: visible;
     text-align: center;
     vertical-align: middle;
 }
