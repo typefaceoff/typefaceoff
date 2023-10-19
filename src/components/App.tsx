@@ -174,6 +174,14 @@ function App() {
     window.print();
   };
 
+  const handleProofingTemplateChange = (proofingTemplate: string) => {
+    const dropdown = document.getElementById('dropbtn');
+    if (dropdown) {
+      dropdown.textContent = proofingTemplate;
+      setSelectedTemplate(proofingTemplate);
+    }
+  };
+
   // Event handler to set a common text for all proof elements
   const setText = (text: string) => {
     const all = document.getElementsByClassName('proof');
@@ -207,16 +215,41 @@ function App() {
         >
           Save previews as PDF
         </button>
-        <select
-          className="dropdown"
-          value={selectedTemplate}
-          onChange={(e) => setSelectedTemplate(e.target.value)}
-        >
-          <option value="Template">Template</option>
-          <option value="Article">News Article</option>
-          <option value="Research Paper">Research Paper</option>
-          <option value="Poster">Poster</option>
-        </select>
+        <div className="dropdown">
+          <button id="dropbtn" className="dropbtn">
+            Template
+          </button>
+          <div className="dropdown-content">
+            <a
+              onClick={() => {
+                handleProofingTemplateChange('Template');
+              }}
+            >
+              Template
+            </a>
+            <a
+              onClick={() => {
+                handleProofingTemplateChange('Article');
+              }}
+            >
+              Article
+            </a>
+            <a
+              onClick={() => {
+                handleProofingTemplateChange('Research Paper');
+              }}
+            >
+              Research Paper
+            </a>
+            <a
+              onClick={() => {
+                handleProofingTemplateChange('Poster');
+              }}
+            >
+              Poster
+            </a>
+          </div>
+        </div>
         <div className="dark-mode-button-container">
           <IconButton onClick={toggleDarkMode} className="icon-button">
             {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
