@@ -1,3 +1,11 @@
+body.dark-mode {
+    --color-hover-highlight: var(--color-hover-highlight-dark);
+}
+
+body:not(.dark-mode) {
+    --color-hover-highlight: var(--color-hover-highlight-light);
+}
+
 .full-width-line-container {
     display: flex;
     flex-direction: row;
@@ -18,5 +26,5 @@
 }
 
 .full-width-line:hover {
-    background-color: rgb(252, 228, 226);
+    background-color: var(--color-hover-highlight);
 }
