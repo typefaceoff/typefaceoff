@@ -1,3 +1,11 @@
+body.dark-mode {
+    --color-hover-highlight: var(--color-hover-highlight-dark);
+}
+
+body:not(.dark-mode) {
+    --color-hover-highlight: var(--color-hover-highlight-light);
+}
+
 .centered-line {
     margin: 5px;
     transition: background-color 0.4s;
@@ -9,5 +17,5 @@
 }
 
 .centered-line:hover {
-    background-color: rgb(252, 228, 226);
+    background-color: var(--color-hover-highlight);
 }

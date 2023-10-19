@@ -171,6 +171,7 @@ footer {
     .font-uploader,
     .footer-text,
     .github-icon,
+    .dark-mode-button-container,
     .line-height-adjustment {
         display: none;
     }

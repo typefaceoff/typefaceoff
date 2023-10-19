@@ -2,14 +2,29 @@ import '../styles/App.css';
 import FontUploader from './FontUploader';
 import Template from './Template';
 import { BsGithub } from 'react-icons/bs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { proofingText, opentypeText } from './constants';
 import opentype from 'opentype.js';
 import FontFeaturesSetting from './FontFeaturesSetting';
 import GoogleFontLoader from './GoogleFontLoader';
 import postcss from 'postcss';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import IconButton from '@mui/material/IconButton';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false); // State variable for dark mode
+
+  // useEffect to add/remove 'dark-mode' class based on the darkMode state
+  useEffect(() => {
+    const body = document.body;
+    if (darkMode) {
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
+    }
+  }, [darkMode]); // Run this effect whenever darkMode state changes
+
   // Current proof template
   const [selectedTemplate, setSelectedTemplate] = useState('Template');
 
@@ -175,6 +190,10 @@ function App() {
     }
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <div className="app">
       <header>
@@ -230,6 +249,11 @@ function App() {
               Poster
             </a>
           </div>
+        </div>
+        <div className="dark-mode-button-container">
+          <IconButton onClick={toggleDarkMode} className="icon-button">
+            {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
         </div>
       </header>
       <main>
