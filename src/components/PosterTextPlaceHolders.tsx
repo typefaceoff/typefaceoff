@@ -1,38 +1,41 @@
 import '../styles/FontTextPlaceholders.css';
 import FullWidthLine from './ProofFullWidthLine';
 import HalfWidthLine from './ProofHalfWidthLine';
-import { articleText, articleTitle, articleSubTitle, articleAuthorLine } from './constants';
+import CenteredLine from './ProofCenteredLine';
+import {
+  posterText,
+  posterTitle,
+  posterActorOne,
+  posterActorTwo,
+  posterInfo,
+  posterTime,
+} from './constants';
 
 interface PosterTextPlaceholdersProps {
   readonly lineHeight: number;
 }
 
-export default function ArticleTextPlaceholders({ lineHeight }: PosterTextPlaceholdersProps) {
+export default function PosterTextPlaceholders({ lineHeight }: PosterTextPlaceholdersProps) {
   const displayPointSizes = [30, 70, 25, 15, 20];
 
   return (
     <div>
+      <div className="template-double-columns">
+        {HalfWidthLine(posterActorOne, displayPointSizes[4], lineHeight, false)}
+        {HalfWidthLine(posterActorTwo, displayPointSizes[4], lineHeight, false)}
+      </div>
+      <div className="template-single-columns">
+        {CenteredLine(posterTitle, displayPointSizes[1], lineHeight, false)}
+      </div>
       <div className="template-single-column">
-        {FullWidthLine(articleText, displayPointSizes[0], lineHeight, false)}
+        {CenteredLine(posterText, displayPointSizes[0], 1.5, false)}
       </div>
       <div className="template-double-columns">
-        {HalfWidthLine(articleTitle, displayPointSizes[1], lineHeight, false)}
-        {HalfWidthLine(articleSubTitle, displayPointSizes[2], lineHeight, false)}
+        {HalfWidthLine(posterInfo, displayPointSizes[3], lineHeight, false)}
+        {HalfWidthLine(posterInfo, displayPointSizes[3], lineHeight, false)}
       </div>
-      <div className="template-single-column">
-        {FullWidthLine(articleAuthorLine, displayPointSizes[3], 1.5, false)}
-      </div>
-      <div className="template-double-columns">
-        {HalfWidthLine(articleText, displayPointSizes[4], lineHeight, false)}
-        {HalfWidthLine(articleText, displayPointSizes[4], lineHeight, false)}
-      </div>
-      <div className="template-double-columns">
-        {HalfWidthLine(articleText, displayPointSizes[4], lineHeight, false)}
-        {HalfWidthLine(articleText, displayPointSizes[4], lineHeight, false)}
-      </div>
-      <div className="template-double-columns">
-        {HalfWidthLine(articleText, displayPointSizes[4], lineHeight, false)}
-        {HalfWidthLine(articleText, displayPointSizes[4], lineHeight, false)}
+      <div className="template-single-columns">
+        {CenteredLine(posterTime, displayPointSizes[2], lineHeight, false)}
       </div>
     </div>
   );
