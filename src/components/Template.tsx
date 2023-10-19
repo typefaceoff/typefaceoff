@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react';
 import postcss from 'postcss';
+import ArticleTextPlaceholders from './ArticleTextPlaceHolders';
 import PosterTextPlaceholders from './PosterTextPlaceHolders';
 
 interface FontPreviewProps {
@@ -10,6 +11,7 @@ interface FontPreviewProps {
   lineHeight: number;
   fontFeatureOptions: string[];
   fontSettings: boolean[];
+  template: 'Article' | 'Poster';
 }
 
 function getFontFamily(fontFile: File | string | null, side: string) {
@@ -39,6 +41,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
   lineHeight,
   fontFeatureOptions,
   fontSettings,
+  template,
 }) => {
   let fontUrl = '';
   let fontFamily = '';
@@ -75,14 +78,25 @@ const FontPreview: React.FC<FontPreviewProps> = ({
     fontFeatureSettings: featureSettings,
   };
 
-  return (
-    <section>
-      <style>{fontFace}</style>
-      <div style={fontStyles}>
-        <PosterTextPlaceholders lineHeight={lineHeight} />
-      </div>
-    </section>
-  );
+  if (template == 'Article') {
+    return (
+      <section>
+        <style>{fontFace}</style>
+        <div style={fontStyles}>
+          <ArticleTextPlaceholders lineHeight={lineHeight} />
+        </div>
+      </section>
+    );
+  } else if (template == 'Poster') {
+    return (
+      <section>
+        <style>{fontFace}</style>
+        <div style={fontStyles}>
+          <PosterTextPlaceholders lineHeight={lineHeight} />
+        </div>
+      </section>
+    );
+  }
 };
 
 // Only re-render if fontFile, lineHeight, or side props change

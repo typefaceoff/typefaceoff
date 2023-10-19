@@ -1,8 +1,7 @@
 import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
-import Article from './Article';
-import Poster from './Poster';
+import Template from './Template';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
 import { proofingText, opentypeText } from './constants';
@@ -250,13 +249,14 @@ function App() {
               />
             )}
             {selectedTemplate === 'Article' && (
-              <Article
+              <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
+                template="Article"
               />
             )}
             {selectedTemplate === 'Research Paper' && (
@@ -270,13 +270,14 @@ function App() {
               />
             )}
             {selectedTemplate === 'Poster' && (
-              <Poster
+              <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
+                template="Poster"
               />
             )}
           </div>
@@ -330,13 +331,14 @@ function App() {
               />
             )}
             {selectedTemplate === 'Article' && (
-              <Article
+              <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
+                template="Article"
               />
             )}
             {selectedTemplate === 'Research Paper' && (
@@ -350,13 +352,14 @@ function App() {
               />
             )}
             {selectedTemplate === 'Poster' && (
-              <Poster
+              <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
+                template="Poster"
               />
             )}
           </div>
