@@ -21,6 +21,14 @@ const FontFeaturesSetting: React.FC<FontFeaturesProps> = ({
     [fontSettings, fontSettingHandler]
   );
 
+  if (fontFeatureOptions.length == 0) {
+    return (
+      <div>
+        <p>No OpenType font features available</p>
+      </div>
+    );
+  }
+
   const features = fontFeatureOptions.map(function (feature, i) {
     return (
       <label key={i}>
@@ -30,7 +38,14 @@ const FontFeaturesSetting: React.FC<FontFeaturesProps> = ({
     );
   });
 
-  return <div>{features}</div>;
+  return (
+    <div>
+      <div>
+        <p>OpenType font feautres available: </p>
+      </div>
+      <div>{features}</div>
+    </div>
+  );
 };
 
 export default FontFeaturesSetting;

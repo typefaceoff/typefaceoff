@@ -1,7 +1,6 @@
 import '../styles/App.css';
 import FontUploader from './FontUploader';
-import FontPreview from './FontPreview';
-import Article from './Article';
+import Template from './Template';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
 import { proofingText, opentypeText } from './constants';
@@ -12,7 +11,7 @@ import postcss from 'postcss';
 
 function App() {
   // Current proof template
-  const [selectedTemplate, setSelectedTemplate] = useState('Font Preview');
+  const [selectedTemplate, setSelectedTemplate] = useState('Template');
 
   // State for the selected font on the left
   const [selectedFontLeft, setSelectedFontLeft] = useState<File | null>(null);
@@ -199,15 +198,15 @@ function App() {
         </button>
         <div className="dropdown">
           <button id="dropbtn" className="dropbtn">
-            Font Preview
+            Template
           </button>
           <div className="dropdown-content">
             <a
               onClick={() => {
-                handleProofingTemplateChange('Font Preview');
+                handleProofingTemplateChange('Template');
               }}
             >
-              Font Preview
+              Template
             </a>
             <a
               onClick={() => {
@@ -222,6 +221,13 @@ function App() {
               }}
             >
               Research Paper
+            </a>
+            <a
+              onClick={() => {
+                handleProofingTemplateChange('Poster');
+              }}
+            >
+              Poster
             </a>
           </div>
         </div>
@@ -251,9 +257,6 @@ function App() {
               onChange={(e) => setLineHeightLeft(parseFloat(e.target.value))}
             />
           </div>
-          <div className="font-features">
-            <p>Font features detected: {fontFeatureOptionsLeft.toString()}</p>
-          </div>
           <div className="font-feature-checkboxes-container-left">
             {
               <FontFeaturesSetting
@@ -263,35 +266,49 @@ function App() {
               />
             }
           </div>
-          <div className="font-preview">
-            {selectedTemplate === 'Font Preview' && (
-              <FontPreview
+          <div className="template">
+            {selectedTemplate === 'Template' && (
+              <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
+                template="Template"
               />
             )}
             {selectedTemplate === 'Article' && (
-              <Article
+              <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
+                template="Article"
               />
             )}
             {selectedTemplate === 'Research Paper' && (
-              <FontPreview
+              <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
                 side="left"
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
+                template="Template"
+              />
+            )}
+            {selectedTemplate === 'Poster' && (
+              <Template
+                fontFile={selectedFontLeft}
+                googleFontData={googleFontLeft}
+                side="left"
+                lineHeight={lineHeightLeft}
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+                template="Poster"
               />
             )}
           </div>
@@ -321,9 +338,6 @@ function App() {
               onChange={(e) => setLineHeightRight(parseFloat(e.target.value))}
             />
           </div>
-          <div className="font-features">
-            <p>Font features detected: {fontFeatureOptionsRight.toString()}</p>
-          </div>
           <div className="font-feature-checkboxes-container-Right">
             {
               <FontFeaturesSetting
@@ -333,35 +347,49 @@ function App() {
               />
             }
           </div>
-          <div className="font-preview">
-            {selectedTemplate === 'Font Preview' && (
-              <FontPreview
+          <div className="template">
+            {selectedTemplate === 'Template' && (
+              <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
+                template="Template"
               />
             )}
             {selectedTemplate === 'Article' && (
-              <Article
+              <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
+                template="Article"
               />
             )}
             {selectedTemplate === 'Research Paper' && (
-              <FontPreview
+              <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
                 side="right"
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
+                template="Template"
+              />
+            )}
+            {selectedTemplate === 'Poster' && (
+              <Template
+                fontFile={selectedFontRight}
+                googleFontData={googleFontRight}
+                side="right"
+                lineHeight={lineHeightRight}
+                fontFeatureOptions={fontFeatureOptionsRight}
+                fontSettings={fontSettingsRight}
+                template="Poster"
               />
             )}
           </div>

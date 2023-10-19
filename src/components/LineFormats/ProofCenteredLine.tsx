@@ -1,7 +1,7 @@
-import SizingToken from './SizingToken';
-import '../styles/ProofFullWidthLine.css';
+import SizingToken from '../SizingToken';
+import '../../styles/ProofCenteredLine.css';
 
-export default function FullWidthLine(
+export default function CenteredLine(
   proofingText: string,
   pointSize: number,
   lineHeight: number,
@@ -22,9 +22,9 @@ export default function FullWidthLine(
 
   if (!sizingToken) {
     return (
-      <div className="full-width-line-container">
+      <div className="centered-line-container">
         <p
-          className="full-width-line proof"
+          className="centered-line proof"
           contentEditable
           spellCheck="false"
           onInput={updateProofingText}
@@ -37,10 +37,10 @@ export default function FullWidthLine(
   }
 
   return (
-    <div className="full-width-line-container">
+    <div className="centered-line-container">
       {SizingToken(pointSize, pointSize * lineHeight)}
       <p
-        className="full-width-line proof"
+        className="centered-line proof"
         contentEditable
         spellCheck="false"
         onInput={updateProofingText}
