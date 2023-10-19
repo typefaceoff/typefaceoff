@@ -1,5 +1,5 @@
 import '../../styles/FontTextPlaceholders.css';
-import CenteredLine from '../LineFormats/ProofCenteredLine';
+import FullWidthLine from '../LineFormats/ProofFullWidthLine';
 
 interface HeadingTextPlaceHoldersProps {
   readonly lineHeight: number;
@@ -9,9 +9,11 @@ export default function HeadingTextPlaceHolders({ lineHeight }: HeadingTextPlace
   return (
     <div>
       <div className="template-single-columns">
-        {CenteredLine('Heading', 150, lineHeight, true)}
+        {FullWidthLine('Heading', 150, lineHeight, true)}
       </div>
-      <div className="template-single-columns">{CenteredLine('heading', 80, lineHeight, true)}</div>
+      <div className="template-single-columns">
+        {FullWidthLine('heading', 80, lineHeight, true)}
+      </div>
     </div>
   );
 }
