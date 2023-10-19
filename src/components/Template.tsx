@@ -1,9 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react';
 import postcss from 'postcss';
-import ArticleTextPlaceHolders from './TemplatePlaceHolders/ArticleTextPlaceHolders';
-import PosterTextPlaceHolders from './TemplatePlaceHolders/PosterTextPlaceHolders';
-import FontTextPlaceHolders from './TemplatePlaceHolders/FontTextPlaceHolders';
+import ArticleTextPlaceholders from './TemplatePlaceHolders/ArticleTextPlaceHolders';
+import PosterTextPlaceholders from './TemplatePlaceHolders/PosterTextPlaceHolders';
+import FontTextPlaceholders from './TemplatePlaceHolders/FontTextPlaceholders';
 import HeadingTextPlaceHolders from './TemplatePlaceHolders/HeadingTextPlaceHolders';
 
 interface TemplateProps {
@@ -85,7 +85,7 @@ const Template: React.FC<TemplateProps> = ({
         <section>
           <style>{fontFace}</style>
           <div style={fontStyles}>
-            <ArticleTextPlaceHolders lineHeight={lineHeight} />
+            <ArticleTextPlaceholders lineHeight={lineHeight} />
           </div>
         </section>
       );
@@ -94,7 +94,7 @@ const Template: React.FC<TemplateProps> = ({
         <section>
           <style>{fontFace}</style>
           <div style={fontStyles}>
-            <PosterTextPlaceHolders lineHeight={lineHeight} />
+            <PosterTextPlaceholders lineHeight={lineHeight} />
           </div>
         </section>
       );
@@ -103,7 +103,7 @@ const Template: React.FC<TemplateProps> = ({
         <section>
           <style>{fontFace}</style>
           <div style={fontStyles}>
-            <FontTextPlaceHolders lineHeight={lineHeight} />
+            <FontTextPlaceholders lineHeight={lineHeight} />
           </div>
         </section>
       );
