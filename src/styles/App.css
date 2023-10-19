@@ -49,9 +49,16 @@ main {
 }
 
 .dropdown {
-    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
     margin-left: 10px;
     margin-right: 10px;
+    margin-bottom: 15px;
+    min-width: 180px;
+}
+
+.dropbtn {
+    padding: 0.6em 1.2em;
     color: aliceblue;
     background-color: #1a1a1a;
     border-radius: 8px;
@@ -62,33 +69,68 @@ main {
     cursor: pointer;
     transition: background-color 0.4s;
     font-weight: 500;
-    padding: 0.6em 1.2em;
+    min-width: 180px;
 }
 
-.dropdown:hover {
+.dropbtn:hover {
     background-color: #404040;
+    transition: background-color 0.4s;
 }
 
-.dropdown option {
-    border-radius: 8px;
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: #404040;
+    text-decoration: none;
+}
+
+.dropdown-content {
+    display: none;
+    min-width: 180px;
+    position: absolute;
     text-align: center;
-    width: 100%;
-    background-color: #1a1a1a; /* Or any color you want */
-    color: aliceblue; /* Or any color you want */
+    color: aliceblue;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    cursor: pointer;
 }
 
-.dropdown:hover option {
-    background-color: #1a1a1a; /* Or any color you want */
+.dropdown-content a:hover {
+    background-color: #404040;
+    transition: background-color 0.4s;
+    text-decoration: none;
+}
+
+.dropdown-content a {
+    color: aliceblue;
+    background-color: #1a1a1a;
+    text-decoration: none;
+    display: block;
+    padding: 0.1em 1.2em;
+}
+
+.dropbtn::after {
+    margin-left: 10px;
+    margin-top: 5%;
+    float: right;
+    right: 10px;
+    content: "   ▼";
+    font-size: 0.5rem;
 }
 
 .lineHeightInput {
-    border: 2px solid #ccc; /* Light dashed border */
-    border-radius: 8px; /* Rounded corners */
-    background-color: white; /* Optional: Make the background transparent */
-    padding: 8px; /* Adjust padding according to your preference */
-    font-size: 16px; /* Adjust font size according to your preference */
+    border: 2px solid #ccc;
+    /* Light dashed border */
+    border-radius: 8px;
+    /* Rounded corners */
+    background-color: white;
+    /* Optional: Make the background transparent */
+    padding: 8px;
+    /* Adjust padding according to your preference */
+    font-size: 16px;
+    /* Adjust font size according to your preference */
     text-align: center;
-    color: #333; /* Text color */
+    color: #333;
+    /* Text color */
     transition: background-color 0.4s;
     width: 5rem;
 }
@@ -98,7 +140,8 @@ main {
 }
 
 .lineHeightInput:focus {
-    outline: none; /* Removes the default outline */
+    outline: none;
+    /* Removes the default outline */
     border: 2px solid rgb(182, 173, 173);
 }
 
@@ -131,6 +174,7 @@ footer {
     .line-height-adjustment {
         display: none;
     }
+
     .main > .side-container * {
         display: block;
     }
