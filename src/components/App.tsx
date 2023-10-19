@@ -12,11 +12,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import IconButton from '@mui/material/IconButton';
 
-
-
-
 function App() {
-
   const [darkMode, setDarkMode] = useState(false); // State variable for dark mode
 
   // useEffect to add/remove 'dark-mode' class based on the darkMode state
@@ -190,7 +186,6 @@ function App() {
     setDarkMode(!darkMode);
   };
 
-
   return (
     <div className="app">
       <header>
@@ -222,9 +217,8 @@ function App() {
           <option value="Research Paper">Research Paper</option>
           <option value="Poster">Poster</option>
         </select>
-        <div className="dark-mode-button-container" >
-          <IconButton onClick={toggleDarkMode}
-            className='icon-button'>
+        <div className="dark-mode-button-container">
+          <IconButton onClick={toggleDarkMode} className="icon-button">
             {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
         </div>
