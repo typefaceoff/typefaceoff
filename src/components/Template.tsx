@@ -5,14 +5,14 @@ import ArticleTextPlaceholders from './ArticleTextPlaceHolders';
 import PosterTextPlaceholders from './PosterTextPlaceHolders';
 import FontTextPlaceholders from './FontTextPlaceholders';
 
-interface FontPreviewProps {
+interface TemplateProps {
   fontFile: File | null;
   googleFontData: string | null;
   side: 'left' | 'right';
   lineHeight: number;
   fontFeatureOptions: string[];
   fontSettings: boolean[];
-  template: 'Article' | 'Poster' | 'Font Preview';
+  template: 'Article' | 'Poster' | 'Template';
 }
 
 function getFontFamily(fontFile: File | string | null, side: string) {
@@ -35,7 +35,7 @@ function getFontSettings(featureOptions: string[], featureSettings: boolean[]) {
   return setting;
 }
 
-const FontPreview: React.FC<FontPreviewProps> = ({
+const Template: React.FC<TemplateProps> = ({
   fontFile,
   googleFontData,
   side,
@@ -97,7 +97,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
         </div>
       </section>
     );
-  } else if (template == 'Font Preview') {
+  } else if (template == 'Template') {
     return (
       <section>
         <style>{fontFace}</style>
@@ -112,7 +112,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
 };
 
 // Only re-render if fontFile, lineHeight, or side props change
-export default React.memo(FontPreview, (prevProps, nextProps) => {
+export default React.memo(Template, (prevProps, nextProps) => {
   return (
     prevProps.fontFile === nextProps.fontFile &&
     prevProps.googleFontData === nextProps.googleFontData &&

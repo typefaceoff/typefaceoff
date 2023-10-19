@@ -11,7 +11,7 @@ import postcss from 'postcss';
 
 function App() {
   // Current proof template
-  const [selectedTemplate, setSelectedTemplate] = useState('Font Preview');
+  const [selectedTemplate, setSelectedTemplate] = useState('Template');
 
   // State for the selected font on the left
   const [selectedFontLeft, setSelectedFontLeft] = useState<File | null>(null);
@@ -193,7 +193,7 @@ function App() {
           value={selectedTemplate}
           onChange={(e) => setSelectedTemplate(e.target.value)}
         >
-          <option value="Font Preview">Font Preview</option>
+          <option value="Template">Template</option>
           <option value="Article">News Article</option>
           <option value="Research Paper">Research Paper</option>
           <option value="Poster">Poster</option>
@@ -236,8 +236,8 @@ function App() {
               />
             }
           </div>
-          <div className="font-preview">
-            {selectedTemplate === 'Font Preview' && (
+          <div className="template">
+            {selectedTemplate === 'Template' && (
               <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
@@ -245,7 +245,7 @@ function App() {
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
-                template="Font Preview"
+                template="Template"
               />
             )}
             {selectedTemplate === 'Article' && (
@@ -267,7 +267,7 @@ function App() {
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
-                template="Font Preview"
+                template="Template"
               />
             )}
             {selectedTemplate === 'Poster' && (
@@ -320,8 +320,8 @@ function App() {
               />
             }
           </div>
-          <div className="font-preview">
-            {selectedTemplate === 'Font Preview' && (
+          <div className="template">
+            {selectedTemplate === 'Template' && (
               <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
@@ -329,7 +329,7 @@ function App() {
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
-                template="Font Preview"
+                template="Template"
               />
             )}
             {selectedTemplate === 'Article' && (
@@ -351,7 +351,7 @@ function App() {
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
-                template="Font Preview"
+                template="Template"
               />
             )}
             {selectedTemplate === 'Poster' && (
