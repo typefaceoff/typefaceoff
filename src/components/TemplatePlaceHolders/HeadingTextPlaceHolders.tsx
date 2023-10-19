@@ -1,5 +1,5 @@
 import '../../styles/FontTextPlaceholders.css';
-import FullWidthLine from '../LineFormats/ProofFullWidthLine';
+import TitleLine from '../LineFormats/ProofTitleLine';
 
 interface HeadingTextPlaceHoldersProps {
   readonly lineHeight: number;
@@ -8,12 +8,8 @@ interface HeadingTextPlaceHoldersProps {
 export default function HeadingTextPlaceHolders({ lineHeight }: HeadingTextPlaceHoldersProps) {
   return (
     <div>
-      <div className="template-single-columns">
-        {FullWidthLine('Heading', 150, lineHeight, true)}
-      </div>
-      <div className="template-single-columns">
-        {FullWidthLine('heading', 80, lineHeight, true)}
-      </div>
+      <div className="template-single-columns">{TitleLine('Heading', 150, lineHeight, true)}</div>
+      <div className="template-single-columns">{TitleLine('heading', 80, lineHeight, true)}</div>
     </div>
   );
 }

@@ -1,13 +1,17 @@
-.centered-line {
+.title-line {
+    height: 100%;
+    max-height: fit-content;
     margin: 5px;
     transition: background-color 0.4s;
     text-overflow: clip;
     overflow-x: clip;
+    overflow-y: clip;
     text-align: center;
     vertical-align: middle;
-    overflow-y: clip;
+    padding-top: 6%;
+    padding-bottom: 6%;
 }
 
-.centered-line:hover {
+title-line:hover {
     background-color: rgb(252, 228, 226);
 }
