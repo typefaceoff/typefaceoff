@@ -10,6 +10,13 @@
     --color-border: rgb(86% 86% 86%);
     --color-accent: rgb(39.22% 42.35% 100%);
     --color-bg-variant: rgb(94.12% 94.12% 94.12%);
+
+    --color-bg-dark: #1e1e1e; 
+    --color-fg-dark: #f0f0f0; 
+    --color-fg-variant-dark: #999999; 
+    --color-border-dark: #666666; 
+    --color-accent-dark: #007bff; 
+    --color-bg-variant-dark: #333333; 
 }
 
 body {
@@ -19,6 +26,21 @@ body {
     color: var(--color-fg);
     padding: 2rem 3.75rem;
 }
+
+body.dark-mode {
+  background: var(--color-bg-dark);
+  color: var(--color-fg-dark);
+}
+
+body.dark-mode button {
+background-color: #333333;
+color: #f0f0f0;
+}
+
+body.dark-mode .footer-text {
+color: #333333;
+}
+
 
 header {
     text-align: center;
