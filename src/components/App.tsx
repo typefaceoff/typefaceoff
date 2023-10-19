@@ -195,7 +195,7 @@ function App() {
         >
           <option value="Template">Template</option>
           <option value="Article">News Article</option>
-          <option value="Research Paper">Research Paper</option>
+          <option value="Heading">Heading</option>
           <option value="Poster">Poster</option>
         </select>
       </header>
@@ -256,7 +256,7 @@ function App() {
                 template="Article"
               />
             )}
-            {selectedTemplate === 'Research Paper' && (
+            {selectedTemplate === 'Heading' && (
               <Template
                 fontFile={selectedFontLeft}
                 googleFontData={googleFontLeft}
@@ -264,7 +264,7 @@ function App() {
                 lineHeight={lineHeightLeft}
                 fontFeatureOptions={fontFeatureOptionsLeft}
                 fontSettings={fontSettingsLeft}
-                template="Template"
+                template="Heading"
               />
             )}
             {selectedTemplate === 'Poster' && (
@@ -337,7 +337,7 @@ function App() {
                 template="Article"
               />
             )}
-            {selectedTemplate === 'Research Paper' && (
+            {selectedTemplate === 'Heading' && (
               <Template
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
@@ -345,7 +345,7 @@ function App() {
                 lineHeight={lineHeightRight}
                 fontFeatureOptions={fontFeatureOptionsRight}
                 fontSettings={fontSettingsRight}
-                template="Template"
+                template="Heading"
               />
             )}
             {selectedTemplate === 'Poster' && (
