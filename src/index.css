@@ -33,12 +33,12 @@ body.dark-mode {
 }
 
 body.dark-mode button {
-    background-color: #333333;
-    color: #f0f0f0;
+    background-color: var(--color-bg-variant-dark);
+    color: var(--color-fg-dark);
 }
 
 body.dark-mode .footer-text {
-    color: #333333;
+    color: var(--color-bg-variant-dark);
 }
 
 header {
