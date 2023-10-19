@@ -1,5 +1,4 @@
 import '../styles/FontTextPlaceholders.css';
-import FullWidthLine from './ProofFullWidthLine';
 import HalfWidthLine from './ProofHalfWidthLine';
 import CenteredLine from './ProofCenteredLine';
 import {
