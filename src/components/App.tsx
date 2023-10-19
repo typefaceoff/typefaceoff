@@ -2,6 +2,7 @@ import '../styles/App.css';
 import FontUploader from './FontUploader';
 import FontPreview from './FontPreview';
 import Article from './Article';
+import Poster from './Poster';
 import { BsGithub } from 'react-icons/bs';
 import { useState } from 'react';
 import { proofingText, opentypeText } from './constants';
@@ -197,6 +198,7 @@ function App() {
           <option value="Font Preview">Font Preview</option>
           <option value="Article">News Article</option>
           <option value="Research Paper">Research Paper</option>
+          <option value="Poster">Poster</option>
         </select>
       </header>
       <main>
@@ -267,6 +269,16 @@ function App() {
                 fontSettings={fontSettingsLeft}
               />
             )}
+            {selectedTemplate === 'Poster' && (
+              <Poster
+                fontFile={selectedFontLeft}
+                googleFontData={googleFontLeft}
+                side="left"
+                lineHeight={lineHeightLeft}
+                fontFeatureOptions={fontFeatureOptionsLeft}
+                fontSettings={fontSettingsLeft}
+              />
+            )}
           </div>
         </section>
 
@@ -329,6 +341,16 @@ function App() {
             )}
             {selectedTemplate === 'Research Paper' && (
               <FontPreview
+                fontFile={selectedFontRight}
+                googleFontData={googleFontRight}
+                side="right"
+                lineHeight={lineHeightRight}
+                fontFeatureOptions={fontFeatureOptionsRight}
+                fontSettings={fontSettingsRight}
+              />
+            )}
+            {selectedTemplate === 'Poster' && (
+              <Poster
                 fontFile={selectedFontRight}
                 googleFontData={googleFontRight}
                 side="right"
