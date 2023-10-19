@@ -3,6 +3,7 @@ import React from 'react';
 import postcss from 'postcss';
 import ArticleTextPlaceholders from './ArticleTextPlaceHolders';
 import PosterTextPlaceholders from './PosterTextPlaceHolders';
+import FontTextPlaceholders from './FontTextPlaceholders';
 
 interface FontPreviewProps {
   fontFile: File | null;
@@ -11,7 +12,7 @@ interface FontPreviewProps {
   lineHeight: number;
   fontFeatureOptions: string[];
   fontSettings: boolean[];
-  template: 'Article' | 'Poster' | null;
+  template: 'Article' | 'Poster' | 'Font Preview';
 }
 
 function getFontFamily(fontFile: File | string | null, side: string) {
@@ -93,6 +94,15 @@ const FontPreview: React.FC<FontPreviewProps> = ({
         <style>{fontFace}</style>
         <div style={fontStyles}>
           <PosterTextPlaceholders lineHeight={lineHeight} />
+        </div>
+      </section>
+    );
+  } else if (template == 'Font Preview') {
+    return (
+      <section>
+        <style>{fontFace}</style>
+        <div style={fontStyles}>
+          <FontTextPlaceholders lineHeight={lineHeight} />
         </div>
       </section>
     );
