@@ -49,6 +49,7 @@ main {
 }
 
 .dropdown {
+    user-select: none;
     position: relative;
     display: inline-block;
     margin-left: 10px;
