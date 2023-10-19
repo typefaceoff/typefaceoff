@@ -1,7 +1,7 @@
-import '../styles/FontTextPlaceholders.css';
-import FullWidthLine from './ProofFullWidthLine';
-import HalfWidthLine from './ProofHalfWidthLine';
-import { proofingText } from './constants';
+import '../../styles/FontTextPlaceholders.css';
+import FullWidthLine from '../LineFormats/ProofFullWidthLine';
+import HalfWidthLine from '../LineFormats/ProofHalfWidthLine';
+import { proofingText } from '../constants';
 
 interface FontTextPlaceholdersProps {
   lineHeight: number;

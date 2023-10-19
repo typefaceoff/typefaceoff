@@ -1,6 +1,6 @@
-import '../styles/FontTextPlaceholders.css';
-import HalfWidthLine from './ProofHalfWidthLine';
-import CenteredLine from './ProofCenteredLine';
+import '../../styles/FontTextPlaceholders.css';
+import HalfWidthLine from '../LineFormats/ProofHalfWidthLine';
+import CenteredLine from '../LineFormats/ProofCenteredLine';
 import {
   posterText,
   posterTitle,
@@ -8,7 +8,7 @@ import {
   posterActorTwo,
   posterInfo,
   posterTime,
-} from './constants';
+} from '../constants';
 
 interface PosterTextPlaceholdersProps {
   readonly lineHeight: number;
