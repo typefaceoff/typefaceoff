@@ -1,9 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react';
 import postcss from 'postcss';
-import ArticleTextPlaceholders from './ArticleTextPlaceHolders';
-import PosterTextPlaceholders from './PosterTextPlaceHolders';
-import FontTextPlaceholders from './FontTextPlaceholders';
+import ArticleTextPlaceholders from './TemplatePlaceHolders/ArticleTextPlaceHolders';
+import PosterTextPlaceholders from './TemplatePlaceHolders/PosterTextPlaceHolders';
+import FontTextPlaceholders from './TemplatePlaceHolders/FontTextPlaceholders';
 
 interface TemplateProps {
   fontFile: File | null;

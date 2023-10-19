@@ -1,8 +1,7 @@
-import SizingToken from './SizingToken';
-import '../styles/ProofHalfWidthLine.css';
-import { maxHeightMultiplier } from './constants';
+import SizingToken from '../SizingToken';
+import '../../styles/ProofFullWidthLine.css';
 
-export default function HalfWidthLine(
+export default function FullWidthLine(
   proofingText: string,
   pointSize: number,
   lineHeight: number,
@@ -18,14 +17,14 @@ export default function HalfWidthLine(
   const paragraphStyle: React.CSSProperties = {
     fontSize: pointSize,
     lineHeight: lineHeight,
-    maxHeight: maxHeightMultiplier * lineHeight,
+    maxHeight: pointSize * lineHeight,
   };
 
   if (!sizingToken) {
     return (
-      <div className="half-width-line-container">
+      <div className="full-width-line-container">
         <p
-          className="half-width-line proof"
+          className="full-width-line proof"
           contentEditable
           spellCheck="false"
           onInput={updateProofingText}
@@ -38,10 +37,10 @@ export default function HalfWidthLine(
   }
 
   return (
-    <div className="half-width-line-container">
+    <div className="full-width-line-container">
       {SizingToken(pointSize, pointSize * lineHeight)}
       <p
-        className="half-width-line proof"
+        className="full-width-line proof"
         contentEditable
         spellCheck="false"
         onInput={updateProofingText}

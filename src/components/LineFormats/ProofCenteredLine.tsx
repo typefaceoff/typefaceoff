@@ -1,5 +1,5 @@
-import SizingToken from './SizingToken';
-import '../styles/ProofCenteredLine.css';
+import SizingToken from '../SizingToken';
+import '../../styles/ProofCenteredLine.css';
 
 export default function CenteredLine(
   proofingText: string,
