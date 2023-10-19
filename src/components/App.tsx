@@ -160,6 +160,14 @@ function App() {
     window.print();
   };
 
+  const handleProofingTemplateChange = (proofingTemplate: string) => {
+    const dropdown = document.getElementById('dropbtn');
+    if (dropdown) {
+      dropdown.textContent = proofingTemplate;
+      setSelectedTemplate(proofingTemplate);
+    }
+  };
+
   // Event handler to set a common text for all proof elements
   const setText = (text: string) => {
     const all = document.getElementsByClassName('proof');
@@ -189,15 +197,34 @@ function App() {
         >
           Save previews as PDF
         </button>
-        <select
-          className="dropdown"
-          value={selectedTemplate}
-          onChange={(e) => setSelectedTemplate(e.target.value)}
-        >
-          <option value="Font Preview">Font Preview</option>
-          <option value="Article">News Article</option>
-          <option value="Research Paper">Research Paper</option>
-        </select>
+        <div className="dropdown">
+          <button id="dropbtn" className="dropbtn">
+            Font Preview
+          </button>
+          <div className="dropdown-content">
+            <a
+              onClick={() => {
+                handleProofingTemplateChange('Font Preview');
+              }}
+            >
+              Font Preview
+            </a>
+            <a
+              onClick={() => {
+                handleProofingTemplateChange('Article');
+              }}
+            >
+              Article
+            </a>
+            <a
+              onClick={() => {
+                handleProofingTemplateChange('Research Paper');
+              }}
+            >
+              Research Paper
+            </a>
+          </div>
+        </div>
       </header>
       <main>
         {/* Left side */}
