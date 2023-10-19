@@ -107,7 +107,7 @@ const Template: React.FC<TemplateProps> = ({
       </section>
     );
   } else {
-    return;
+    return <></>;
   }
 };
 
