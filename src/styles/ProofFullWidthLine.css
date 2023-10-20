@@ -1,11 +1,3 @@
-body.dark-mode {
-    --color-hover-highlight: var(--color-hover-highlight-dark);
-}
-
-body:not(.dark-mode) {
-    --color-hover-highlight: var(--color-hover-highlight-light);
-}
-
 .full-width-line-container {
     display: flex;
     flex-direction: row;

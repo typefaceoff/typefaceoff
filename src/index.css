@@ -32,6 +32,11 @@ body {
 body.dark-mode {
     background: var(--color-bg-dark);
     color: var(--color-fg-dark);
+    --color-hover-highlight: var(--color-hover-highlight-dark);
+}
+
+body:not(.dark-mode) {
+    --color-hover-highlight: var(--color-hover-highlight-light);
 }
 
 body.dark-mode button {
