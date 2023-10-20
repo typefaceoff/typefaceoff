@@ -1,3 +1,11 @@
+body.dark-mode {
+    --color-hover-highlight: var(--color-hover-highlight-dark);
+}
+
+body:not(.dark-mode) {
+    --color-hover-highlight: var(--color-hover-highlight-light);
+}
+
 .title-line {
     height: 100%;
     max-height: fit-content;
@@ -12,6 +20,6 @@
     padding-bottom: 6%;
 }
 
-title-line:hover {
-    background-color: rgb(252, 228, 226);
+.title-line:hover {
+    background-color: var(--color-hover-highlight);
 }
