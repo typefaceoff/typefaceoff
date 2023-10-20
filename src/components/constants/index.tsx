@@ -3,7 +3,7 @@ export const opentypeText = `The quick brown fox jumps over the lazy dog. 123456
 
 /** Article Proofing Text */
 export const articleText = `A bizarre series of natural disasters has struck this once golden city. Earthquakes, tsunamis, volcanic eruptions, massive landslides, and sinkholes have caused Atlantis to sink over 10 kilometers into the Atlantic Ocean. Miraculously all individuals were able to be evacuated from the city a week prior, when authorities became deeply concerned over the rising sea levels in the city due to the volcanic disaster in March this year.`;
-export const articleTitle = `BREAKING NEWS:`;
+export const articleTitle = `BREAKING NEWS`;
 export const articleSubTitle = `City of Atlantis deep in the Atlantic due to biggest natural disaster in history!`;
 export const articleAuthorLine = `Primary Reporter: Plato, Primary Journalist: Timaeus Critias, 360 BC`;
 

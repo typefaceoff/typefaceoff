@@ -1,6 +1,7 @@
 import '../../styles/FontTextPlaceholders.css';
 import FullWidthLine from '../LineFormats/ProofFullWidthLine';
 import HalfWidthLine from '../LineFormats/ProofHalfWidthLine';
+import TitleLine from '../LineFormats/ProofTitleLine';
 import { articleText, articleTitle, articleSubTitle, articleAuthorLine } from '../constants';
 
 interface ArticleTextPlaceholdersProps {
@@ -16,9 +17,11 @@ export default function ArticleTextPlaceholders({ lineHeight }: ArticleTextPlace
         {FullWidthLine(articleText, displayPointSizes[0], lineHeight, false)}
       </div>
       <div className="template-double-columns">
-        {HalfWidthLine(articleTitle, displayPointSizes[1], lineHeight, false)}
-        {HalfWidthLine(articleSubTitle, displayPointSizes[2], lineHeight, false)}
+        {/* {HalfWidthLine(articleTitle, displayPointSizes[1], lineHeight, false)}
+        {HalfWidthLine(articleSubTitle, displayPointSizes[2], lineHeight, false)} */}
+        {TitleLine(articleTitle, displayPointSizes[1], lineHeight, false)}
       </div>
+
       <div className="template-single-column">
         {FullWidthLine(articleAuthorLine, displayPointSizes[3], 1.5, false)}
       </div>
