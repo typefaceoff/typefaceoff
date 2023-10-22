@@ -12,13 +12,7 @@ Minor bug fixes and enhancements to existing features don’t need to be mention
 
 ## 🗺️ Feature roadmap
 
-*Last updated September 27, 2023.*
-
-### Planned for v0.3 (October 20, 2023)
-
-- Support testing of Google Fonts.
-- Multiple proofing templates, to compare fonts in different contexts.
-	- e.g., Article, web page, research paper.
+*Last updated October 22, 2023.*
 
 ### Under review
 
@@ -54,7 +48,7 @@ The core-most feature of this tool. A user should be able to drag and drop two f
 
 Different fonts set with the same line height will *optically* look different. Allowing separate adjustments to line height, for each font being proofed, lets the user make manual adjustments to get a truer, one-to-one comparison of how the two fonts they are consider would actually behave in use.
 
-#### Configurable leading
+#### Configurable leading `v0.1.0`
 
 Simply changing the typeface used to typeset a document does not lend itself to fair comparison between two choices. This is, in part, because the *point size* of a font is [surprisingly non-standard](https://tonsky.me/blog/font-size). Different typefaces need to be set at different point sizes, with different line spacing, to optically *appear* as though they’re otherwise typeset similarly.
 
@@ -63,15 +57,27 @@ The user should be able to adjust the line spacing (within a small but reasonabl
 > [!NOTE]
 > **Leading** (pronounced *ledding*) is the traditional term for **line spacing**, because printers used to put strips of lead between lines to adjust line spacing.
 
-#### Allow the user to customise the text used in the proofing template(s)
+#### Allow the user to customise the text used in the proofing template(s) `v1.0.0`
 
 Proofing text is currently a fixed, uneditable extract (from *Alice in Wonderland*). Users may wish to enter their own text to see how fonts look using copy that is more immediately relevant to their work.
 
-#### Export type specimen to PDF
+#### Export type specimen to PDF `v1.0.0`
 
-#### Comparison of OpenType feature support
+#### Comparison of OpenType feature support `v1.0.0`
 
 For typesetting in English, OpenType features are used to access alternate glyphs in a font, enabling features such as ligatures, proportional/tabular figures, lining/old-style figures, ordinals, true superscript & subscript figures, among others. OpenType features are a domain in which typeface designers can flex their muscles, and support for and execution of OpenType features can be a major deciding factor for some typesetters.
+
+#### Support testing of Google Fonts `v2.0.0`
+
+####  Multiple proofing templates `v2.0.0`
+
+#### Dark mode `v2.0.0`
+
+To compare fonts in different contexts
+Templates we added:
+- Article
+- Heading
+- Poster
 
 > [!NOTE]
 > OpenType was primarily developed for improved support for various international writing systems. OpenType features are somewhat of a luxury when typesetting in Latin script, but are table-stakes for some languages such as Arabic or Urdu.
