@@ -2,7 +2,7 @@ import '../../styles/FontTextPlaceholders.css';
 import FullWidthLine from '../LineFormats/ProofFullWidthLine';
 import HalfWidthLine from '../LineFormats/ProofHalfWidthLine';
 import TitleLine from '../LineFormats/ProofTitleLine';
-import { articleText, articleTitle, articleSubTitle, articleAuthorLine } from '../constants';
+import { articleText, articleTitle, articleAuthorLine } from '../constants';
 
 interface ArticleTextPlaceholdersProps {
   readonly lineHeight: number;
