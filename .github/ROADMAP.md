@@ -71,13 +71,13 @@ For typesetting in English, OpenType features are used to access alternate glyph
 
 ####  Multiple proofing templates `v2.0.0`
 
-#### Dark mode `v2.0.0`
-
 To compare fonts in different contexts
 Templates we added:
 - Article
 - Heading
 - Poster
+
+#### Dark mode `v2.0.0`
 
 > [!NOTE]
 > OpenType was primarily developed for improved support for various international writing systems. OpenType features are somewhat of a luxury when typesetting in Latin script, but are table-stakes for some languages such as Arabic or Urdu.
