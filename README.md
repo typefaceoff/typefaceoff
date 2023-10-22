@@ -6,11 +6,9 @@ Typefaceoff is a a drag-and-drop tool for proofing and comparing typefaces in a 
 
 The tool works locally; font files are not uploaded to any server.
 
-## 🚧 Typefaceoff is in alpha
+## 🚧 Typefaceoff is released!
 
-Typefaceoff is in early stages of development. *Really.* We envisage it becoming a useful tool for anyone who puts text on a page (Office and Google Docs count!), but it isn’t quite ready for widespread adoption.
-
-If that doesn’t put you off, give it a spin, and we encourage you to help us build it by giving feedback or making code contributions. Check out our [contributing guidelines](./.github/CONTRIBUTING.md) and [open issues](https://github.com/typefaceoff/typefaceoff/issues) to get into it!
+Typefaceoff is released but a little basic. We envisage it becoming a useful tool for anyone who puts text on a page (Office and Google Docs count!) so if you're in for an adventure, give it a spin, and we encourage you to help us build upon it by giving feedback or making code contributions. Check out our [contributing guidelines](./.github/CONTRIBUTING.md), [ROADMAP](./.github/ROADMAP.md) and [open issues](https://github.com/typefaceoff/typefaceoff/issues) to get into it!
 
 ## 💾 Development
 
