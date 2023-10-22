@@ -2,9 +2,11 @@
 
 <img width="1969" alt="Screenshot of Typefaceoff" src="https://github.com/typefaceoff/typefaceoff/assets/39393161/641ecb6f-6d20-4657-b952-2df49efe46ba">
 
-Typefaceoff is a drag-and-drop tool for proofing and comparing typefaces in a browser.
+[Typefaceoff](https://typefaceoff.github.io/typefaceoff/) is a drag-and-drop tool for proofing and comparing typefaces in a browser.
 
 The tool works locally; font files are not uploaded to any server.
+
+Typefaceoff: https://typefaceoff.github.io/typefaceoff/
 
 ## 🚧 Typefaceoff is released!
 
