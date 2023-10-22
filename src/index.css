@@ -45,7 +45,16 @@ body.dark-mode button {
 }
 
 body.dark-mode .footer-text {
-    color: var(--color-bg-variant-dark);
+    color: var(--color-bg-variant);
+}
+
+body.dark-mode footer {
+    background-color: var(--color-bg-variant-dark);
+}
+
+body.dark-mode .github-icon {
+    font-size: 1.6rem;
+    color: var(--color-bg-variant);
 }
 
 header {
