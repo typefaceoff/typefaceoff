@@ -33,7 +33,7 @@ main {
 
 .github-icon {
     font-size: 1.6rem;
-    color: black;
+    color: var(--color-bg-variant-dark);
 }
 
 .button {
