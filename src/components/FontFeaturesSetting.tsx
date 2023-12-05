@@ -21,30 +21,18 @@ const FontFeaturesSetting: React.FC<FontFeaturesProps> = ({
     [fontSettings, fontSettingHandler]
   );
 
-  if (fontFeatureOptions.length == 0) {
-    return (
-      <div>
-        <p>No OpenType font features available</p>
-      </div>
-    );
-  }
-
-  const features = fontFeatureOptions.map(function (feature, i) {
-    return (
-      <label key={i}>
-        <input type="checkbox" onChange={() => onChecked(i)} />
-        {feature.toString()}
-      </label>
-    );
-  });
-
-  return (
-    <div>
-      <div>
-        <p>OpenType font feautres available: </p>
-      </div>
-      <div>{features}</div>
-    </div>
+  return fontFeatureOptions.length === 0 ? (
+    <p>No OpenType font features available</p>
+  ) : (
+    <>
+      <p>OpenType font features available:</p>
+      {fontFeatureOptions.map((feature, i) => (
+        <label key={i}>
+          <input type="checkbox" onChange={() => onChecked(i)} />
+          {feature.toString()}
+        </label>
+      ))}
+    </>
   );
 };
 
